@@ -90,9 +90,9 @@ class pibiMessage(Document):
       client.secret = get_decrypted_password('MQTT Settings', 'MQTT Settings', 'secret', False)
       secret = client.secret
       do_ssl = client.is_ssl
-      ca = "/home/erpnext/erpnext-prd/sites/" + frappe.utils.get_url().replace("http://","") + client.ca
-      client_crt = "/home/erpnext/erpnext-prd/sites/" + frappe.utils.get_url().replace("http://","") + client.client_crt
-      client_key = "/home/erpnext/erpnext-prd/sites/" + frappe.utils.get_url().replace("http://","") + client.client_key
+      ca = path + frappe.utils.get_url().replace("http://","") + client.ca
+      client_crt = path + frappe.utils.get_url().replace("http://","") + client.client_crt
+      client_key = path + frappe.utils.get_url().replace("http://","") + client.client_key
       port_ssl = client.ssl_port
       #frappe.msgprint(frappe.get_site_path('private', 'files', 'ca.crt').replace("./","/")
       # connect to MQTT Broker to Publish Message
