@@ -1,0 +1,431 @@
+{% extends "templates/web.html" %}
+
+{% block meta_block %}
+  <meta http-equiv="refresh" content="30" />		
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block style %}
+<style>
+  .card-header .fa {
+    transition: .3s transform ease-in-out;
+  }
+  .card-header .collapsed .fa {
+    transform: rotate(90deg);
+  }
+  .card {
+    padding: 6px;
+    border: 1px solid #4284b6;
+    margin-bottom: 1px;
+    border-radius: 9px;
+  }
+  .card-header {
+    font-size: 11pt;
+    background: #4682b412;
+    padding: 0px;
+    text-align: center;
+    margin-bottom: 3px;
+  }
+  @media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+  }
+  @media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+  }
+  @media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+  }
+  @media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+    }
+  @media (min-width: 88em) {
+    .card-columns {
+        -webkit-column-count: 6;
+        -moz-column-count: 6;
+        column-count: 6;
+    }  
+  }
+  
+
+</style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+  <h2><a href="/courses">Back</a></h2>
+  <h4><b><a href='/desk#Form/Training%20Course/{{name}}'>{{ title }}</a></b></h4>
+  <p class="text-muted">{{ training_type }} on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b><p>
+  <div class="card-columns">
+    
+    <!-- Card -->
+    <div class="card bg-warning">
+    <!--Open Street map-->
+      <div>
+        <iframe class="mb-4 mb-lg-0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-5.767811536788941%2C43.4847498538431%2C-5.754475593566895%2C43.491934416797754&amp;layer=mapnik&amp;marker=43.490159761329714%2C-5.7611918449401855" style="border: none;" width="100%" height="93px"></iframe>
+      </div>
+      <!-- Card content -->
+      <div class="card-body px-0" style="margin: 1px; padding: 0px;">
+        <div class="px-2 mt-3">
+          <a class="float-right"><i class="fa fa-anchor fa-2x"></i></a>
+        </div>
+        <div class="px-4 pb-4 pt-3-5">
+          <!-- Title -->
+          <h5 class="card-subtitle font-weight-light"><strong>AT Virtual Project</strong></h5>
+          <br>
+          <h6 class="font-small font-weight-light mt-n1">Maritime Safety and Innovation</h6>
+          <a class="btn btn-info" href="https://www.at-virtual.eu/" target="_blank">Read More</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card -->
+    
+    <div class="card bg-light">
+      <div class="rounded-top">
+        <ul class="list-inline float-right my-0 py-1 pr-3">
+          <li class="list-inline-item">
+            <a href="https://twitter.com/pibico_sl" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/pibico.sociedad" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.youtube.com/channel/UCZ_aFZHXy-fIXBoyLyHollg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/company/35496607" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+      <img src="/assets/Siimple/assets/img/logo.png" width="72px" />
+      <div class="card-body">
+        <p class="card-text text-center">Your Company for MIoT<br><small><a href="mailto:proyectos@pibico.es">proyectos@pibico.es</a></small></p>
+      </div>
+    </div>
+    <div class="card bg-light">
+      <h6 class="card-title">
+        <span class="fa-stack fa-1x">
+          <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
+          <i class="fa fa-video-camera fa-stack-1x" style="color: white;"></i>
+        </span>
+        <strong>Video Messages</strong>
+        <span style="font-style: 8pt;"> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }} ) </span>
+      </h6>
+      <div class="collapse-content">
+        <div class="collapse" id="collapseVideo">
+          <table class="table table-borderless table-sm mb-0">
+            <tbody>
+              {% for msg in pibimessages %}
+                {% if msg.message_type == "Video" %}
+                  <tr>    
+                    <td class="float-left" style="font-size: 8pt; margin: 0px; padding: 0px;">
+                      <span>- <a href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">{{ msg.name }}</a></span>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <hr style="margin-top: 9px; padding: 0px;">
+        <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgvideo"></i></a>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="card bg-light">
+      <h6 class="card-title">
+        <span class="fa-stack fa-1x">
+          <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
+          <i class="fa fa-flag fa-stack-1x" style="color: white;"></i>
+        </span>
+        <strong>Text Messages</strong>
+        <span style="font-style: 8pt;"> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }} ) </span>
+      </h6>
+      <div class="collapse-content">
+        <div class="collapse" id="collapseText">
+          <table class="table table-borderless table-sm mb-0">
+            <tbody>
+              {% for msg in pibimessages %}
+                {% if msg.message_type == "Text" %}
+                  <tr>    
+                    <td class="float-left" style="font-size: 8pt; margin: 0px; padding: 0px;">
+                      <span>- <a href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">{{ msg.name }}</a></span>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <hr style="margin-top: 9px; padding: 0px;">
+        <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseText" aria-expanded="false" aria-controls="collapseText" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgtext"></i></a>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="card bg-light">
+      <h6 class="card-title">
+        <span class="fa-stack fa-1x">
+          <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
+          <i class="fa fa-camera fa-stack-1x" style="color: white;"></i>
+        </span>
+        <strong>Photo Messages</strong>
+        <span> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }} ) </span>
+      </h6>
+      <div class="collapse-content">
+        <div class="collapse" id="collapsePhoto">
+          <table class="table table-borderless table-sm mb-0">
+            <tbody>
+              {% for msg in pibimessages %}
+                {% if msg.message_type == "Photo" %}
+                  <tr>    
+                    <td class="float-left" style="font-size: 8pt; margin: 0px; padding: 0px;">
+                      <span>- <a href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">{{ msg.name }}</a></span>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <hr style="margin-top: 9px; padding: 0px;">
+        <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapsePhoto" aria-expanded="false" aria-controls="collapsePhoto" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgphoto"></i></a>
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="card panels-card">
+      <div class="card-body">
+        <!-- Grid row -->
+        <h4 class="card-title font-weight-bold text-center">Participants</h4>
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-6 p-1">
+            <div class="card text-center">
+              <!-- <div class="card-body pb-0"> -->
+                 <!-- <i class="fa fa-wifi fa-3x pb-4"></i> -->
+                <p class="display-1">{{ participants | sum(attribute='is_connected') }}</p>
+              <!-- </div> -->
+              <!-- <hr> -->
+              <div class="card-body pt-0 text-center" style="font-size: 9pt; padding: 1px;">
+                <!--  <h6 class="font-weight-bold mb-1">Connected</h6> -->
+                <p class="mb-0">Connected</p>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <!-- Grid column -->
+          <div class="col-6 p-1">
+            <div class="card text-center">
+              <!-- <div class="card-body pb-0"> -->
+                <!-- <i class="fa fa-map-marker fa-3x pb-4"></i> -->
+                <p class="display-1">{{ participants | sum(attribute='is_located') }}</p>
+              <!-- </div> -->
+              <!-- <hr> -->
+              <div class="card-body pt-0" style="font-size: 9pt; padding: 1px;">
+                <!-- <h6 class="font-weight-bold mb-1">Located</h6> -->
+                <p class="mb-0">Located</p>
+              </div>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+      </div>
+    </div>
+    <!-- Card -->
+    
+  </div>
+  
+  <div class="card-columns">
+    <!-- Card -->
+    <div class="card bg-light" style="font-size: 10pt; padding: 3px;">
+      <!-- Card content -->
+      <div class="card-body pb-3">
+        <!-- Title -->
+        <h4 class="card-title font-weight-bold text-center">BLE Scanners</h4>
+        <!-- Text -->
+        <div class="d-flex justify-content-between">
+          <p class="display-1">{{ items | sum(attribute='is_connected') }}</p>
+          <p class="display-1">{{ items | selectattr('place') | list | length }}</p>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+          <p><i class="fa fa-wifi fa-lg text-muted pr-2"></i> Connected</p>
+          <p><i class="fa fa-map-marker fa-lg text-muted pr-2"></i> Scanners</p>
+        </div>
+        <div class="progress md-progress">
+          <div class="progress-bar black" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <ul class="list-unstyled d-flex justify-content-between font-small text-muted mb-4">
+          <li class="pl-4">8AM</li>
+          <li>11AM</li>
+          <li>2PM</li>
+          <li>5PM</li>
+          <li class="pr-4">8PM</li>
+        </ul>
+        <div class="collapse-content">
+          <div class="collapse" id="collapseBLE">
+            <table class="table table-borderless table-sm mb-0">
+              <tbody>
+                {% for item in items %}
+                <tr>
+                  <div class="card" style="margin: 1px; padding: 0px;">
+                    <h6 class="card-text text-center">
+                      <small><strong>{{ item.place }}</strong></small>
+                    </h6>
+                    <td class="font-weight-normal align-middle">
+                      {% if item.device %}  
+                        <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
+                      {% else %}
+                        Not Assigned
+                      {% endif %}  
+                    </td>
+                    <td class="float-right">
+                      <!-- <i class="fa fa-sun fa-lg amber-text"></i> -->
+                      {% if item.is_connected %}
+                        <span class="fa-stack fa-1x">
+                          <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                          <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                        </span>
+                      {% else %}
+                        <span class="fa-stack fa-1x">
+                          <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                          <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                        </span>
+                      {% endif %}
+                    </td>
+                  </div>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <hr class="">
+          <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseBLE" aria-expanded="true" aria-controls="collapseBLE" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#places"></i></a>
+        </div>
+      </div>
+    </div>
+    <!-- Card -->
+    {% for row in participants %}
+      <div class="card">
+        <p class="card-title" style="margin: 0px; padding: 1px;">
+          <small><strong>{{ row.participant_role }}</small></strong>
+        </p>
+        <!--Navbar-->
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark grey lighten-5 d-flex justify-content-between z-depth-1-bottom" style="font-size: 10pt; margin: 0px; padding: 0px;">
+          <div>
+            <ul class="list-inline my-2 py-1 dark-grey-text">
+              <!-- <li class="list-inline-item">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </li> 
+              <li class="list-inline-item font-weight-bold text-uppercase">
+                {{ row.participant_role }}
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="list-inline my-2 py-1 dark-grey-text">
+              <li class="list-inline-item">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-v pl-3" aria-hidden="true"></i>
+              </li>
+            </ul>
+          </div>
+        </nav> -->
+        <!--/.Navbar-->
+        
+        <p class="card-text">
+          <b style="font-size: 10pt; margin: 0px; padding: 1px;">
+            {% if row.returned_date %}
+              -
+            {% else %}
+              {% if row.is_connected %}
+                <span class="fa-stack fa-1x">
+                  <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                  <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                </span>
+              {% else %}
+                <span class="fa-stack fa-1x">
+                  <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                  <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                </span>
+              {% endif %}  
+            {% endif %} 
+          </b>
+          {% if row.device %}
+            <a href="/desk#Form/Device/{{ row.device }}" target="_blank" style="font-size: 11pt;"> {{ row.device }}</a>
+          {% else %}
+            Not Assigned
+          {% endif %}  
+          <br><small>
+          {% if row.training_place != None %}
+            {% if row.returned_date %}
+              Returned
+            {% else %}
+              Located in<br>
+              <b style="font-size: 9pt;">{{ row.training_place }}</b><br>
+              at <strong>{{ row.rssi }}</strong> strength from scanner
+            {% endif %}  
+          {% else %}
+            {% if row.returned_date %}
+              Returned
+            {% else %}
+              Not Located
+            {% endif %}  
+          {% endif %}
+          </small>  
+        </p>
+        <footer class="blockquote-footer text-muted d-flex">
+          {% if row.student_name != None and row.assigned_date and not row.returned_date %}
+            {% if row.is_connected %}
+              <span class="fa-stack fa-1x">
+                <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                </a>
+              </span>
+              <span class="fa-stack fa-1x">
+                <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                </a>
+              </span>
+              <span class="fa-stack fa-1x">
+                <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                </a>
+              </span>
+            {% endif %}   
+            <a href="/desk#Form/Student/{{ row.student }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.student_name }}">   {{ row.student_name }}</cite></a><br>
+             
+          {% elif row.student_name == None %}
+            <cite title="Pending">Pending</cite>
+          {% elif row.returned_date %}
+            <cite title="Pending">Returned</cite>
+          {% endif %}  
+        </footer>
+      </div>
+    {% endfor %}
+    <!-- Card -->
+
+  </div>
+</div>  
+
+
+{% endblock %}
+
+{% block script %}{% endblock %}
+<!-- this is a sample default web page template -->

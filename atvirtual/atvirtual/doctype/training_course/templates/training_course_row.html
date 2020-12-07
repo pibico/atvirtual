@@ -1,0 +1,64 @@
+{% block style %}
+<style>
+  main {
+    height: 100% !important;
+  }
+  .page-header h1 {
+    margin-left: 15px;
+  }
+  .card {
+    padding: 6px;
+    border: 1px solid #4284b6;
+    margin-bottom: 1px;
+  }
+  .card p {
+    font-size: 11pt;
+  }
+  .card-header {
+    font-size: 11pt;
+    background: #4682b412;
+    padding: 0px;
+    text-align: center;
+  }
+  @media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+  }
+  @media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+  }
+  @media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+  }
+  @media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<!-- <div class="card-columns"> -->
+  {% if status != 'Completed' %}
+  <div id="courses">
+	  <a class="course-list" href={{ route }}>{{ title }}</a>
+    <p><span class="text-muted"><i class="bx bx-calendar"></i> <b>{{ status }}</b> for <b>{{ training_type }}</b> on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></span></p>
+  </div>
+  {% endif %}
+<!-- </div> -->    
+ {% endblock %}
+<!-- this is a sample default list template -->

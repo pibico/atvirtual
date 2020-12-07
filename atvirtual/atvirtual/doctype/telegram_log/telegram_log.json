@@ -1,0 +1,95 @@
+{
+ "autoname": "SYS-TGM-.#####",
+ "creation": "2020-12-06 16:54:36.417390",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sender_name",
+  "sent_on",
+  "column_break0",
+  "message",
+  "sec_break1",
+  "no_of_requested_telegram",
+  "requested_numbers",
+  "column_break1",
+  "no_of_sent_telegram",
+  "sent_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "sender_name",
+   "fieldtype": "Data",
+   "label": "Sender Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Date",
+   "label": "Sent On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break0",
+   "fieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_break1",
+   "fieldtype": "Section Break",
+   "options": "Simple"
+  },
+  {
+   "fieldname": "no_of_requested_telegram",
+   "fieldtype": "Int",
+   "label": "No of Requested Telegram",
+   "read_only": 1
+  },
+  {
+   "fieldname": "requested_numbers",
+   "fieldtype": "Code",
+   "label": "Requested Numbers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break1",
+   "fieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "fieldname": "no_of_sent_telegram",
+   "fieldtype": "Int",
+   "label": "No of Sent Telegram",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sent_to",
+   "fieldtype": "Code",
+   "label": "Sent To",
+   "read_only": 1
+  }
+ ],
+ "icon": "fa fa-mobile-phone",
+ "modified": "2020-12-06 16:54:54.227647",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Telegram Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

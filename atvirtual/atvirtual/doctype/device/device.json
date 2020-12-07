@@ -1,0 +1,264 @@
+{
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2020-11-24 10:48:15.844513",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "model",
+  "is_scanner",
+  "is_connected",
+  "is_located",
+  "alerts_active",
+  "disabled",
+  "column_break_2",
+  "media_library",
+  "ip",
+  "rssi",
+  "detected_by",
+  "training_place",
+  "section_break_2",
+  "by_sms",
+  "sms_number",
+  "by_text",
+  "column_break_5",
+  "by_telegram",
+  "telegram_number",
+  "by_mqtt",
+  "section_break_",
+  "device_name",
+  "device_type",
+  "wifi_mac",
+  "ble_mac",
+  "serial",
+  "column_break_4",
+  "description",
+  "section_break_1",
+  "html_image",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "device_type",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Device Type",
+   "options": "Device Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Long Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "label": "Serial or IMEI"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Select",
+   "label": "Model",
+   "length": 30,
+   "options": "\nRPi ZW\nRPi 3A+\niOS\nAndroid\nWearable",
+   "reqd": 1
+  },
+  {
+   "fieldname": "device_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Device Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "media_library",
+   "fieldtype": "Link",
+   "label": "Media Library",
+   "options": "Website Slideshow"
+  },
+  {
+   "fieldname": "html_image",
+   "fieldtype": "HTML"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_connected",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Is Connected"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_",
+   "fieldtype": "Section Break",
+   "label": "Main Data"
+  },
+  {
+   "fieldname": "wifi_mac",
+   "fieldtype": "Data",
+   "label": "WiFi MAC Address"
+  },
+  {
+   "fieldname": "ble_mac",
+   "fieldtype": "Data",
+   "label": "BLE MAC Address"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_scanner",
+   "fieldtype": "Check",
+   "label": "Is Scanner"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:!doc.is_scanner",
+   "fieldname": "is_located",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Is Located"
+  },
+  {
+   "depends_on": "eval:doc.is_located",
+   "fieldname": "training_place",
+   "fieldtype": "Link",
+   "label": "Place",
+   "options": "Training Place"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": ".model.-.####"
+  },
+  {
+   "depends_on": "eval:doc.is_connected",
+   "fieldname": "ip",
+   "fieldtype": "Data",
+   "label": "ip"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:!doc.is_scanner",
+   "fieldname": "alerts_active",
+   "fieldtype": "Check",
+   "label": "Alerts Active"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.alerts_active",
+   "depends_on": "eval:doc.alerts_active && !doc.is_scanner",
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Message Reception"
+  },
+  {
+   "default": "0",
+   "fieldname": "by_sms",
+   "fieldtype": "Check",
+   "label": "By SMS"
+  },
+  {
+   "default": "0",
+   "fieldname": "by_telegram",
+   "fieldtype": "Check",
+   "label": "By Telegram"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.by_sms",
+   "fieldname": "sms_number",
+   "fieldtype": "Data",
+   "label": "SMS Number"
+  },
+  {
+   "default": "0",
+   "fieldname": "by_text",
+   "fieldtype": "Check",
+   "label": "By Text"
+  },
+  {
+   "depends_on": "eval:doc.by_telegram",
+   "fieldname": "telegram_number",
+   "fieldtype": "Data",
+   "label": "Telegram Number"
+  },
+  {
+   "depends_on": "eval:doc.is_located",
+   "fieldname": "detected_by",
+   "fieldtype": "Link",
+   "label": "Detected By",
+   "options": "Device"
+  },
+  {
+   "depends_on": "eval:doc.is_located",
+   "fieldname": "rssi",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Signal",
+   "precision": "0"
+  },
+  {
+   "default": "0",
+   "fieldname": "by_mqtt",
+   "fieldtype": "Check",
+   "label": "By Mqtt"
+  }
+ ],
+ "modified": "2020-12-06 15:01:49.235741",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Device",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

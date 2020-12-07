@@ -1,0 +1,47 @@
+{
+ "creation": "2020-12-06 18:11:39.104594",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parameter",
+  "value",
+  "header"
+ ],
+ "fields": [
+  {
+   "fieldname": "parameter",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Parameter",
+   "print_width": "150px",
+   "reqd": 1,
+   "width": "150px"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Value",
+   "print_width": "150px",
+   "reqd": 1,
+   "width": "150px"
+  },
+  {
+   "default": "0",
+   "fieldname": "header",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Header"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-12-06 18:11:39.104594",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Telegram Parameter",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

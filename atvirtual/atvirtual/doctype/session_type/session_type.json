@@ -1,0 +1,52 @@
+{
+ "allow_rename": 1,
+ "autoname": "format:{session_id}",
+ "creation": "2020-11-24 11:23:55.476821",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "session_id",
+  "col_break_0",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "session_id",
+   "fieldtype": "Data",
+   "label": "Session ID"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "col_break_0",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "modified": "2020-11-27 14:02:19.386780",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Session Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

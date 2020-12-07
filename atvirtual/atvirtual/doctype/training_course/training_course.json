@@ -1,0 +1,117 @@
+{
+ "allow_rename": 1,
+ "autoname": "format:{title}",
+ "creation": "2020-11-24 10:46:59.622171",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "html_route",
+  "course_date",
+  "title",
+  "col_break_0",
+  "published",
+  "training_type",
+  "status",
+  "sec_break_0",
+  "items",
+  "participants",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "col_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "\nOpen\nOngoing\nCompleted"
+  },
+  {
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Place Table",
+   "options": "Place Item"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "Published"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal && doc.published && doc.route",
+   "fieldname": "html_route",
+   "fieldtype": "HTML"
+  },
+  {
+   "fieldname": "course_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "training_type",
+   "fieldtype": "Link",
+   "label": "Training Type",
+   "options": "Session Type"
+  },
+  {
+   "fieldname": "participants",
+   "fieldtype": "Table",
+   "label": "Participants",
+   "options": "Session Role Item"
+  }
+ ],
+ "has_web_view": 1,
+ "is_published_field": "published",
+ "modified": "2020-11-30 22:42:21.972358",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Training Course",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "route": "courses",
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

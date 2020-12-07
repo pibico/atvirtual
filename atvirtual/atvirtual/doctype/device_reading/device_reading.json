@@ -1,0 +1,64 @@
+{
+ "creation": "2020-11-26 16:46:29.268694",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "serial",
+  "reading_type",
+  "value",
+  "payload",
+  "lastseen"
+ ],
+ "fields": [
+  {
+   "fieldname": "payload",
+   "fieldtype": "Long Text",
+   "label": "Payload"
+  },
+  {
+   "fieldname": "lastseen",
+   "fieldtype": "Datetime",
+   "label": "Last Seen"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Link",
+   "label": "Device",
+   "options": "Device"
+  },
+  {
+   "fieldname": "reading_type",
+   "fieldtype": "Data",
+   "label": "Reading Type"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "label": "Value",
+   "precision": "3"
+  }
+ ],
+ "modified": "2020-11-26 17:07:06.190259",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Device Reading",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

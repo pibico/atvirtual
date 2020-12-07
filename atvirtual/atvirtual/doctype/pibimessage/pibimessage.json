@@ -1,0 +1,101 @@
+{
+ "autoname": "format:{YY}{MM}{DD} {HH}:{mm}_{participant_role}",
+ "creation": "2020-11-24 10:51:45.414661",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "course",
+  "participant_role",
+  "device",
+  "column_break_2",
+  "session_type",
+  "message_type",
+  "message_text",
+  "message_photo",
+  "message_video"
+ ],
+ "fields": [
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Message Type",
+   "options": "\nText\nPhoto\nVideo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.message_type==\"Video\"",
+   "fieldname": "message_video",
+   "fieldtype": "Attach",
+   "label": "Message Video"
+  },
+  {
+   "depends_on": "eval:doc.message_type==\"Text\"",
+   "fieldname": "message_text",
+   "fieldtype": "Small Text",
+   "label": "Message Text"
+  },
+  {
+   "depends_on": "eval:doc.message_type==\"Photo\"",
+   "fieldname": "message_photo",
+   "fieldtype": "Attach Image",
+   "label": "Message Photo"
+  },
+  {
+   "fieldname": "participant_role",
+   "fieldtype": "Link",
+   "label": "Recipient",
+   "options": "Participant Role",
+   "reqd": 1
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Course",
+   "options": "Training Course",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.course",
+   "fetch_from": "course.training_type",
+   "fieldname": "session_type",
+   "fieldtype": "Data",
+   "label": "Session_Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "label": "Device",
+   "options": "Device"
+  }
+ ],
+ "modified": "2020-12-04 22:20:24.949817",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "pibiMessage",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

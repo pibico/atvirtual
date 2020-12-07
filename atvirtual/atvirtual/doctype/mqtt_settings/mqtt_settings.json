@@ -1,0 +1,109 @@
+{
+ "creation": "2020-12-06 18:56:47.262653",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "broker_gateway",
+  "port",
+  "col_break_0",
+  "user",
+  "secret",
+  "is_ssl",
+  "sec_break_0",
+  "ssl_port",
+  "ca",
+  "col_break_1",
+  "client_crt",
+  "client_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "broker_gateway",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Broker Gateway",
+   "reqd": 1
+  },
+  {
+   "fieldname": "port",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "port",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "user"
+  },
+  {
+   "fieldname": "secret",
+   "fieldtype": "Password",
+   "label": "secret"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_ssl",
+   "fieldtype": "Check",
+   "label": "Is SSL"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.is_ssl",
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break",
+   "label": "Security Settings"
+  },
+  {
+   "fieldname": "ssl_port",
+   "fieldtype": "Int",
+   "label": "SSL Port"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ca",
+   "fieldtype": "Attach",
+   "label": "CA"
+  },
+  {
+   "fieldname": "client_crt",
+   "fieldtype": "Attach",
+   "label": "Client CRT"
+  },
+  {
+   "fieldname": "client_key",
+   "fieldtype": "Attach",
+   "label": "Client KEY"
+  }
+ ],
+ "issingle": 1,
+ "modified": "2020-12-06 19:01:35.067406",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "MQTT Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

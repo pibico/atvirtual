@@ -1,0 +1,139 @@
+{
+ "allow_rename": 1,
+ "creation": "2020-11-24 10:49:54.913575",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "participant_role",
+  "assigned_date",
+  "participant_signature",
+  "is_connected",
+  "col_break_1",
+  "student",
+  "student_name",
+  "device",
+  "returned_date",
+  "is_located",
+  "training_place",
+  "rssi",
+  "detected_by"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "participant_role",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Training Role",
+   "options": "Participant Role"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Device",
+   "options": "Device"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Participant",
+   "options": "Student"
+  },
+  {
+   "depends_on": "eval:doc.student",
+   "fetch_from": "student.title",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Participant Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "assigned_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Assigned"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "returned_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Returned"
+  },
+  {
+   "fieldname": "participant_signature",
+   "fieldtype": "Signature",
+   "label": "Participant Signature"
+  },
+  {
+   "default": "0",
+   "fetch_from": "device.is_connected",
+   "fieldname": "is_connected",
+   "fieldtype": "Check",
+   "label": "Is Connected",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "device.is_located",
+   "fieldname": "is_located",
+   "fieldtype": "Check",
+   "label": "Is Located",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.is_located",
+   "fetch_from": "device.training_place",
+   "fieldname": "training_place",
+   "fieldtype": "Data",
+   "label": "Training Place",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.is_located",
+   "fetch_from": "device.distance",
+   "fieldname": "rssi",
+   "fieldtype": "Float",
+   "label": "Signal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "detected_by",
+   "fieldtype": "Data",
+   "label": "Detected By",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-12-04 09:50:09.087645",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Session Role Item",
+ "nsm_parent_field": "parent_training_role",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

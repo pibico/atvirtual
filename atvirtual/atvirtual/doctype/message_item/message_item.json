@@ -1,0 +1,48 @@
+{
+ "creation": "2020-11-30 18:02:27.542753",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "message",
+  "participant_role",
+  "device"
+ ],
+ "fields": [
+  {
+   "fieldname": "participant_role",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Participant",
+   "options": "Participant Role"
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Table MultiSelect",
+   "label": "Devices",
+   "options": "Device"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Message",
+   "options": "pibiMessage"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-11-30 18:09:26.169780",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Message Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

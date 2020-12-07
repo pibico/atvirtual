@@ -1,0 +1,75 @@
+{
+ "creation": "2020-11-25 10:11:00.229093",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "place",
+  "device",
+  "is_connected",
+  "col_break_0",
+  "location",
+  "site"
+ ],
+ "fields": [
+  {
+   "fieldname": "col_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Location",
+   "options": "\nIndoor\nOutdoor"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Site",
+   "options": "\nCentro Jovellanos\nOutside Centro"
+  },
+  {
+   "default": "0",
+   "fetch_from": "device.is_connected",
+   "fieldname": "is_connected",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Connected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Scanner",
+   "options": "Device"
+  },
+  {
+   "fieldname": "place",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Place",
+   "options": "Training Place"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-11-25 22:46:01.541670",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Place Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
