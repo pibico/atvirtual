@@ -38,7 +38,7 @@ class pibiMessage(Document):
                   #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
               if doc.by_text:
                 if doc.device_name != '' and doc.by_mqtt:
-                  mqtt_list.append(doc.device_name)
+                  mqtt_list.append({"name": doc.device_name})
                   #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
                 elif not doc.by_mqtt:
                   if doc.sms_number != '' and not doc.sms_number in sms_list:
@@ -119,7 +119,7 @@ class pibiMessage(Document):
         backend.disconnect()
         #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
       except:
-        frappe.msgprint(_("Error in MQTT Broker", str(mqtt_list)))
+        frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
         #raise
         pass
     if len(telegram_list) > 0:
