@@ -5,7 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-import datetime
+import datetime, time
 
 from frappe.utils import cstr
 from frappe import msgprint, _
@@ -107,6 +107,7 @@ class pibiMessage(Document):
         if do_ssl == True:
           backend.tls_set(ca_certs=ca, certfile=client_crt, keyfile=client_key, cert_reqs=ssl.CERT_REQUIRED, ciphers=None)
           backend.tls_insecure_set(False)
+          time.sleep(.5)
           backend.connect(server, port_ssl)
         else:  
           backend.connect(server, port)
@@ -118,7 +119,7 @@ class pibiMessage(Document):
         backend.disconnect()
         #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
       except:
-        frappe.msgprint(_("Error in MQTT Broker"))
+        frappe.msgprint(_("Error in MQTT Broker", str(mqtt_list)))
         #raise
         pass
     if len(telegram_list) > 0:
