@@ -79,8 +79,11 @@ class pibiMessage(Document):
       message = "Video from AT Virtual \n" + frappe.utils.get_url() + ":8080" + self.message_video
 
     if len(sms_list) > 0:
-      send_sms(sms_list, cstr(message))
-      #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
+      try:
+        send_sms(sms_list, cstr(message))
+        #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
+      except:
+        pass
     if len(mqtt_list) > 0:
       path = "/home/erpnext/erpnext-prd/sites/" 
       client = frappe.get_doc('MQTT Settings', 'MQTT Settings')
@@ -116,7 +119,11 @@ class pibiMessage(Document):
         #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
       except:
         frappe.msgprint(_("Error in MQTT Broker"))
-        raise
+        #raise
+        pass
     if len(telegram_list) > 0:
-      send_telegram(telegram_list, cstr(message))
-      #frappe.msgprint(_("Message by telegram to: " + str(telegram_list) + " " + message)) 
+      try:
+        send_telegram(telegram_list, cstr(message))
+        #frappe.msgprint(_("Message by telegram to: " + str(telegram_list) + " " + message))
+      except:
+        pass 

@@ -75,7 +75,7 @@
    "fieldtype": "Select",
    "label": "Model",
    "length": 30,
-   "options": "\nRPi ZW\nRPi 3A+\niOS\nAndroid\nWearable",
+   "options": "\nRPi ZW\nRPi 3A\niOS\nAndroid\nWearable",
    "reqd": 1
   },
   {
@@ -238,7 +238,7 @@
    "label": "By Mqtt"
   }
  ],
- "modified": "2020-12-06 15:01:49.235741",
+ "modified": "2020-12-09 16:45:05.458972",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
