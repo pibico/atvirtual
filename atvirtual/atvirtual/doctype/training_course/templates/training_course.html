@@ -119,6 +119,7 @@
         <p class="card-text text-center">Your Company for MIoT<br><small><a href="mailto:proyectos@pibico.es">proyectos@pibico.es</a></small></p>
       </div>
     </div>
+    
     <div class="card bg-light">
       <h6 class="card-title">
         <span class="fa-stack fa-1x">
@@ -126,7 +127,7 @@
           <i class="fa fa-video-camera fa-stack-1x" style="color: white;"></i>
         </span>
         <strong>Video Messages</strong>
-        <span style="font-style: 8pt;"> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }} ) </span>
+        <span class="badge badge-danger badge-counter badge-pill" style="font-style: 8pt;">{{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }}</span>
       </h6>
       <div class="collapse-content">
         <div class="collapse" id="collapseVideo">
@@ -156,7 +157,7 @@
           <i class="fa fa-flag fa-stack-1x" style="color: white;"></i>
         </span>
         <strong>Text Messages</strong>
-        <span style="font-style: 8pt;"> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }} ) </span>
+        <span class="badge badge-danger badge-counter badge-pill" style="font-style: 8pt;">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
       </h6>
       <div class="collapse-content">
         <div class="collapse" id="collapseText">
@@ -186,7 +187,7 @@
           <i class="fa fa-camera fa-stack-1x" style="color: white;"></i>
         </span>
         <strong>Photo Messages</strong>
-        <span> ( {{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }} ) </span>
+        <span  class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
       </h6>
       <div class="collapse-content">
         <div class="collapse" id="collapsePhoto">
