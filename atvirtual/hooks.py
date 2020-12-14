@@ -127,4 +127,4 @@ app_license = "MIT"
 # 	"Task": "atvirtual.task.get_dashboard_data"
 # }
 
-fixtures = ['Custom Field']
+fixtures = ['Custom Field', 'Custom Script']
