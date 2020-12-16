@@ -12,7 +12,7 @@ from frappe import msgprint, _
 from frappe.core.doctype.sms_settings.sms_settings import send_sms
 from atvirtual.atvirtual.doctype.telegram_settings.telegram_settings import send_telegram
 import paho.mqtt.client as mqtt
-import os, ssl
+import os, ssl, urllib
 from frappe.utils.password import get_decrypted_password
 
 class pibiMessage(Document):
@@ -74,9 +74,9 @@ class pibiMessage(Document):
     if self.message_type == "Text":
       message = "From AT Virtual: " + self.message_text
     elif self.message_type == "Photo":
-      message = "Photo from AT Virtual \n" + frappe.utils.get_url() + ":8080" + self.message_photo
+      message = "Photo from AT Virtual \n" + frappe.utils.get_url() + ":8080" + urllib.parse.quote(self.message_photo)
     elif self.message_type == "Video":
-      message = "Video from AT Virtual \n" + frappe.utils.get_url() + ":8080" + self.message_video
+      message = "Video from AT Virtual \n" + frappe.utils.get_url() + ":8080" + urllib.parse.quote(self.message_video)
 
     if len(sms_list) > 0:
       try:
