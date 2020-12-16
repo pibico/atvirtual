@@ -97,30 +97,107 @@
     </div>
     <!-- Card -->
     
-    <div class="card bg-light">
-      <div class="rounded-top">
-        <ul class="list-inline float-right my-0 py-1 pr-3">
-          <li class="list-inline-item">
-            <a href="https://twitter.com/pibico_sl" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://www.facebook.com/pibico.sociedad" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://www.youtube.com/channel/UCZ_aFZHXy-fIXBoyLyHollg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-          </li>
-          <li class="list-inline-item">
-            <a href="https://www.linkedin.com/company/35496607" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-          </li>
-        </ul>
+    <!-- PibiCo Card -->
+      <div class="card bg-light">
+        <div class="rounded-top">
+          <ul class="list-inline float-right my-0 py-1 pr-3">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/pibico_sl" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/pibico.sociedad" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.youtube.com/channel/UCZ_aFZHXy-fIXBoyLyHollg" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/company/35496607" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+        <img src="/assets/Siimple/assets/img/logo.png" width="72px" />
+        <div class="card-body p-0 pb-3 pt-3">
+          <!-- Text Messages -->
+          <span><i class="fa fa-flag"></i> <strong>Text Messages </strong>
+            <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
+          </span>
+          <a class="dropdown-toggle card-title font-weight-bold" href="#" id="TextMessages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div style="font-size: 10pt; min-width: 1%; max-width: 96vw;" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+          aria-labelledby="TextMessages">
+          {% for msg in pibimessages %}
+            {% if msg.message_type == "Text" %}
+            <!-- {{ doc }} -->
+            <a class="dropdown-item d-flex align-items-center" href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">
+              <div class="font-weight-bold">
+                <div class="text-truncate">
+                  {{ msg.name }}<br>
+                  <small class="text-gray-500">{{ msg.message_text | safe | truncate (60) }}
+                  on {{ frappe.utils.get_datetime(msg.creation).strftime("%d/%m/%Y %H:%M") }}
+                  </small>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+        <div class="card-body p-0 pb-3">
+          <!-- Photo Messages -->
+          <span><i class="fa fa-camera"></i> <strong>Photo Messages </strong>
+            <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
+          </span>
+          <a class="dropdown-toggle card-title font-weight-bold" href="#" id="Videos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div style="font-size: 10pt; min-width: 1%; max-width: 96vw;" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+          aria-labelledby="Videos">
+          {% for photo in pibimessages %}
+            {% if photo.message_type == "Photo" %}
+            <!-- {{ doc }} -->
+            
+            <a class="dropdown-item d-flex align-items-center" href="/desk#Form/pibiMessage/{{photo.name}}" target="_blank">
+              <div class="font-weight-bold">
+                <div class="text-truncate">
+                  {{ photo.name }}<br>
+                  <img class="thumbnail" width="45px" src="{{ photo.message_photo }}" />  
+                  <small class="text-gray-500">
+                  on {{ frappe.utils.get_datetime(photo.creation).strftime("%d/%m/%Y %H:%M") }}
+                  </small>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+        <div class="card-body p-0 pb-3">
+          <!-- Video Messages -->
+          <span><i class="fa fa-video-camera"></i> <strong>Video Messages </strong>
+            <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }}</span>
+          </span>
+          <a class="dropdown-toggle card-title font-weight-bold" href="#" id="Videos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+          <div style="font-size: 10pt; min-width: 1%; max-width: 96vw;" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+          aria-labelledby="Videos">
+          {% for vid in pibimessages %}
+            {% if vid.message_type == "Video" %}
+            <!-- {{ doc }} -->
+            <a class="dropdown-item d-flex align-items-center" href="/desk#Form/pibiMessage/{{vid.name}}" target="_blank">
+              <div class="font-weight-bold">
+                <div class="text-truncate">
+                  {{ vid.name }}<br>
+                  <iframe class="" width="120px" height="90px" src="{{ vid.message_video }}"></iframe> 
+                  <small class="text-gray-500">
+                  on {{ frappe.utils.get_datetime(vid.creation).strftime("%d/%m/%Y %H:%M") }}
+                  </small>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
       </div>
-      <img src="/assets/Siimple/assets/img/logo.png" width="72px" />
-      <div class="card-body">
-        <p class="card-text text-center">Your Company for MIoT<br><small><a href="mailto:proyectos@pibico.es">proyectos@pibico.es</a></small></p>
-      </div>
-    </div>
+    <!-- End PibiCo Card -->
     
-    <div class="card bg-light">
+    <!-- <div class="card bg-light">
       <h6 class="card-title">
         <span class="fa-stack fa-1x">
           <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
@@ -148,67 +225,8 @@
         <hr style="margin-top: 9px; padding: 0px;">
         <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgvideo"></i></a>
       </div>
-    </div>
+    </div> -->
     <!-- Card -->
-    <div class="card bg-light">
-      <h6 class="card-title">
-        <span class="fa-stack fa-1x">
-          <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
-          <i class="fa fa-flag fa-stack-1x" style="color: white;"></i>
-        </span>
-        <strong>Text Messages</strong>
-        <span class="badge badge-danger badge-counter badge-pill" style="font-style: 8pt;">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
-      </h6>
-      <div class="collapse-content">
-        <div class="collapse" id="collapseText">
-          <table class="table table-borderless table-sm mb-0">
-            <tbody>
-              {% for msg in pibimessages %}
-                {% if msg.message_type == "Text" %}
-                  <tr>    
-                    <td class="float-left" style="font-size: 8pt; margin: 0px; padding: 0px;">
-                      <span>- <a href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">{{ msg.name }}</a></span>
-                    </td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-        <hr style="margin-top: 9px; padding: 0px;">
-        <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseText" aria-expanded="false" aria-controls="collapseText" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgtext"></i></a>
-      </div>
-    </div>
-    <!-- Card -->
-    <div class="card bg-light">
-      <h6 class="card-title">
-        <span class="fa-stack fa-1x">
-          <i class="fa fa-square fa-stack-2x" style="color: SteelBlue;"></i>
-          <i class="fa fa-camera fa-stack-1x" style="color: white;"></i>
-        </span>
-        <strong>Photo Messages</strong>
-        <span  class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
-      </h6>
-      <div class="collapse-content">
-        <div class="collapse" id="collapsePhoto">
-          <table class="table table-borderless table-sm mb-0">
-            <tbody>
-              {% for msg in pibimessages %}
-                {% if msg.message_type == "Photo" %}
-                  <tr>    
-                    <td class="float-left" style="font-size: 8pt; margin: 0px; padding: 0px;">
-                      <span>- <a href="/desk#Form/pibiMessage/{{msg.name}}" target="_blank">{{ msg.name }}</a></span>
-                    </td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-        <hr style="margin-top: 9px; padding: 0px;">
-        <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapsePhoto" aria-expanded="false" aria-controls="collapsePhoto" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#msgphoto"></i></a>
-      </div>
-    </div>
     <!-- Card -->
     <div class="card panels-card">
       <div class="card-body">
@@ -249,10 +267,6 @@
       </div>
     </div>
     <!-- Card -->
-    
-  </div>
-  
-  <div class="card-columns">
     <!-- Card -->
     <div class="card bg-light" style="font-size: 10pt; padding: 3px;">
       <!-- Card content -->
@@ -320,6 +334,9 @@
         </div>
       </div>
     </div>
+  </div>
+  
+  <div class="card-columns">
     <!-- Card -->
     {% for row in participants %}
       <div class="card">
