@@ -10,12 +10,6 @@
 <style>
   @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700,800&display=swap");
   
-  .card-header .fa {
-    transition: .3s transform ease-in-out;
-  }
-  .card-header .collapsed .fa {
-    transform: rotate(90deg);
-  }
   .card {
     padding: 6px;
     border: 1px solid #4284b6;
@@ -116,7 +110,7 @@
           </ul>
         </div>
         <img src="/assets/Siimple/assets/img/logo.png" width="72px" />
-        <div class="card-body p-0 pb-3 pt-3">
+        <div class="card-body p-0 pb-2 pt-3">
           <!-- Text Messages -->
           <span><i class="fa fa-flag"></i> <strong>Text Messages </strong>
             <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
@@ -141,7 +135,7 @@
           {% endfor %}
           </div>
         </div>
-        <div class="card-body p-0 pb-3">
+        <div class="card-body p-0 pb-2">
           <!-- Photo Messages -->
           <span><i class="fa fa-camera"></i> <strong>Photo Messages </strong>
             <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
@@ -168,7 +162,7 @@
           {% endfor %}
           </div>
         </div>
-        <div class="card-body p-0 pb-3">
+        <div class="card-body p-0 pb-2">
           <!-- Video Messages -->
           <span><i class="fa fa-video-camera"></i> <strong>Video Messages </strong>
             <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }}</span>
@@ -194,6 +188,18 @@
           {% endfor %}
           </div>
         </div>
+        <div class="card-body p-0">
+          <!-- Participants -->
+          <span><i class="fa fa-mobile"></i> <strong>Devices Located </strong>
+            <span class="badge badge-danger badge-counter badge-pill">{{ participants | sum(attribute='is_located') }}</span>
+          </span>
+        </div>
+        <hr>
+        <div class="card-text text-center pb-3">
+          <h5>for support, please contact</h5>
+          <a href="mailto: proyectos@pibico.es"><i class="fa fa-envelope"></i> proyectos@pibico.es</a>
+        </div>
+       
       </div>
     <!-- End PibiCo Card -->
     
@@ -227,71 +233,20 @@
       </div>
     </div> -->
     <!-- Card -->
-    <!-- Card -->
-    <div class="card panels-card">
-      <div class="card-body">
-        <!-- Grid row -->
-        <h4 class="card-title font-weight-bold text-center">Participants</h4>
-        <div class="row">
-          <!-- Grid column -->
-          <div class="col-6 p-1">
-            <div class="card text-center">
-              <!-- <div class="card-body pb-0"> -->
-                 <!-- <i class="fa fa-wifi fa-3x pb-4"></i> -->
-                <p class="display-1">{{ participants | sum(attribute='is_connected') }}</p>
-              <!-- </div> -->
-              <!-- <hr> -->
-              <div class="card-body pt-0 text-center" style="font-size: 9pt; padding: 1px;">
-                <!--  <h6 class="font-weight-bold mb-1">Connected</h6> -->
-                <p class="mb-0">Connected</p>
-              </div>
-            </div>
-          </div>
-          <!-- Grid column -->
-          <!-- Grid column -->
-          <div class="col-6 p-1">
-            <div class="card text-center">
-              <!-- <div class="card-body pb-0"> -->
-                <!-- <i class="fa fa-map-marker fa-3x pb-4"></i> -->
-                <p class="display-1">{{ participants | sum(attribute='is_located') }}</p>
-              <!-- </div> -->
-              <!-- <hr> -->
-              <div class="card-body pt-0" style="font-size: 9pt; padding: 1px;">
-                <!-- <h6 class="font-weight-bold mb-1">Located</h6> -->
-                <p class="mb-0">Located</p>
-              </div>
-            </div>
-          </div>
-          <!-- Grid column -->
-        </div>
-      </div>
-    </div>
-    <!-- Card -->
-    <!-- Card -->
     <div class="card bg-light" style="font-size: 10pt; padding: 3px;">
       <!-- Card content -->
       <div class="card-body pb-3">
         <!-- Title -->
         <h4 class="card-title font-weight-bold text-center">BLE Scanners</h4>
         <!-- Text -->
-        <div class="d-flex justify-content-between">
-          <p class="display-1">{{ items | sum(attribute='is_connected') }}</p>
-          <p class="display-1">{{ items | selectattr('place') | list | length }}</p>
+        <div style="font-size: 30pt;" class="d-flex justify-content-between">
+          <p>{{ items | sum(attribute='is_connected') }}</p>
+          <p>{{ items | selectattr('place') | list | length }}</p>
         </div>
         <div class="d-flex justify-content-between mb-4">
           <p><i class="fa fa-wifi fa-lg text-muted pr-2"></i> Connected</p>
           <p><i class="fa fa-map-marker fa-lg text-muted pr-2"></i> Scanners</p>
         </div>
-        <div class="progress md-progress">
-          <div class="progress-bar black" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <ul class="list-unstyled d-flex justify-content-between font-small text-muted mb-4">
-          <li class="pl-4">8AM</li>
-          <li>11AM</li>
-          <li>2PM</li>
-          <li>5PM</li>
-          <li class="pr-4">8PM</li>
-        </ul>
         <div class="collapse-content">
           <div class="collapse" id="collapseBLE">
             <table class="table table-borderless table-sm mb-0">
@@ -330,7 +285,7 @@
             </table>
           </div>
           <hr class="">
-          <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseBLE" aria-expanded="true" aria-controls="collapseBLE" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#places"></i></a>
+          <a class="btn btn-flat p-1 my-1 mr-0 mml-1 collapsed" data-toggle="collapse" href="#collapseBLE" aria-expanded="false" aria-controls="collapseBLE" style="color: SteelBlue;"><i class="fa fa-chevron-up" id="#places"></i></a>
         </div>
       </div>
     </div>
