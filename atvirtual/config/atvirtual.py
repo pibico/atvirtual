@@ -27,7 +27,7 @@ def get_data():
       "items": [
         {
           "type": "doctype",
-          "name": "Student",
+          "name": "Participant",
           "description": _("Participant"),
           "onboard": 1,
         },
