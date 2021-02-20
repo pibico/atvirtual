@@ -160,6 +160,7 @@
                   <span class="hide-menu">Home</span>
                 </a>
               </li>
+              {% if frappe.session.user != 'Guest' %}
               <li class="list-divider"></li>
               <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
               <li class="sidebar-item">
@@ -188,6 +189,7 @@
                   <span class="hide-menu">Logout</span>
                 </a>
               </li>
+              {% endif %}
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
