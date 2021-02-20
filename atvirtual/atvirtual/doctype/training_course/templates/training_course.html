@@ -363,7 +363,7 @@
           </small>  
         </p>
         <footer class="blockquote-footer text-muted d-flex">
-          {% if row.student_name != None and row.assigned_date and not row.returned_date %}
+          {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
             {% if row.is_connected %}
               <span class="fa-stack fa-1x">
                 <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
@@ -384,9 +384,9 @@
                 </a>
               </span>
             {% endif %}   
-            <a href="/desk#Form/Student/{{ row.student }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.student_name }}">   {{ row.student_name }}</cite></a><br>
+            <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
              
-          {% elif row.student_name == None %}
+          {% elif row.participant_name == None %}
             <cite title="Pending">Pending</cite>
           {% elif row.returned_date %}
             <cite title="Pending">Returned</cite>

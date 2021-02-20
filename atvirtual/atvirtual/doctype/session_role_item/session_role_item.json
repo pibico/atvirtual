@@ -10,8 +10,8 @@
   "participant_signature",
   "is_connected",
   "col_break_1",
-  "student",
-  "student_name",
+  "participant",
+  "participant_name",
   "device",
   "returned_date",
   "is_located",
@@ -39,24 +39,6 @@
    "in_list_view": 1,
    "label": "Device",
    "options": "Device"
-  },
-  {
-   "allow_in_quick_entry": 1,
-   "columns": 2,
-   "fieldname": "student",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Participant",
-   "options": "Student"
-  },
-  {
-   "depends_on": "eval:doc.student",
-   "fetch_from": "student.title",
-   "fieldname": "student_name",
-   "fieldtype": "Data",
-   "label": "Participant Name",
-   "read_only": 1
   },
   {
    "fieldname": "col_break_1",
@@ -122,10 +104,28 @@
    "fieldtype": "Data",
    "label": "Detected By",
    "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "columns": 2,
+   "fieldname": "participant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Participant",
+   "options": "Participant"
+  },
+  {
+   "depends_on": "eval:doc.student",
+   "fetch_from": "student.title",
+   "fieldname": "participant_name",
+   "fieldtype": "Data",
+   "label": "Participant Name",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2020-12-04 09:50:09.087645",
+ "modified": "2021-02-20 01:28:59.686505",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Session Role Item",

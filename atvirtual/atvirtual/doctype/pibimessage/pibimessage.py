@@ -85,7 +85,7 @@ class pibiMessage(Document):
       except:
         pass
     if len(mqtt_list) > 0:
-      path = "/home/erpnext/erpnext-prd/sites/" 
+      path = "/home/erpnext/erpnext-dev/sites/" 
       client = frappe.get_doc('MQTT Settings', 'MQTT Settings')
       server = client.broker_gateway
       port = client.port
