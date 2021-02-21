@@ -129,4 +129,4 @@ brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-i
 # 	"Task": "atvirtual.task.get_dashboard_data"
 # }
 
-fixtures = ['Custom Field', 'Custom Script']
+fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Custom Script', 'Property Setter', 'Workflow', 'Workflow State', 'Workflow Action', 'Translation', 'Website Settings']
