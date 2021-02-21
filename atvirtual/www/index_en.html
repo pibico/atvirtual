@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="PibiCo">
     <!-- Favicon icon -->
@@ -16,6 +16,19 @@
     <link href="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="/assets/atvirtual/dist/css/style.min.css" rel="stylesheet">
+    <style>
+      .carousel-control-prev, .carousel-control-next {
+        width: 6%;
+      }
+      .carousel-indicators li {
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+      }
+      .carousel ol {
+        margin-bottom: 1px;
+      }
+    </style>
   </head>
   <body>
     <!-- ============================================================== -->
@@ -119,6 +132,8 @@
                   </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                  <a class="dropdown-item" href="desk#modules/Atvirtual"><i data-feather="anchor" class="svg-icon mr-2 ml-1"></i>AT Virtual</a>
+                  <a class="dropdown-item" href="desk#"><i data-feather="monitor" class="svg-icon mr-2 ml-1"></i>DeskTop</a>
                   <a class="dropdown-item" href="desk#user-profile"><i data-feather="user" class="svg-icon mr-2 ml-1"></i>My Profile</a>
                   <a class="dropdown-item" href="desk#List/Communication/List"><i data-feather="mail" class="svg-icon mr-2 ml-1"></i>Communications</a>
                   <div class="dropdown-divider"></div>
@@ -127,7 +142,7 @@
                   <a class="dropdown-item" href="?cmd=web_logout"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>Logout</a>
                 </div>
                 {% else %}
-                <a class="nav-link" href="desk#">
+                <a class="nav-link" href="login?redirect-to=index_en">
                   <img src="/assets/atvirtual/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
                   <span class="ml-2 d-none d-lg-inline-block">
                     <span class="text-dark">Login</span>
@@ -164,13 +179,13 @@
               <li class="list-divider"></li>
               <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index_es" aria-expanded="false">
+                <a class="sidebar-link" href="training_course" aria-expanded="false">
                   <i data-feather="anchor" class="feather-icon"></i>
                   <span class="hide-menu">Training Sessions</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link sidebar-link" href="new" aria-expanded="false">
+                <a class="sidebar-link sidebar-link" href="imessage_en?new=1" aria-expanded="false">
                   <i data-feather="message-square" class="feather-icon"></i>
                   <span class="hide-menu">Communications</span>
                 </a>
@@ -207,6 +222,54 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+          <!-- ============================================================== -->
+          <!-- Carousel -->
+          <!-- ============================================================== --> 
+          <div class="row">
+            <div class="col-xl-12 p-0 m-0 pl-3">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100 img-responsive" src="/assets/atvirtual/assets/images/background/sea-bg.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3>By Sea</h3>
+                      <p>the Digital Transformation</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100 img-responsive" src="/assets/atvirtual/assets/images/background/earth-bg.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3>On Earth</h3>
+                      <p>and in Ordinary Life</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100 img-responsive" src="/assets/atvirtual/assets/images/background/sky-bg.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h3>To Sky</h3>
+                      <p>towards the Future</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- Carousel -->
+          <!-- ============================================================== --> 
           <div class="row">
             <div class="col-xl-6 p-0 m-0 pl-3">
               <div class="card">

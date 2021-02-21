@@ -17,6 +17,7 @@
   "media_library",
   "ip",
   "rssi",
+  "distance",
   "detected_by",
   "training_place",
   "section_break_2",
@@ -236,9 +237,14 @@
    "fieldname": "by_mqtt",
    "fieldtype": "Check",
    "label": "By Mqtt"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "label": "Distance"
   }
  ],
- "modified": "2020-12-09 16:45:05.458972",
+ "modified": "2021-02-21 13:36:32.998370",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
