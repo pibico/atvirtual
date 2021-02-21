@@ -45,6 +45,8 @@ app_license = "MIT"
 # Website user home page (by function)
 # get_website_user_home_page = "atvirtual.utils.get_home_page"
 
+brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-icon.png"> pibi<small><strong>TRAINING</strong></small></div>'
+
 # Generators
 # ----------
 
