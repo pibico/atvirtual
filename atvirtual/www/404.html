@@ -3,38 +3,55 @@
 {%- block title -%}{{_("Not Found")}}{%- endblock -%}
 
 {% block page_content %}
-<style>
-.hero-and-content {
-	background-color: #f5f7fa;
-}
-header, footer {
-	display: none;
-}
-html, body {
-	background-color: #f5f7fa;
-}
-{% include "templates/styles/card_style.css" %}
-</style>
+  <style>
+    {% include "templates/styles/card_style.css" %}
+    .hero-and-content {
+	    background-color: #f5f7fa;
+    }
+    header, footer {
+	    display: none;
+    }
+    html, body {
+	    background-color: #f5f7fa;
+    }
+  
+    @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap");
+    footer .container .footer-bottom-line, body .navbar {
+      display: none;
+    }
+    .container-fluid {
+      background-image: url('/assets/atvirtual/assets/images/404-bg.png');
+      height: 100vh;
+      margin-top: -60px;
+      margin-bottom: -72px;
+      font-family: "Rubik", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #7c8798;
+      text-align: left;
+    }
+  </style>
 
-<div class="container-fluid" style="background-image: url('assets/Siimple/assets/img/404-bg.png'); height: 100vh; margin-top: -50px;">
-  <div class="section-title">
-          <a href="home_es" class="logo mr-auto"><img src="assets/Siimple/assets/img/logo.png" width=" 90px" style="margin-top: 90px;" alt=""></a>
-          <h1 style="color: lightblue;">Web App PibiCo</h1>
-        </div> 
+  <div class="container-fluid">
+    <div class="section-title text-center">
+      <a href="index_en" class="logo mr-auto"><img src="assets/atvirtual/assets/images/logo-icon.png" width="45px" style="margin-top: 90px;" alt=""></a>
+      <h2 style="color: SteelBlue;">pibi<strong>TRAINING</strong> App</h2>
+    </div> 
 
-<div class='page-card' style="margin-top: -15px; background: transparent;">
-	<div class='page-card-head'>
-		<span class='indicator darkgrey'>{{_("Page Missing or Moved")}}</span>
-	</div>
-	<p>{{_("The page you are looking for is missing. This could be because it is moved or there is a typo in the link.")}}</p>
-	<div><a href='/' class='btn btn-primary btn-sm'>{{ _("Home") }}</a></div>
-</div>
-<p class='text-muted text-center small' style='margin-top: -20px;'>{{ _("Error Code: {0}").format('404') }}</p>
+    <div class='page-card mt-1' style="background: transparent;">
+	    <div class='page-card-head'>
+		    <span class='indicator darkgrey'>{{_("Page Missing or Moved")}}</span>
+	    </div>
+	    <p>{{_("The page you are looking for is missing. This could be because it is moved or there is a typo in the link.")}}</p>
+	    <div><a href='/' class='btn btn-primary btn-sm'>{{ _("Home") }}</a></div>
+    </div>
+    <p class='text-muted text-center small' style='margin-top: -20px;'>{{ _("Error Code: {0}").format('404') }}</p>
 
-</div>
-<style>
-.hero-and-content {
-	background-color: #f5f7fa;
-}
-</style>
+  </div>
+  <style>
+  .hero-and-content {
+	  background-color: #f5f7fa;
+  }
+  </style>
 {% endblock %}
