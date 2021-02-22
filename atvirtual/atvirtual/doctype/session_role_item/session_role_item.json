@@ -116,8 +116,8 @@
    "options": "Participant"
   },
   {
-   "depends_on": "eval:doc.student",
-   "fetch_from": "student.title",
+   "depends_on": "eval:doc.participant",
+   "fetch_from": "participant.title",
    "fieldname": "participant_name",
    "fieldtype": "Data",
    "label": "Participant Name",
@@ -125,7 +125,7 @@
   }
  ],
  "istable": 1,
- "modified": "2021-02-20 01:28:59.686505",
+ "modified": "2021-02-22 20:56:20.900352",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Session Role Item",
