@@ -13,7 +13,7 @@
     "parent": "Website Settings",
     "parentfield": "chat_operators",
     "parenttype": "Website Settings",
-    "user": "atvirtual.pibico@gmail.com"
+    "user": "admin@example.com"
    }
   ],
   "chat_room_name": "Training",
