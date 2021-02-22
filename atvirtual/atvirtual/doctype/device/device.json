@@ -239,12 +239,13 @@
    "label": "By Mqtt"
   },
   {
+   "depends_on": "eval:doc.is_located",
    "fieldname": "distance",
    "fieldtype": "Float",
    "label": "Distance"
   }
  ],
- "modified": "2021-02-21 13:36:32.998370",
+ "modified": "2021-02-22 08:28:08.670329",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",

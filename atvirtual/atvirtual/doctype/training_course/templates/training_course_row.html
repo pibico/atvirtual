@@ -6,20 +6,19 @@
 
 {% block style %}
   <style>
-    main {
+   main {
       height: 100% !important;
     }
   </style>
 {% endblock %}
 
 {% block page_content %}
-<!-- <div class="card-columns"> -->
-  {% if status != 'Completed' %}
-  <div id="courses">
-	  <a class="course-list" href={{ route }}>{{ title }}</a>
-    <p><span class="text-muted"><i class="bx bx-calendar"></i> <b>{{ status }}</b> for <b>{{ training_type }}</b> on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></span></p>
-  </div>
-  {% endif %}
-<!-- </div> -->    
- {% endblock %}
-<!-- this is a sample default list template -->
+  <!-- <div class="card-columns"> -->
+    {% if status != 'Completed' %}
+    <div id="courses">
+	    <a class="course-list" href={{ route }}>{{ title }}</a>
+      <p><span class="text-muted"><i class="bx bx-calendar"></i> <b>{{ status }}</b> for <b>{{ training_type }}</b> on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></span></p>
+    </div>
+    {% endif %}
+  <!-- </div> -->    
+{% endblock %}
