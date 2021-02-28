@@ -7,15 +7,6 @@
   "chat_enable": 0,
   "chat_enable_from": "9:30",
   "chat_enable_to": "19:00",
-  "chat_operators": [
-   {
-    "is_admin": 0,
-    "parent": "Website Settings",
-    "parentfield": "chat_operators",
-    "parenttype": "Website Settings",
-    "user": "atvirtual.pibico@gmail.com"
-   }
-  ],
   "chat_operators": [],
   "chat_room_name": "Training",
   "chat_welcome_message": "Hi, how may I help you?",
