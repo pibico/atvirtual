@@ -9,26 +9,18 @@
  "amount": 0.0,
  "amount_based_on_field": 0,
  "button_label": "Send",
- "client_script": "",
+ "client_script": "frappe.web_form.on('predefined_message', (field, value) => {\n  //frappe.web_form.set_df_property('message_text', 'hidden', 1);\n  if (value != '') {\n    frappe.web_form.set_value('message_type', 'Text');\n    frappe.web_form.set_value('message_text', 'fetch data from predefined_message');\n    $.ajax({\n      url: 'api/resource/Predefined Message/' + value,\n      success: function(result) {\n        frappe.web_form.set_value(\"message_text\",result.data.description);\n      }\n    });  \n  }\n});",
  "creation": "2020-11-12 07:36:34.199387",
  "currency": "EUR",
  "doc_type": "pibiMessage",
  "docstatus": 0,
  "doctype": "Web Form",
  "idx": 0,
-<<<<<<< HEAD
- "introduction_text": "<style>\n  #page-registro .form-control {\n    font-size: 11pt;\n    margin: 0px;\n    margin-bottom: 3px;\n    padding: 1px;\n    padding-left: 3px;\n  }  \n</style>\n<div id=\"main\">\n  <div class=\"container mt-6\">\n    <div class=\"card bg-transparent\">\n      <img alt=\"pibiTRAINING\" class=\"card-img\" src=\"assets/atvirtual/assets/images/web_form.png\" width=\"600px\">\n      <div class=\"card-img-overlay\">\n        <p class=\"card-text\">Complete the data to send the message.</p>\n        <p class=\"card-text\">pibi<small><strong>TRAINING</strong> a MIoT App</small></p>\n      </div>\n    </div>\n  </div>\n</div>",
- "is_standard": 1,
- "login_required": 1,
- "max_attachment_size": 45,
- "modified": "2021-02-22 18:27:35.676304",
-=======
  "introduction_text": "<style>\n  #page-registro .form-control {\n    font-size: 11pt;\n    margin: 0px;\n    margin-bottom: 3px;\n    padding: 1px;\n    padding-left: 3px;\n  }  \n</style>\n<div id=\"main\">\n  <div class=\"container mt-6\">\n    <div class=\"card bg-transparent\">\n      <img alt=\"pibiTRAINING\" class=\"card-img\" src=\"assets/atvirtual/assets/images/web_form.png\" width=\"600px\">\n      <div class=\"card-img-overlay\">\n        <p class=\"card-text\">Fill the Data.</p>\n        <p class=\"card-text\">pibi<small><strong>TRAINING</strong> a MIoT App</small></p>\n      </div>\n    </div>\n  </div>\n</div>",
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 45,
- "modified": "2021-02-22 20:22:50.711740",
->>>>>>> 42a7036314569d6c9848f48f847ff1d59a6bc2cc
+ "modified": "2021-02-28 19:56:16.091010",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "registro",
@@ -42,7 +34,7 @@
  "show_sidebar": 0,
  "sidebar_items": [],
  "success_message": "Hey, message sent!",
- "success_url": "index_en",
+ "success_url": "training_course",
  "title": "iMessages",
  "web_form_fields": [
   {
@@ -105,6 +97,19 @@
    "hidden": 0,
    "max_length": 0,
    "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "predefined_message",
+   "fieldtype": "Link",
+   "hidden": 0,
+   "label": "<b>Predefined Message</b>",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "Predefined Message",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0

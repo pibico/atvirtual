@@ -6021,6 +6021,12 @@ button.bg-purple:focus {
 .my-5 {
   margin-top: 3rem !important; }
 
+/* FAD entry */
+[data-path*="courses"] .my-5 {
+  margin-top: 0 !important;
+}
+/* End FAD entry */
+
 .mr-5,
 .mx-5 {
   margin-right: 3rem !important; }

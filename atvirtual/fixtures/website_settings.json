@@ -7,7 +7,6 @@
   "chat_enable": 0,
   "chat_enable_from": "9:30",
   "chat_enable_to": "19:00",
-<<<<<<< HEAD
   "chat_operators": [
    {
     "is_admin": 0,
@@ -17,9 +16,7 @@
     "user": "atvirtual.pibico@gmail.com"
    }
   ],
-=======
   "chat_operators": [],
->>>>>>> 42a7036314569d6c9848f48f847ff1d59a6bc2cc
   "chat_room_name": "Training",
   "chat_welcome_message": "Hi, how may I help you?",
   "copyright": "PBC",

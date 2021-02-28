@@ -18,7 +18,13 @@ def get_data():
           "name": "pibiMessage",
           "description": _("Intelligent Message"),
           "onboard": 1,
-        }   
+        },
+        {
+          "type": "doctype",
+          "name": "Predefined Message",
+          "description": _("Predefined Message"),
+          "onboard": 1,
+        }      
       ]
     },
     {

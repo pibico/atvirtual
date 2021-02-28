@@ -77,13 +77,14 @@ class pibiMessage(Document):
       message = "Photo from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_photo)
     elif self.message_type == "Video":
       message = "Video from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_video)
-
+    ## Send message by SMS
     if len(sms_list) > 0:
       try:
         send_sms(sms_list, cstr(message))
         #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
       except:
         pass
+    ## Send message by MQTT
     if len(mqtt_list) > 0:
       path = frappe.utils.get_bench_path()
       site_name = frappe.utils.get_url().replace("http://","").replace("https://","")
@@ -127,6 +128,7 @@ class pibiMessage(Document):
         frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
         #raise
         pass
+    ## Send message by Telegram
     if len(telegram_list) > 0:
       try:
         send_telegram(telegram_list, cstr(message))
