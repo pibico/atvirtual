@@ -46,31 +46,31 @@
     <div class="row">
       <div class="col-lg-4 col-md-12">
         <div class="card">
-		  <div class="card-header">
-		    <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Messages </strong>
+		      <div class="card-header">
+		        <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Messages </strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | list | length }}</span>
             </span>
- 		  </div>
-		  <div>
+ 		      </div>
+		      <div>
             <iframe class="mb-1" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-5.767811536788941%2C43.4847498538431%2C-5.754475593566895%2C43.491934416797754&amp;layer=mapnik&amp;marker=43.490159761329714%2C-5.7611918449401855" style="border: none;" width="100%" height="120px"></iframe>
           </div>
-		  <div class="px-4 pb-4 pt-3-5">
+		      <div class="px-4 pb-4 pt-3-5">
             <span>
-			  <h5 class="card-subtitle font-weight-light"><strong>AT Virtual Project</strong></h5>
-			  <a class="float-right"><i class="fa fa-anchor fa-3x"></i></a>
-			</span>  
+			        <h5 class="card-subtitle font-weight-light"><strong>AT Virtual Project</strong></h5>
+			        <a class="float-right"><i class="fa fa-anchor fa-3x"></i></a>
+			      </span>  
             <h6 class="font-small font-weight-light mt-n1">Maritime Safety and Innovation</h6>
             <a class="btn btn-info" href="https://www.at-virtual.eu/" target="_blank">Read More</a>
           </div>
-		  <div class="card-body">
-		    <ul class="list-style-none mb-0">
+		      <div class="card-body">
+		        <ul class="list-style-none mb-0">
               <li class="link">
                 <i class="fas fa-circle text-primary font-10 mr-2"></i>
                 <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Text','_blank')"><i data-feather="message-square" class="svg-icon"></i> Text Messages</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
               </li>
               <li class="mt-3">
-			    <i class="fas fa-circle text-danger font-10 mr-2"></i>
+			          <i class="fas fa-circle text-danger font-10 mr-2"></i>
                 <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Photo','_blank')"><i data-feather="aperture" class="svg-icon"></i> Photo Messages</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
               </li>
@@ -79,48 +79,48 @@
                 <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Video','_blank')"><i data-feather="film" class="svg-icon"></i> Video Messages</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }}</span>
               </li>
-			  <li class="mt-3">
+			        <li class="mt-3">
                 <i class="fas fa-circle text-warning font-10 mr-2"></i>
                 <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Email','_blank')"><i data-feather="mail" class="svg-icon"></i> Email Messages</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Email') | list| length }}</span>
               </li>
             </ul>
-		  </div>
-		  <div class="card-footer">
+		      </div>
+		      <div class="card-footer">
             <i data-feather="activity" class="svg-icon"></i>
-		  </div>	
+		      </div>	
         </div>
       </div>
       <div class="col-lg-4 col-md-12">
         <div class="card">
-		  <div class="card-header">
-		    <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
+		      <div class="card-header">
+		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
             </span>
- 		  </div>
+ 		      </div>
           <div class="card-body">
-		    <ul class="list-style-none mb-0">
+		        <ul class="list-style-none mb-0">
               <li>
                 <i class="fas fa-circle text-primary font-10 mr-2"></i>
                 <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Connected</span>
                 <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
               </li>
-			</ul>  
-		    <ul class="list-inline mt-5 mb-2">
-			  {% for item in items %}
+			      </ul>  
+		        <ul class="list-inline mt-5 mb-2">
+			      {% for item in items %}
               <li class="list-inline-item text-muted">
-			    <h6 class="card-text">
+			          <h6 class="card-text">
                   <small><strong>{{ item.place }}</strong></small>
                 </h6>
-				<span class="font-weight-normal align-middle">
-				{% if item.device %}  
+				        <span class="font-weight-normal align-middle">
+				        {% if item.device %}  
                   <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
                 {% else %}
                   Not Assigned
                 {% endif %}
-				</span>
-				<span class="float-right">
-				  {% if item.is_connected %}
+				        </span>
+				        <span class="float-right">
+				          {% if item.is_connected %}
                     <span class="fa-stack fa-1x">
                       <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                       <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
@@ -131,75 +131,109 @@
                       <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
                     </span>
                   {% endif %}
-				</span>
-			  </li>
-			  {% endfor %}
+				        </span>
+			        </li>
+			      {% endfor %}
             </ul>
           </div>
-		  <div class="card-footer">
-		    <i data-feather="activity" class="svg-icon"></i>
-		  </div>
+		      <div class="card-footer">
+		        <i data-feather="activity" class="svg-icon"></i>
+		      </div>
         </div>
       </div>
-        <div class="col-lg-4 col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title mb-4">Command Messages</h4>
-              <div class="" style="height:180px">
-                <div id="visitbylocate" style="height:100%"></div>
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="card-header">
+		        <span class="card-title"><i data-feather="users" class="svg-icon"></i> <strong>Devices</strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
+            </span>
+ 		      </div>
+          <div class="card-body">
+            {% for row in participants %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small>  
               </div>
-              <div class="row mb-3 align-items-center mt-1 mt-5">
-                <div class="col-4 text-right">
-                  <span class="text-muted font-14">India</span>
-                </div>
-                <div class="col-5">
-                  <div class="progress" style="height: 5px;">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-3 text-right">
-                  <span class="mb-0 font-14 text-dark font-weight-medium">28%</span>
-                </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    Not Assigned
+                  {% endif %}
+                  
+                </span>
               </div>
-              <div class="row mb-3 align-items-center">
-                <div class="col-4 text-right">
-                  <span class="text-muted font-14">UK</span>
-                </div>
-                <div class="col-5">
-                  <div class="progress" style="height: 5px;">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 74%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-3 text-right">
-                  <span class="mb-0 font-14 text-dark font-weight-medium">21%</span>
-                </div>
-              </div>
-              <div class="row mb-3 align-items-center">
-                <div class="col-4 text-right">
-                  <span class="text-muted font-14">USA</span>
-                </div>
-                <div class="col-5">
-                  <div class="progress" style="height: 5px;">
-                    <div class="progress-bar bg-cyan" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <div class="col-3 text-right">
-                  <span class="mb-0 font-14 text-dark font-weight-medium">18%</span>
-                </div>
-              </div>
-              <div class="row align-items-center">
-                <div class="col-4 text-right">
-                  <span class="text-muted font-14">China</span>
-                </div>
-                <div class="col-5">
-                  <div class="progress" style="height: 5px;">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="col-3 text-right">
-                <span class="mb-0 font-14 text-dark font-weight-medium">12%</span>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pending</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Returned</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
               </div>
             </div>
+            {% endfor %}
+          </div>  
+          <div class="card-footer">
+	          <i data-feather="chevron-left" class="svg-icon"></i>
+            <i data-feather="chevron-right" class="svg-icon"></i>
           </div>
         </div>
       </div>
