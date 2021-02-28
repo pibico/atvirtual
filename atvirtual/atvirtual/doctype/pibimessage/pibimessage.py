@@ -74,9 +74,11 @@ class pibiMessage(Document):
     if self.message_type == "Text":
       message = "From AT Virtual: " + self.message_text
     elif self.message_type == "Photo":
-      message = "Photo from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_photo)
+      if self.message_photo:
+        message = "Photo from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_photo)
     elif self.message_type == "Video":
-      message = "Video from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_video)
+      if self.message_video:
+        message = "Video from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_video)
     ## Send message by SMS
     if len(sms_list) > 0:
       try:
