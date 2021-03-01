@@ -44,7 +44,7 @@
     <!-- Start Sales Charts Section -->
     <!-- *************************************************************** -->
     <div class="row">
-      <div class="col-lg-4 col-md-12">
+      <div class="col-lg-4 col-md-6">
         <div class="card">
 		      <div class="card-header">
 		        <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Messages </strong>
@@ -91,7 +91,7 @@
 		      </div>	
         </div>
       </div>
-      <div class="col-lg-4 col-md-12">
+      <div class="col-lg-4 col-md-6">
         <div class="card">
 		      <div class="card-header">
 		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
@@ -141,7 +141,7 @@
 		      </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-12">
+      <div class="col-lg-4 col-md-6">
         <div class="card">
           <div class="card-header">
 		        <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
@@ -237,7 +237,35 @@
           </div>
         </div>
       </div>
-      
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">1 ...</div>
+              <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">2 ...</div>
+              <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">3 ...</div>
+            </div>
+          </div>
+          <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- *************************************************************** -->
     <!-- End Sales Charts Section -->
