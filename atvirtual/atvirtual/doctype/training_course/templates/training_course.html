@@ -91,65 +91,17 @@
 		      </div>	
         </div>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card">
-		      <div class="card-header">
-		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
-              <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
-            </span>
- 		      </div>
-          <div class="card-body">
-		        <ul class="list-style-none mb-0">
-              <li>
-                <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Connected</span>
-                <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
-              </li>
-			      </ul>  
-		        <ul class="list-inline mt-5 mb-2">
-			      {% for item in items %}
-              <li class="list-inline-item text-muted">
-			          <h6 class="card-text">
-                  <small><strong>{{ item.place }}</strong></small>
-                </h6>
-				        <span class="font-weight-normal align-middle">
-				        {% if item.device %}  
-                  <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
-                {% else %}
-                  Not Assigned
-                {% endif %}
-				        </span>
-				        <span class="float-right">
-				          {% if item.is_connected %}
-                    <span class="fa-stack fa-1x">
-                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                      <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
-                    </span>
-                  {% else %}
-                    <span class="fa-stack fa-1x">
-                      <i class="fa fa-wifi fa-stack-1x text-muted"></i>
-                      <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
-                    </span>
-                  {% endif %}
-				        </span>
-			        </li>
-			      {% endfor %}
-            </ul>
-          </div>
-		      <div class="card-footer">
-		        <i data-feather="activity" class="svg-icon"></i>
-		      </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
+     <div class="col-lg-4 col-md-6">
         <div class="card">
           <div class="card-header">
-		        <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
+            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
             </span>
- 		      </div>
+          </div>
           <div class="card-body">
-            {% for row in participants %}
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+              {% for row in participants %}
             <!-- <i class="font-10">{{ row }}</i> -->
             <div class="row align-items-center font-14">  
               <div class="col-7 text-left">
@@ -230,23 +182,7 @@
               </div>
             </div>
             {% endfor %}
-          </div>  
-          <div class="card-footer">
-	          <i data-feather="chevron-left" class="svg-icon"></i>
-            <i data-feather="chevron-right" class="svg-icon"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
-              <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
-            </span>
-          </div>
-          <div class="card-body">
-            <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">1 ...</div>
+              </div>
               <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">2 ...</div>
               <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">3 ...</div>
             </div>
@@ -264,6 +200,56 @@
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+		      <div class="card-header">
+		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
+            </span>
+ 		      </div>
+          <div class="card-body">
+		        <ul class="list-style-none mb-0">
+              <li>
+                <i class="fas fa-circle text-primary font-10 mr-2"></i>
+                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Connected</span>
+                <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
+              </li>
+			      </ul>  
+		        <ul class="list-inline mt-5 mb-2">
+			      {% for item in items %}
+              <li class="list-inline-item text-muted">
+			          <h6 class="card-text">
+                  <small><strong>{{ item.place }}</strong></small>
+                </h6>
+				        <span class="font-weight-normal align-middle">
+				        {% if item.device %}  
+                  <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
+                {% else %}
+                  Not Assigned
+                {% endif %}
+				        </span>
+				        <span class="float-right">
+				          {% if item.is_connected %}
+                    <span class="fa-stack fa-1x">
+                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                      <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                    </span>
+                  {% else %}
+                    <span class="fa-stack fa-1x">
+                      <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                      <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                    </span>
+                  {% endif %}
+				        </span>
+			        </li>
+			      {% endfor %}
+            </ul>
+          </div>
+		      <div class="card-footer">
+		        <i data-feather="activity" class="svg-icon"></i>
+		      </div>
         </div>
       </div>
     </div>
