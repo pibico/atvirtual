@@ -18,7 +18,7 @@ from frappe.utils.password import get_decrypted_password
 class pibiMessage(Document):
   def autoname(self):
     """ Naming Messages from Current DateTime and Role """
-    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M") + "_" + self.participant_role
+    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
  
   def before_save(self):
     sms_list = []
@@ -72,7 +72,7 @@ class pibiMessage(Document):
                 #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
       
     if self.message_type == "Text":
-      message = "From AT Virtual: " + self.message_text
+      message = self.message_text #"From AT Virtual: " + self.message_text
     elif self.message_type == "Photo":
       if self.message_photo:
         message = "Photo from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_photo)
