@@ -86,27 +86,35 @@
               </li>
             </ul>
 		      </div>
-		      <div class="card-footer">
-            <i data-feather="activity" class="svg-icon"></i>
-		      </div>	
+          <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+              </li>
+            </ul>
+          </div>      
         </div>
       </div>
-     <div class="col-lg-4 col-md-6">
+      
+      <div class="col-lg-4 col-md-6">
         <div class="card">
+          <!-- Header -->
           <div class="card-header">
             <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
             </span>
           </div>
+          <!-- End Header -->
+          <!-- Body -->
           <div class="card-body">
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
-              {% for row in participants %}
+              {% for row in participants[:7] %}
             <!-- <i class="font-10">{{ row }}</i> -->
             <div class="row align-items-center font-14">  
               <div class="col-7 text-left">
                 <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
-                <small>
+                <!-- <small>
                   {% if row.training_place != None %}
                     {% if row.returned_date %}
                     Returned
@@ -120,7 +128,7 @@
                     Not Located
                     {% endif %}  
                   {% endif %}
-                </small>  
+                </small> -->  
               </div>
               <div class="col-5 text-left font-12">
                 <b style="m-0 p-0">
@@ -140,7 +148,7 @@
                   {% endif %}  
                 {% endif %} 
                 </b>
-                <span class="mb-0 text-dark font-weight-medium">
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
                   {% if row.device %}
                     <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
                   {% else %}
@@ -183,25 +191,199 @@
             </div>
             {% endfor %}
               </div>
-              <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">2 ...</div>
-              <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">3 ...</div>
+              
+              <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+              {% for row in participants[7:14] %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <!-- <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small> -->  
+              </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    Not Assigned
+                  {% endif %}
+                  
+                </span>
+              </div>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pending</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Returned</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
+              </div>
+            </div>
+            {% endfor %}
+              </div>
+              
+              <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+              {% for row in participants[14:21] %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <!-- <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small> -->  
+              </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    Not Assigned
+                  {% endif %}
+                  
+                </span>
+              </div>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pending</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Returned</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
+              </div>
+            </div>
+            {% endfor %}
+              </div>
             </div>
           </div>
+          <!-- End Body -->
+          <!-- Footer -->
           <div class="card-footer m-0 p-0">
             <ul class="nav nav-pills" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
               </li>
+              {% if participants | length > 7 %}
               <li class="nav-item">
                 <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
               </li>
+              {% endif %}
+              {% if participants | length > 14 %}
               <li class="nav-item">
                 <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
               </li>
+              {% endif %}
             </ul>
           </div>
+          <!-- End Footer -->
         </div>
       </div>
+      
       <div class="col-lg-4 col-md-6">
         <div class="card">
 		      <div class="card-header">
@@ -247,9 +429,13 @@
 			      {% endfor %}
             </ul>
           </div>
-		      <div class="card-footer">
-		        <i data-feather="activity" class="svg-icon"></i>
-		      </div>
+		      <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+              </li>
+            </ul>
+          </div>      
         </div>
       </div>
     </div>
