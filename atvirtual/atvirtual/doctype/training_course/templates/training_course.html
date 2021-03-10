@@ -158,7 +158,7 @@
                 </span>
               </div>
               <div class="col-12 text-left font-12">
-                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                {% if row.participant_name != None%}
                   {% if row.is_connected %}
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
@@ -242,7 +242,7 @@
                 </span>
               </div>
               <div class="col-12 text-left font-12">
-                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                {% if row.participant_name != None %}
                   {% if row.is_connected %}
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
@@ -326,7 +326,7 @@
                 </span>
               </div>
               <div class="col-12 text-left font-12">
-                {% if row.participant_name != None and row.assigned_date and not row.returned_date %}
+                {% if row.participant_name != None %}
                   {% if row.is_connected %}
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">

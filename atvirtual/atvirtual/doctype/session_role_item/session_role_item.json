@@ -6,15 +6,16 @@
  "engine": "InnoDB",
  "field_order": [
   "participant_role",
-  "assigned_date",
-  "participant_signature",
+  "device",
+  "alias",
   "is_connected",
+  "is_located",
   "col_break_1",
   "participant",
   "participant_name",
-  "device",
+  "assigned_date",
+  "participant_signature",
   "returned_date",
-  "is_located",
   "training_place",
   "rssi",
   "detected_by"
@@ -45,26 +46,23 @@
    "fieldtype": "Column Break"
   },
   {
-   "allow_in_quick_entry": 1,
    "columns": 2,
    "fieldname": "assigned_date",
    "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "in_preview": 1,
+   "hidden": 1,
    "label": "Assigned"
   },
   {
-   "allow_in_quick_entry": 1,
    "columns": 2,
    "fieldname": "returned_date",
    "fieldtype": "Datetime",
-   "in_list_view": 1,
-   "in_preview": 1,
+   "hidden": 1,
    "label": "Returned"
   },
   {
    "fieldname": "participant_signature",
    "fieldtype": "Signature",
+   "hidden": 1,
    "label": "Participant Signature"
   },
   {
@@ -120,13 +118,28 @@
    "fetch_from": "participant.title",
    "fieldname": "participant_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Participant Name",
+   "read_only": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "device.alias",
+   "fieldname": "alias",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Alias",
    "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-02-28 22:19:33.058460",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 16:48:55.814720",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Session Role Item",
  "nsm_parent_field": "parent_training_role",

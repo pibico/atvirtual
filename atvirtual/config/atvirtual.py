@@ -21,10 +21,10 @@ def get_data():
         },
         {
           "type": "doctype",
-          "name": "Predefined Message",
-          "description": _("Predefined Message"),
+          "name": "Standard Message",
+          "description": _("Standard Message"),
           "onboard": 1,
-        }      
+        }          
       ]
     },
     {
@@ -79,6 +79,12 @@ def get_data():
       "label": _("AT-Virtual Channels"),
       "icon": "fa fa-star",
       "items": [
+        {
+          "type": "doctype",
+          "name": "Email Account",
+          "description": _("Email Account"),
+          "onboard": 1,
+        },
         {
           "type": "doctype",
           "name": "SMS Settings",

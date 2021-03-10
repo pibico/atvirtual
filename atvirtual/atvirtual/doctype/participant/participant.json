@@ -176,12 +176,13 @@
    "fieldname": "title",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Title"
+   "label": "Title",
+   "unique": 1
   }
  ],
  "image_field": "image",
- "modified": "2021-02-20 01:29:31.153602",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 15:25:51.372064",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Participant",
  "owner": "Administrator",

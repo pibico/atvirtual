@@ -1,5 +1,5 @@
 {
- "autoname": "format:{YY}{MM}{DD} {HH}{mm}{##}_{participant_role}",
+ "autoname": "format:{YY}{MM}{DD} {HH}{mm}{SS}{##}_{participant_role}",
  "creation": "2020-11-24 10:51:45.414661",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -11,8 +11,8 @@
   "message_type",
   "column_break_2",
   "device",
-  "predefined_message",
-  "predefined_text",
+  "alias",
+  "std_message",
   "message_text",
   "message_photo",
   "message_video"
@@ -39,7 +39,7 @@
   },
   {
    "depends_on": "eval:doc.message_type==\"Text\"",
-   "fetch_from": "predefined_message.description",
+   "fetch_from": "std_message.json_message",
    "fetch_if_empty": 1,
    "fieldname": "message_text",
    "fieldtype": "Small Text",
@@ -57,8 +57,7 @@
    "fieldname": "participant_role",
    "fieldtype": "Link",
    "label": "Recipient",
-   "options": "Participant Role",
-   "reqd": 1
+   "options": "Participant Role"
   },
   {
    "fieldname": "course",
@@ -83,22 +82,27 @@
    "options": "Device"
   },
   {
-   "fieldname": "predefined_message",
-   "fieldtype": "Link",
-   "label": "Predefined Message",
-   "options": "Predefined Message"
+   "fetch_from": "device.alias",
+   "fieldname": "alias",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Alias"
   },
   {
-   "depends_on": "predefined_message",
-   "fetch_from": "predefined_message.description",
-   "fieldname": "predefined_text",
-   "fieldtype": "Data",
-   "label": "Predefined Text",
-   "read_only": 1
+   "fieldname": "std_message",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Standard Message",
+   "options": "Standard Message"
   }
  ],
- "modified": "2021-03-01 00:49:40.049094",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 18:14:30.247193",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",

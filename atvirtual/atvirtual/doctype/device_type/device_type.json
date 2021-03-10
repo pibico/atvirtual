@@ -7,7 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "device_type",
-  "description"
+  "description",
+  "picture"
  ],
  "fields": [
   {
@@ -19,10 +20,15 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "picture",
+   "fieldtype": "Attach Image",
+   "label": "Picture"
   }
  ],
- "modified": "2020-11-24 19:54:49.182588",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 12:41:16.638754",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device Type",
  "owner": "Administrator",

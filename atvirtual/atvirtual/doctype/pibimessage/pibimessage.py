@@ -51,7 +51,7 @@ class pibiMessage(Document):
     else:
       doc = frappe.get_doc('Device', self.device)
       if not doc.disabled:
-        if doc.is_connected and not doc.is_scanner and doc.alerts_active:
+        if doc.is_connected and doc.alerts_active:
           if doc.by_sms:
             if doc.sms_number != '':
               if not doc.sms_number in sms_list:

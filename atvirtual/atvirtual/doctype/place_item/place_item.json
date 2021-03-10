@@ -5,35 +5,12 @@
  "engine": "InnoDB",
  "field_order": [
   "place",
-  "device",
   "is_connected",
-  "col_break_0",
-  "location",
-  "site"
+  "col_break_1",
+  "device",
+  "alias"
  ],
  "fields": [
-  {
-   "fieldname": "col_break_0",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "location",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Location",
-   "options": "\nIndoor\nOutdoor"
-  },
-  {
-   "fieldname": "site",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Site",
-   "options": "\nCentro Jovellanos\nOutside Centro"
-  },
   {
    "default": "0",
    "fetch_from": "device.is_connected",
@@ -60,11 +37,26 @@
    "in_standard_filter": 1,
    "label": "Place",
    "options": "Training Place"
+  },
+  {
+   "fetch_from": "device.alias",
+   "fieldname": "alias",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Device Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
   }
  ],
  "istable": 1,
- "modified": "2020-11-25 22:46:01.541670",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 16:32:32.319691",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Place Item",
  "owner": "Administrator",

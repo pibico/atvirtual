@@ -29,6 +29,7 @@
   "telegram_number",
   "by_mqtt",
   "section_break_",
+  "alias",
   "device_name",
   "device_type",
   "wifi_mac",
@@ -169,7 +170,6 @@
   },
   {
    "default": "0",
-   "depends_on": "eval:!doc.is_scanner",
    "fieldname": "alerts_active",
    "fieldtype": "Check",
    "label": "Alerts Active"
@@ -177,7 +177,7 @@
   {
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.alerts_active",
-   "depends_on": "eval:doc.alerts_active && !doc.is_scanner",
+   "depends_on": "eval:doc.alerts_active",
    "fieldname": "section_break_2",
    "fieldtype": "Section Break",
    "label": "Message Reception"
@@ -227,8 +227,6 @@
    "depends_on": "eval:doc.is_located",
    "fieldname": "rssi",
    "fieldtype": "Float",
-   "in_list_view": 1,
-   "in_preview": 1,
    "label": "Signal",
    "precision": "0"
   },
@@ -243,10 +241,17 @@
    "fieldname": "distance",
    "fieldtype": "Float",
    "label": "Distance"
+  },
+  {
+   "fieldname": "alias",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Alias"
   }
  ],
- "modified": "2021-02-22 08:28:08.670329",
- "modified_by": "Administrator",
+ "modified": "2021-03-10 16:27:21.413045",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",
