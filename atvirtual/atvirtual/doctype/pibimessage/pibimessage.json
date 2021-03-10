@@ -23,7 +23,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Message Type",
-   "options": "\nText\nPhoto\nVideo",
+   "options": "\nText\nPhoto\nVideo\nCommand\nE-mail",
    "reqd": 1
   },
   {
@@ -56,7 +56,7 @@
   {
    "fieldname": "participant_role",
    "fieldtype": "Link",
-   "label": "Recipient",
+   "label": "Role Recipient",
    "options": "Participant Role"
   },
   {
@@ -72,7 +72,7 @@
    "fetch_from": "course.training_type",
    "fieldname": "session_type",
    "fieldtype": "Data",
-   "label": "Session_Type",
+   "label": "Session Type",
    "read_only": 1
   },
   {
@@ -90,7 +90,8 @@
    "in_list_view": 1,
    "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Alias"
+   "label": "Alias",
+   "read_only": 1
   },
   {
    "fieldname": "std_message",
@@ -101,7 +102,7 @@
    "options": "Standard Message"
   }
  ],
- "modified": "2021-03-10 18:14:30.247193",
+ "modified": "2021-03-10 19:07:56.719252",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
