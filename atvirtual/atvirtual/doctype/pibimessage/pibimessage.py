@@ -101,11 +101,6 @@ class pibiMessage(Document):
       client.secret = get_decrypted_password('MQTT Settings', 'MQTT Settings', 'secret', False)
       secret = client.secret
       do_ssl = client.is_ssl
-      #ca = path + "/sites/" + frappe.get_site_path('private', 'files', client.ca)[1:]
-      ca = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.ca)[1:])
-      client_crt = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_crt)[1:])
-      client_key = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_key)[1:])
-      port_ssl = client.ssl_port
       # connect to MQTT Broker to Publish Message
       pid = os.getpid()
       client_id = '{}:{}'.format('client', str(pid))
@@ -113,6 +108,12 @@ class pibiMessage(Document):
         backend = mqtt.Client(client_id=client_id, clean_session=True)
         backend.username_pw_set(user, password=secret)
         if do_ssl == True:
+          #ca = path + "/sites/" + frappe.get_site_path('private', 'files', client.ca)[1:]
+          ca = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.ca)[1:])
+          client_crt = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_crt)[1:])
+          client_key = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_key)[1:])
+          port_ssl = client.ssl_port
+          ## Prepare mqtt    
           backend.tls_set(ca_certs=ca, certfile=client_crt, keyfile=client_key, cert_reqs=ssl.CERT_REQUIRED, ciphers=None)
           backend.tls_insecure_set(False)
           time.sleep(.5)
@@ -120,10 +121,10 @@ class pibiMessage(Document):
         else:  
           backend.connect(server, port)
 
-        payload = cstr(message)
+        payload = frappe.safe_decode(message).encode('utf-8')
         for dev in mqtt_list:
           mqtt_topic = dev['name'] + "/mqtt"
-          backend.publish(mqtt_topic, payload)
+          backend.publish(mqtt_topic, cstr(payload))
         backend.disconnect()
         #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
       except:
