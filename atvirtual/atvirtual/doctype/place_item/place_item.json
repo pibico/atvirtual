@@ -55,12 +55,13 @@
   }
  ],
  "istable": 1,
- "modified": "2021-03-10 16:32:32.319691",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-11 08:27:56.190965",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Place Item",
  "owner": "Administrator",
  "permissions": [],
+ "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

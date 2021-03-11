@@ -20,7 +20,7 @@
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 45,
- "modified": "2021-03-10 18:45:57.923752",
+ "modified": "2021-03-11 08:45:18.845314",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "registro",
@@ -33,7 +33,7 @@
  "show_in_grid": 0,
  "show_sidebar": 0,
  "sidebar_items": [],
- "success_message": "",
+ "success_message": "Mensaje Enviado. Elige la Sesion de Vuelta",
  "success_url": "training_course",
  "title": "iMessages",
  "web_form_fields": [
