@@ -250,8 +250,8 @@
    "label": "Alias"
   }
  ],
- "modified": "2021-03-10 16:27:21.413045",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-12 00:51:24.275380",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",
@@ -267,6 +267,25 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
   }
  ],
  "quick_entry": 1,

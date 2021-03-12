@@ -8,7 +8,10 @@
   "place_id",
   "training_place",
   "col_break_0",
-  "description"
+  "description",
+  "media_library",
+  "sec_break_1",
+  "html_image"
  ],
  "fields": [
   {
@@ -36,10 +39,25 @@
    "in_standard_filter": 1,
    "label": "Place ID",
    "length": 12
+  },
+  {
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_image",
+   "fieldtype": "HTML",
+   "label": "Pictures"
+  },
+  {
+   "fieldname": "media_library",
+   "fieldtype": "Link",
+   "label": "Gallery",
+   "options": "Website Slideshow"
   }
  ],
- "modified": "2020-11-25 11:03:19.982779",
- "modified_by": "Administrator",
+ "modified": "2021-03-12 12:43:25.816501",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Training Place",
  "name_case": "UPPER CASE",
@@ -54,6 +72,16 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
    "share": 1,
    "write": 1
   }

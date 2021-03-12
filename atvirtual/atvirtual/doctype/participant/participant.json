@@ -181,8 +181,8 @@
   }
  ],
  "image_field": "image",
- "modified": "2021-03-10 15:25:51.372064",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-11 14:38:09.973431",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Participant",
  "owner": "Administrator",
@@ -196,6 +196,16 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
    "share": 1,
    "write": 1
   }

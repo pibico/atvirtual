@@ -139,8 +139,8 @@
   }
  ],
  "istable": 1,
- "modified": "2021-03-11 08:28:36.966530",
- "modified_by": "Administrator",
+ "modified": "2021-03-11 13:19:09.614892",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Session Role Item",
  "nsm_parent_field": "parent_training_role",

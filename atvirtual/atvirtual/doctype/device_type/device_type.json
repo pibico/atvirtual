@@ -27,8 +27,8 @@
    "label": "Picture"
   }
  ],
- "modified": "2021-03-10 12:41:16.638754",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-11 14:39:53.732800",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device Type",
  "owner": "Administrator",
@@ -42,6 +42,16 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
    "share": 1,
    "write": 1
   }

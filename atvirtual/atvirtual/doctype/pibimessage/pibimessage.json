@@ -102,8 +102,8 @@
    "options": "Standard Message"
   }
  ],
- "modified": "2021-03-10 19:07:56.719252",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-12 00:43:03.944704",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",
@@ -117,6 +117,17 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
    "share": 1,
    "write": 1
   }
