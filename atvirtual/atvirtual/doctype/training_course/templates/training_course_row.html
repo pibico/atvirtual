@@ -9,16 +9,32 @@
    main {
       height: 100% !important;
     }
+   .page-header h1 {
+     font-size: 2rem;
+   }
   </style>
 {% endblock %}
 
 {% block page_content %}
-  <!-- <div class="card-columns"> -->
-    {% if status != 'Completed' %}
-    <div id="courses">
-	    <a class="course-list" href={{ route }}>{{ title }}</a>
-      <p><span class="text-muted"><i class="bx bx-calendar"></i> <b>{{ status }}</b> for <b>{{ training_type }}</b> on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></span></p>
+  {% if status != 'Completed' and status != 'Cancelled' %}
+    <div class="card w-90 p-2 m-1" id="courses">
+      <h5><a class="course-list card-title" href={{ route }}>{{ title }}</a></h5>
+      <p class="card-text">
+        <span class="text-muted">
+          {% if status == "Open" %}
+            <i class="fa fa-circle text-info font-10 mr-1"></i>
+          {% elif status == "Ongoing" %}
+            <i class="fa fa-circle text-warning font-10 mr-1"></i>
+          {% elif status == "Cancelled" %}
+            <i class="fa fa-circle text-danger font-10 mr-1"></i>
+          {% endif %}
+          Estado: <b>{{ status }}</b><br>
+          <i class="fa fa-users text-muted font-10 mr-1"></i>
+          &Aacute;rea: <b>{{ training_type }}</b><br>
+          <i class="fa fa-calendar text-warning font-10 mr-1"></i>
+          Fecha: <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b>
+        </span>
+      </p>
     </div>
-    {% endif %}
-  <!-- </div> -->    
+  {% endif %}
 {% endblock %}

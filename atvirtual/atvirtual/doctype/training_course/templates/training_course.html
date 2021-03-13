@@ -23,7 +23,7 @@
     width: 100vw;
   }*/
   .card {
-    min-height: 540px;
+    min-height: 440px;
   }
   li .link {
     cursor: pointer;
@@ -37,9 +37,9 @@
   <!-- Container fluid  -->
   <!-- ============================================================== -->
   <div class="container-fluid mt-3">
-    <h2><a href="/courses">Back</a></h2>
+    <h2><a href="/courses">Atr&aacute;s</a></h2>
     <h4><b><a href='/desk#Form/Training%20Course/{{name}}'>{{ title }}</a></b></h4>
-    <p class="text-muted"><i data-feather="calendar" class="svg-icon"></i> {{ training_type }} on <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></p>
+    <p class="text-muted"><i data-feather="calendar" class="svg-icon"></i> {{ training_type }} el <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></p>
     <!-- *************************************************************** -->
     <!-- Start Sales Charts Section -->
     <!-- *************************************************************** -->
@@ -47,7 +47,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card">
 		      <div class="card-header">
-		        <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Messages </strong>
+		        <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Mensajes </strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | list | length }}</span>
             </span>
  		      </div>
@@ -56,32 +56,22 @@
           </div>
 		      <div class="px-4 pb-4 pt-3-5">
             <span>
-			        <h5 class="card-subtitle font-weight-light"><strong>AT Virtual Project</strong></h5>
+			        <h5 class="card-subtitle font-weight-light"><strong>Proyecto AT Virtual</strong></h5>
 			        <a class="float-right"><i class="fa fa-anchor fa-3x"></i></a>
 			      </span>  
-            <h6 class="font-small font-weight-light mt-n1">Maritime Safety and Innovation</h6>
-            <a class="btn btn-info" href="https://www.at-virtual.eu/" target="_blank">Read More</a>
+            <h6 class="font-small font-weight-light mt-n1">Seguridad Mar&iacute;tima e Innovaci&oacute;n</h6>
+            <a class="btn btn-info" href="https://www.at-virtual.eu/" target="_blank">Saber m&aacute;s</a>
           </div>
 		      <div class="card-body">
 		        <ul class="list-style-none mb-0">
               <li class="link">
                 <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Text','_blank')"><i data-feather="message-square" class="svg-icon"></i> Text Messages</span>
+                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Text','_blank')"><i data-feather="message-square" class="svg-icon"></i> Mensajes de Texto</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
-              </li>
-              <li class="mt-3">
-			          <i class="fas fa-circle text-danger font-10 mr-2"></i>
-                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Photo','_blank')"><i data-feather="aperture" class="svg-icon"></i> Photo Messages</span>
-                <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Photo') | list| length }}</span>
-              </li>
-              <li class="mt-3">
-                <i class="fas fa-circle text-cyan font-10 mr-2"></i>
-                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Video','_blank')"><i data-feather="film" class="svg-icon"></i> Video Messages</span>
-                <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Video') | list| length }}</span>
               </li>
 			        <li class="mt-3">
                 <i class="fas fa-circle text-warning font-10 mr-2"></i>
-                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Email','_blank')"><i data-feather="mail" class="svg-icon"></i> Email Messages</span>
+                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Email','_blank')"><i data-feather="mail" class="svg-icon"></i> Mensajes de Correo</span>
                 <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Email') | list| length }}</span>
               </li>
             </ul>
@@ -100,7 +90,7 @@
         <div class="card">
           <!-- Header -->
           <div class="card-header">
-            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Devices</strong>
+            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Equipos</strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
             </span>
           </div>
@@ -109,11 +99,11 @@
           <div class="card-body">
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
-              {% for row in participants[:7] %}
+              {% for row in participants[:5] %}
             <!-- <i class="font-10">{{ row }}</i> -->
             <div class="row align-items-center font-14">  
               <div class="col-7 text-left">
-                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <span class="text-muted">{{ row.participant_role }}</span>
                 <!-- <small>
                   {% if row.training_place != None %}
                     {% if row.returned_date %}
@@ -152,7 +142,7 @@
                   {% if row.device %}
                     <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
                   {% else %}
-                    Not Assigned
+                    No Asignaod
                   {% endif %}
                   
                 </span>
@@ -163,28 +153,22 @@
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
-                    </a>
-                  </span>
-                  <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   {% endif %}   
                   <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
              
                 {% elif row.participant_name == None %}
-                  <cite title="Pending">Pending</cite>
+                  <cite title="Pending">Pendiente</cite>
                 {% elif row.returned_date %}
-                  <cite title="Pending">Returned</cite>
+                  <cite title="Pending">Devuelto</cite>
                 {% endif %}
                 <hr class="m-0 mt-1 mb-1"> 
               </div>
@@ -193,11 +177,11 @@
               </div>
               
               <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
-              {% for row in participants[7:14] %}
+              {% for row in participants[5:10] %}
             <!-- <i class="font-10">{{ row }}</i> -->
             <div class="row align-items-center font-14">  
               <div class="col-7 text-left">
-                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <span class="text-muted">{{ row.participant_role }}</span>
                 <!-- <small>
                   {% if row.training_place != None %}
                     {% if row.returned_date %}
@@ -236,7 +220,7 @@
                   {% if row.device %}
                     <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
                   {% else %}
-                    Not Assigned
+                    No Asignado
                   {% endif %}
                   
                 </span>
@@ -247,28 +231,22 @@
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
-                    </a>
-                  </span>
-                  <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   {% endif %}   
                   <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
              
                 {% elif row.participant_name == None %}
-                  <cite title="Pending">Pending</cite>
+                  <cite title="Pending">Pendiente</cite>
                 {% elif row.returned_date %}
-                  <cite title="Pending">Returned</cite>
+                  <cite title="Pending">Devuelto</cite>
                 {% endif %}
                 <hr class="m-0 mt-1 mb-1"> 
               </div>
@@ -277,11 +255,11 @@
               </div>
               
               <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
-              {% for row in participants[14:21] %}
+              {% for row in participants[10:15] %}
             <!-- <i class="font-10">{{ row }}</i> -->
             <div class="row align-items-center font-14">  
               <div class="col-7 text-left">
-                <span class="text-muted">{{ row.participant_role | replace("Fire Fighting_", "") }}</span>
+                <span class="text-muted">{{ row.participant_role }}</span>
                 <!-- <small>
                   {% if row.training_place != None %}
                     {% if row.returned_date %}
@@ -320,7 +298,7 @@
                   {% if row.device %}
                     <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
                   {% else %}
-                    Not Assigned
+                    No Asignado
                   {% endif %}
                   
                 </span>
@@ -331,28 +309,22 @@
                   <span class="fa-stack fa-1x">
                     <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Photo" target="_blank">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-camera fa-stack-1x fa-inverse"></i>
-                    </a>
-                  </span>
-                  <span class="fa-stack fa-1x">
-                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Video" target="_blank">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                     </a>
                   </span>
                   {% endif %}   
                   <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
              
                 {% elif row.participant_name == None %}
-                  <cite title="Pending">Pending</cite>
+                  <cite title="Pending">Pendiente</cite>
                 {% elif row.returned_date %}
-                  <cite title="Pending">Returned</cite>
+                  <cite title="Pending">Devuelto</cite>
                 {% endif %}
                 <hr class="m-0 mt-1 mb-1"> 
               </div>
@@ -368,12 +340,12 @@
               <li class="nav-item">
                 <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
               </li>
-              {% if participants | length > 7 %}
+              {% if participants | length > 5 %}
               <li class="nav-item">
                 <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
               </li>
               {% endif %}
-              {% if participants | length > 14 %}
+              {% if participants | length > 10 %}
               <li class="nav-item">
                 <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
               </li>
@@ -387,7 +359,7 @@
       <div class="col-lg-4 col-md-6">
         <div class="card">
 		      <div class="card-header">
-		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>BLE Scanners </strong>
+		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>Localizadores </strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
             </span>
  		      </div>
@@ -395,7 +367,7 @@
 		        <ul class="list-style-none mb-0">
               <li>
                 <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Connected</span>
+                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Conectado</span>
                 <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
               </li>
 			      </ul>  
@@ -442,6 +414,9 @@
     <!-- *************************************************************** -->
     <!-- End Sales Charts Section -->
     <!-- *************************************************************** -->
+    
+    
+    
   </div>
   <!-- ============================================================== -->
   <!-- End Container fluid  -->
