@@ -8,14 +8,18 @@
   "course",
   "session_type",
   "participant_role",
-  "message_type",
+  "is_group",
   "column_break_2",
   "device",
   "alias",
+  "message_type",
+  "sec_break_0",
   "std_message",
+  "text2send",
+  "col_break_3",
   "message_text",
-  "message_photo",
-  "message_video"
+  "sec_break_1",
+  "message_item"
  ],
  "fields": [
   {
@@ -23,7 +27,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Message Type",
-   "options": "\nText\nPhoto\nVideo\nCommand\nE-mail",
+   "options": "\nText\nE-mail",
    "reqd": 1
   },
   {
@@ -31,27 +35,12 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.message_type==\"Video\"",
-   "fieldname": "message_video",
-   "fieldtype": "Attach",
-   "in_preview": 1,
-   "label": "Message Video"
-  },
-  {
-   "depends_on": "eval:doc.message_type==\"Text\"",
    "fetch_from": "std_message.json_message",
-   "fetch_if_empty": 1,
    "fieldname": "message_text",
    "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Message Text"
-  },
-  {
-   "depends_on": "eval:doc.message_type==\"Photo\"",
-   "fieldname": "message_photo",
-   "fieldtype": "Attach Image",
-   "in_preview": 1,
-   "label": "Message Photo"
+   "label": "Message Text",
+   "read_only": 1
   },
   {
    "fieldname": "participant_role",
@@ -76,6 +65,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:!doc.is_group;",
    "fieldname": "device",
    "fieldtype": "Link",
    "label": "Device",
@@ -100,10 +90,47 @@
    "in_list_view": 1,
    "label": "Standard Message",
    "options": "Standard Message"
+  },
+  {
+   "fieldname": "message_item",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Message Item"
+  },
+  {
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break",
+   "label": "Special Attachments"
+  },
+  {
+   "depends_on": "eval:!doc.std_message;",
+   "fieldname": "text2send",
+   "fieldtype": "Small Text",
+   "label": "Text to Send"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.message_type!==\"Text\";",
+   "depends_on": "eval:doc.message_type==\"Text\";",
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break",
+   "label": "Text Messages"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "participant_role.is_group",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group",
+   "read_only": 1
   }
  ],
- "modified": "2021-03-12 00:43:03.944704",
- "modified_by": "Administrator",
+ "modified": "2021-03-13 15:35:12.996490",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",

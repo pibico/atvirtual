@@ -24,6 +24,8 @@ class pibiMessage(Document):
     sms_list = []
     telegram_list = []
     mqtt_list = []
+    attachment = ''
+    
     if self.device == '':
       if self.participant_role != "" and self.course != "":
         """ Get from database devices ported by user in session """
@@ -70,22 +72,16 @@ class pibiMessage(Document):
               if not doc.telegram_number in telegram_list:
                 telegram_list.append(doc.telegram_number)
                 #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-      
+    
+    if len(self.message_item) > 0:  
+      for row in self.message_item:
+        attachment = attachment + str(row.description) + ": " + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + " \n"        
+    
     if self.message_type == "Text":
       message = self.message_text #"From AT Virtual: " + self.message_text
-    elif self.message_type == "Photo":
-      if self.message_photo:
-        message = "Photo from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_photo)
-    elif self.message_type == "Video":
-      if self.message_video:
-        message = "Video from AT Virtual \n" + frappe.utils.get_url() + urllib.parse.quote(self.message_video)
-    ## Send message by SMS
-    if len(sms_list) > 0:
-      try:
-        send_sms(sms_list, cstr(message))
-        #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
-      except:
-        pass
+      if attachment != '':
+        message = message + "\n " + attachment
+    
     ## Send message by MQTT
     if len(mqtt_list) > 0:
       path = frappe.utils.get_bench_path()
@@ -138,3 +134,11 @@ class pibiMessage(Document):
         #frappe.msgprint(_("Message by telegram to: " + str(telegram_list) + " " + message))
       except:
         pass 
+    ## Send message by SMS
+    if len(sms_list) > 0:
+      try:
+        send_sms(sms_list, cstr(message))
+        #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
+      except:
+        pass
+    

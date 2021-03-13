@@ -4,38 +4,25 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "message",
-  "participant_role",
-  "device"
+  "description",
+  "attachment"
  ],
  "fields": [
   {
-   "fieldname": "participant_role",
-   "fieldtype": "Link",
-   "in_global_search": 1,
+   "fieldname": "description",
+   "fieldtype": "Data",
    "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Participant",
-   "options": "Participant Role"
+   "label": "Description"
   },
   {
-   "fieldname": "device",
-   "fieldtype": "Table MultiSelect",
-   "label": "Devices",
-   "options": "Device"
-  },
-  {
-   "fieldname": "message",
-   "fieldtype": "Link",
-   "in_global_search": 1,
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
    "in_list_view": 1,
-   "in_preview": 1,
-   "label": "Message",
-   "options": "pibiMessage"
+   "label": "Attachment"
   }
  ],
  "istable": 1,
- "modified": "2020-11-30 18:09:26.169780",
+ "modified": "2021-03-13 13:48:14.086521",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Message Item",
