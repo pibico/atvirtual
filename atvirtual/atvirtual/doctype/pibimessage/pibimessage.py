@@ -75,7 +75,10 @@ class pibiMessage(Document):
     
     if len(self.message_item) > 0:  
       for row in self.message_item:
-        attachment = attachment + str(row.description) + ": " + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + " \n"        
+        if "http" in row.attachment:
+          attachment = attachment + str(row.description) + ": " + str(row.attachment) + " \n"  
+        else:
+          attachment = attachment + str(row.description) + ": " + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + " \n"        
     
     if self.message_type == "Text":
       message = self.message_text #"From AT Virtual: " + self.message_text
@@ -127,6 +130,7 @@ class pibiMessage(Document):
         frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
         #raise
         pass
+    
     ## Send message by Telegram
     if len(telegram_list) > 0:
       try:
@@ -134,6 +138,7 @@ class pibiMessage(Document):
         #frappe.msgprint(_("Message by telegram to: " + str(telegram_list) + " " + message))
       except:
         pass 
+    
     ## Send message by SMS
     if len(sms_list) > 0:
       try:

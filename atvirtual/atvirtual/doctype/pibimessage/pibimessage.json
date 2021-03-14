@@ -5,6 +5,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "sec_break_1",
+  "message_item",
+  "sec_break_2",
   "course",
   "session_type",
   "participant_role",
@@ -18,8 +21,13 @@
   "text2send",
   "col_break_3",
   "message_text",
-  "sec_break_1",
-  "message_item"
+  "sec_break_3",
+  "from_email_account",
+  "subject",
+  "email_recipients",
+  "email_template",
+  "col_break_4",
+  "email_body"
  ],
  "fields": [
   {
@@ -39,8 +47,7 @@
    "fieldname": "message_text",
    "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Message Text",
-   "read_only": 1
+   "label": "Message Text"
   },
   {
    "fieldname": "participant_role",
@@ -98,6 +105,7 @@
    "options": "Message Item"
   },
   {
+   "collapsible": 1,
    "fieldname": "sec_break_1",
    "fieldtype": "Section Break",
    "label": "Special Attachments"
@@ -127,10 +135,56 @@
    "fieldtype": "Check",
    "label": "Is Group",
    "read_only": 1
+  },
+  {
+   "fieldname": "sec_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.message_type!==\"E-mail\";",
+   "depends_on": "eval:doc.message_type==\"E-mail\";",
+   "fieldname": "sec_break_3",
+   "fieldtype": "Section Break",
+   "label": "E-mail"
+  },
+  {
+   "fetch_from": "from_email_account.email_id",
+   "fieldname": "from_email_account",
+   "fieldtype": "Link",
+   "label": "From Account",
+   "options": "Email Account"
+  },
+  {
+   "fieldname": "col_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "email_template",
+   "fieldtype": "Link",
+   "label": "Email Template",
+   "options": "Email Template"
+  },
+  {
+   "fetch_from": "email_template.response",
+   "fieldname": "email_body",
+   "fieldtype": "Text Editor",
+   "label": "Email Body"
+  },
+  {
+   "fieldname": "email_recipients",
+   "fieldtype": "Table MultiSelect",
+   "label": "Email Recipients",
+   "options": "Email Recipients"
   }
  ],
- "modified": "2021-03-13 15:35:12.996490",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-14 12:35:53.043533",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",
