@@ -24,8 +24,8 @@
   "sec_break_3",
   "from_email_account",
   "subject",
-  "email_recipients",
   "email_template",
+  "recipient_item",
   "col_break_4",
   "email_body"
  ],
@@ -177,14 +177,15 @@
    "label": "Email Body"
   },
   {
-   "fieldname": "email_recipients",
-   "fieldtype": "Table MultiSelect",
-   "label": "Email Recipients",
-   "options": "Email Recipients"
+   "fetch_from": "recipient_item.participant_email_id",
+   "fieldname": "recipient_item",
+   "fieldtype": "Table",
+   "label": "Recipients",
+   "options": "Recipient Item"
   }
  ],
- "modified": "2021-03-14 12:35:53.043533",
- "modified_by": "Administrator",
+ "modified": "2021-03-14 20:52:42.313334",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",
