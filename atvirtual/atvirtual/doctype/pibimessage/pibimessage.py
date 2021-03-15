@@ -17,12 +17,9 @@ from frappe.utils.password import get_decrypted_password
 
 class pibiMessage(Document):
   def autoname(self):
-    """ Naming Messages from Current DateTime and Role """
-    if self.participant_role:
-      self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
-    else:
-      self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_general"
- 
+    """ Naming Messages from Current DateTime """
+    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
+    
   def before_save(self):
     ## Prepare recipients list
     sms_list = []
@@ -63,20 +60,20 @@ class pibiMessage(Document):
     ## Send Text messages
     if self.message_type == "Text":
       ## Read main message
-      str_message = self.message_text
+      json_message = json.loads(self.message_text)
+      str_message = json_message["message"]
       ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
-            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' url: ' + row.attachment + '\n' 
+            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + row.attachment + '\n' 
           else:   
-            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' url: ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
-        message = str_message + "\nCon archivos anexos:\n" + str_attach
+            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
+        str_message = str_message + "\nCon archivos anexos:\n" + str_attach
       
-      json_message = json.loads(str_message)
-      
-      if self.device == '':
-        if self.participant_role != "" and self.course != "":
+      ## Prepare devices to send message
+      if json_message["type"] in ['session','role']:
+        if self.course != '' and self.participant_role != "" and not self.is_group:
           """ Get from database devices ported by user in session """
           devices = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant_role=%s and docstatus < 2""", (self.course, self.participant_role), True) 
           for item in devices:
@@ -99,7 +96,53 @@ class pibiMessage(Document):
                   if doc.telegram_number != '':
                     telegram_list.append(doc.telegram_number)
                     #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-      else:
+        elif self.course != '' and self.participant_role != '' and self.is_group: 
+          """ Get from database devices ported in session """
+          ported = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
+          """ Get from database scanners assigned to session """
+          scanners = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
+          for dev in ported:           
+            doc = frappe.get_doc('Device', dev.device)
+            if not doc.disabled:
+              if doc.is_connected and not doc.is_scanner and doc.alerts_active:
+                if doc.by_sms:
+                  if doc.sms_number != '':
+                    sms_list.append(doc.sms_number)
+                    #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
+                if doc.by_text:
+                  if doc.device_name != '' and doc.by_mqtt:
+                    mqtt_list.append({"name": doc.device_name})
+                    #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
+                  elif not doc.by_mqtt:
+                    if doc.sms_number != '' and not doc.sms_number in sms_list:
+                      sms_list.append(doc.sms_number)  
+                      #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
+                if doc.by_telegram:
+                  if doc.telegram_number != '':
+                    telegram_list.append(doc.telegram_number)
+                    #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
+          for scan in scanners:
+            scn = frappe.get_doc('Device', scan.device)
+            if not scn.disabled:
+              if scn.is_connected and scn.is_scanner and scn.alerts_active:
+                if scn.by_sms:
+                  if scn.sms_number != '':
+                    sms_list.append(scn.sms_number)
+                    #frappe.msgprint(_("Message by sms to ") + str(scn.sms_number))
+                if scn.by_text:
+                  if scn.device_name != '' and scn.by_mqtt:
+                    mqtt_list.append({"name": scn.device_name})
+                    #frappe.msgprint(_("Message by mqtt to ") + str(scn.device_name))
+                  elif not scn.by_mqtt:
+                    if scn.sms_number != '' and not scn.sms_number in sms_list:
+                      sms_list.append(scn.sms_number)  
+                      #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
+                if scn.by_telegram:
+                  if scn.telegram_number != '':
+                    telegram_list.append(scn.telegram_number)
+                    #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
+                    
+      elif json_message["type"] == "device" and self.device != '':
         doc = frappe.get_doc('Device', self.device)
         if not doc.disabled:
           if doc.is_connected and doc.alerts_active:
@@ -157,7 +200,7 @@ class pibiMessage(Document):
           else:  
             backend.connect(server, port)
 
-          payload = frappe.safe_decode(message).encode('utf-8')
+          payload = frappe.safe_decode(self.message_text).encode('utf-8')
           for dev in mqtt_list:
             mqtt_topic = dev['name'] + "/mqtt"
             backend.publish(mqtt_topic, cstr(payload))
@@ -171,15 +214,17 @@ class pibiMessage(Document):
       ## Send message by Telegram
       if len(telegram_list) > 0:
         try:
-          send_telegram(telegram_list, cstr(message))
-          #frappe.msgprint(_("Message by telegram to: " + str(telegram_list) + " " + message))
+          send_telegram(telegram_list, cstr(str_message))
+          #frappe.msgprint(_("Message by telegram to: " + str(telegram_list)))
         except:
           pass 
     
       ## Send message by SMS
       if len(sms_list) > 0  and self.message_type == "Text":
         try:
-          send_sms(sms_list, cstr(message))
-          #frappe.msgprint(_("Message by sms to: " + str(sms_list) + " " + message))
+          send_sms(sms_list, cstr(str_message))
+          #frappe.msgprint(_("Message by sms to: " + str(sms_list)))
         except:
           pass
+      
+      frappe.msgprint(_("Document Completed and Messages Sent"))    
