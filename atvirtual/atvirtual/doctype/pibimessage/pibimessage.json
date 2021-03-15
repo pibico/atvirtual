@@ -53,7 +53,8 @@
    "fieldname": "participant_role",
    "fieldtype": "Link",
    "label": "Role Recipient",
-   "options": "Participant Role"
+   "options": "Participant Role",
+   "reqd": 1
   },
   {
    "fieldname": "course",
@@ -184,7 +185,7 @@
    "options": "Recipient Item"
   }
  ],
- "modified": "2021-03-14 20:52:42.313334",
+ "modified": "2021-03-15 12:07:30.925449",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",

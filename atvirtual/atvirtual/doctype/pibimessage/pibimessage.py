@@ -12,13 +12,16 @@ from frappe import msgprint, _
 from frappe.core.doctype.sms_settings.sms_settings import send_sms
 from atvirtual.atvirtual.doctype.telegram_settings.telegram_settings import send_telegram
 import paho.mqtt.client as mqtt
-import os, ssl, urllib
+import os, ssl, urllib, json
 from frappe.utils.password import get_decrypted_password
 
 class pibiMessage(Document):
   def autoname(self):
     """ Naming Messages from Current DateTime and Role """
-    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
+    if self.participant_role:
+      self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
+    else:
+      self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_general"
  
   def before_save(self):
     ## Prepare recipients list
@@ -60,15 +63,17 @@ class pibiMessage(Document):
     ## Send Text messages
     if self.message_type == "Text":
       ## Read main message
-      json_message = self.message_text
+      str_message = self.message_text
       ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
-            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + 'enlace en ' + row.attachment + '\n' 
+            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' url: ' + row.attachment + '\n' 
           else:   
-            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + 'enlace en ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
-        message = json_message + "\nCon archivos anexos:\n" + str_attach
+            str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' url: ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
+        message = str_message + "\nCon archivos anexos:\n" + str_attach
+      
+      json_message = json.loads(str_message)
       
       if self.device == '':
         if self.participant_role != "" and self.course != "":
