@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "model",
+  "control_panel",
   "is_scanner",
   "is_connected",
   "is_located",
@@ -248,9 +249,15 @@
    "in_list_view": 1,
    "in_preview": 1,
    "label": "Alias"
+  },
+  {
+   "fieldname": "control_panel",
+   "fieldtype": "Link",
+   "label": "Control Panel",
+   "options": "Control Panel"
   }
  ],
- "modified": "2021-03-12 00:51:24.275380",
+ "modified": "2021-03-15 18:06:45.472939",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",

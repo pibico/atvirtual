@@ -72,7 +72,13 @@ def get_data():
           "name": "Training Place",
           "description": _("Training Places"),
           "onboard": 1,
-        }     
+        },
+        {
+          "type": "doctype",
+          "name": "Control Panel",
+          "description": _("Control Panel"),
+          "onboard": 1,
+        }    
       ]
     },
     {

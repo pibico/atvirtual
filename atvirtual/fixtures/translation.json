@@ -726,5 +726,19 @@
   "source_name": "Order",
   "status": "Saved",
   "target_name": "Comando"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-03-15 18:09:44.480124",
+  "name": "515f9104d7",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Control Panel",
+  "status": "Saved",
+  "target_name": "Panel de Control"
  }
 ]
