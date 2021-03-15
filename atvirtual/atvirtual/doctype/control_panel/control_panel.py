@@ -3,8 +3,14 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
+import frappe
 from frappe.website.website_generator import WebsiteGenerator
+from frappe import _
 
 class ControlPanel(WebsiteGenerator):
-	pass
+  def get_context(self, context):
+    context.devices = frappe.get_all("Device",
+      fields=["*"],
+      filters=[["control_panel", "=", self.name], ["docstatus", "<", 2]],
+      order_by="creation desc",
+      limit_page_length=20)
