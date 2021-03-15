@@ -10,6 +10,8 @@
   "std_message",
   "is_command",
   "order",
+  "type",
+  "col_break_1",
   "json_message"
  ],
  "fields": [
@@ -28,17 +30,28 @@
   {
    "depends_on": "eval:doc.is_command;",
    "fieldname": "order",
-   "fieldtype": "Data",
-   "label": "Order"
+   "fieldtype": "Select",
+   "label": "Order",
+   "options": "\nrojo\namarillo\nverde"
   },
   {
    "fieldname": "json_message",
    "fieldtype": "Small Text",
    "label": "json_message"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nSession\nRole\nDevice"
   }
  ],
- "modified": "2021-03-12 00:51:47.275866",
- "modified_by": "Administrator",
+ "modified": "2021-03-15 10:25:35.215794",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Standard Message",
  "owner": "francisco.alaez@pibico.es",

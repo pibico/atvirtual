@@ -42,5 +42,16 @@
   "parentfield": null,
   "parenttype": null,
   "script": "frappe.ui.form.on('Training Place', {\n  setup (frm) {\n    // your code here  \n  },    \n  onload(frm) {\n    show_image(frm);\n  },\n  media_library (frm) {\n    show_image(frm);  \n  }\n});\nfunction show_image (frm) {\n  if (frm.doc.media_library) {\n    frappe.call({\n      method: 'atvirtual.atvirtual.custom.get_image',\n        args: {\n\t      slide: frm.doc.media_library\n        },\n        callback: (r) => {\n          //console.log(r.message);\n          if (r.message.length >0) {\n            var rtemplate = \"\";\n            console.log(r.message);\n            for (var j in r.message) {\n              //rtemplate += '<a href=\"' + r.message[j].image + '\" target=\"_blank\"><img style=\"border: 1px solid #4682b4; float: left; margin: 1px; padding: 1px;\" height=\"120px\" src=\"' + r.message[j].image + '\" /></a>';  \n              rtemplate += '<div class=\"card\"><a class=\"card-text\" href=\"' + r.message[j].image + '\" target=\"_blank\"><img style=\"border: 1px solid #4682b4; border-radius: 9px; float: left; margin: 1px; padding: 1px;\" height=\"120px\" title=\"' + r.message[j].heading + '\" src=\"' + r.message[j].image + '\" /></a></div>'; \n            }\n            //var template = '<div class=\"container-fluid\"><h4>' + frm.doc.media_library + '</h4>' + rtemplate + '</div>';\n            var template = '<div class=\"container-fluid\"><h4>' + frm.doc.media_library + '</h4><div class=\"card-columns\">' + rtemplate + '</div></div>';\n            //console.log(template);\n            frm.set_df_property('html_image', 'options', frappe.render_template(template));\n            frm.refresh_field('html_image');\n          }\n        }\n    });    \n  } else {\n    //console.log(frm.doc.media_library);\n    var noimage = '<div class=\"container-fluid\"><h4>Sin Imagenes Disponibles</h4></div>';\n    frm.set_df_property('html_image', 'options', frappe.render_template(noimage));\n    frm.refresh_field('html_image');\n  }\n}"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Standard Message",
+  "modified": "2021-03-15 10:22:03.074349",
+  "name": "Standard Message-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on('Standard Message', {\n\trefresh(frm) {\n\t  // your code here\n\t  json_string(frm);\n\t},\n\tstd_message(frm) {\n\t  json_string(frm);    \n\t},\n\ttype(frm) {\n\t  json_string(frm);    \n\t}\n});\nfunction json_string (frm) {\n  var json_message = '';\n  var order = '';\n  if (frm.doc.std_message !== '' && frm.doc.type !== '') {\n    if (frm.doc.order) {\n\t  order = frm.doc.order;\n\t}\n\tjson_message = '{\"type\":\"' + frm.doc.type.toLowerCase() +\n\t  '\",\"is_command\":' + frm.doc.is_command +\n\t  ',\"message\":\"' + frm.doc.std_message.replace(',','') +\n\t  '\",\"order\":\"'  + order + '\"}';\n\t  frm.doc.json_message = json_message;\n    //console.log(json_message);\n  }\n  frm.refresh_field('json_message');\n}"
  }
 ]

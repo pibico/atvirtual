@@ -21,18 +21,23 @@ class pibiMessage(Document):
     self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
  
   def before_save(self):
+    ## Prepare recipients list
     sms_list = []
     telegram_list = []
     mqtt_list = []
     str_attach = ''
     recipients = []
     
+    ## Send E-mails
     if self.message_type == "E-mail":
+      ## Read message body
       message = self.email_body
+      ## Read Recipients Table
       recipient_list = self.recipient_item
       if len(recipient_list) > 0:
         for item in recipient_list:
           recipients.append(item.participant_email_id)
+      ## Read and prepare message with Attachments
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
@@ -40,8 +45,7 @@ class pibiMessage(Document):
           else:   
             str_attach = str_attach + '<a href="' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '">Anexo ' +str(idx+1) + ': ' + row.description + '</a><br>'
         message = message + "<p>Con archivos anexos:</p><p>" + str_attach + "</p>"
-      
-      ## Send message by Email
+      ## Finally Send message by Email
       email_args = {
         "sender": self.from_email_account,
         "recipients": recipients,
@@ -51,16 +55,20 @@ class pibiMessage(Document):
         "reference_name": self.name
       }
       frappe.sendmail(**email_args)
+      frappe.msgprint(_("Email sent to ") + str(recipients))
     
+    ## Send Text messages
     if self.message_type == "Text":
-      message = self.message_text #"From AT Virtual: " + self.message_text
+      ## Read main message
+      json_message = self.message_text
+      ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + 'enlace en ' + row.attachment + '\n' 
           else:   
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + 'enlace en ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
-        message = message + "\nCon archivos anexos:\n" + str_attach
+        message = json_message + "\nCon archivos anexos:\n" + str_attach
       
       if self.device == '':
         if self.participant_role != "" and self.course != "":
