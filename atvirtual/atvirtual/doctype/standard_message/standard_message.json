@@ -32,7 +32,7 @@
    "fieldname": "order",
    "fieldtype": "Select",
    "label": "Order",
-   "options": "\nrojo\namarillo\nverde"
+   "options": "\nrojo\namarillo\nverde\narcoiris\nrgb"
   },
   {
    "fieldname": "json_message",
@@ -50,7 +50,7 @@
    "options": "\nSession\nRole\nDevice"
   }
  ],
- "modified": "2021-03-15 10:25:35.215794",
+ "modified": "2021-03-15 21:52:18.771194",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Standard Message",

@@ -29,6 +29,25 @@
     cursor: pointer;
   }
   
+  .drawcard {
+    background: url("/assets/atvirtual/assets/images/background/cardat.jpg");
+    background-size: cover;
+  }
+  .olas{
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    top: 80%;
+    right: 40%;
+  }
+  .nave{
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    top: 70%;
+    left: 30%;
+  }
+  
   /* Profile Card */
   .card .card-heading.image img {
     display: inline-block;
@@ -400,10 +419,36 @@
         </div>
       </div>
       
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+		        <span class="card-title"><i data-feather="map" class="svg-icon"></i>
+              <strong>
+                Localizacion
+              </strong>
+              <!-- <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | list | length }}</span> -->
+            </span>
+ 		      </div>
+          <div class="card-body drawcard">
+            <span>
+              <a href="#" title="Nave" class="nave btn btn-success rounded-circle text-white m-0 p-1"><i data-feather="send" class="svg-icon font-30"></i></a>
+              <a href="#" title="Olas" class="olas btn btn-danger rounded-circle text-white m-0 p-1"><i data-feather="wind" class="svg-icon font-30"></i></a>
+            </span>
+          </div>
+          <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+              </li>
+            </ul>
+          </div>       
+        </div>
+      </div>
+      
       <!-- *************************************************************** -->
       <!-- Profile Card -->
       <!-- *************************************************************** -->
-      <div class="col-lg-4 col-md-6">
+      <!--<div class="col-lg-4 col-md-6">
         <div class="card hovercard">
           <div class="cardheader"></div>
           <div class="avatar">
@@ -418,21 +463,15 @@
             <div class="desc">Tech geek</div>
           </div>
           <div class="bottom">
-            <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-              <i data-feather="activity" class="svg-icon"></i>
+            <a class="btn btn-primary btn-sm" href="https://twitter.com/webmaniac">
+              <i data-feather="twitter" class="svg-icon"></i>
             </a>
             <a class="btn btn-danger btn-sm" rel="publisher" href="https://plus.google.com/+ahmshahnuralam">
-              <i data-feather="activity" class="svg-icon"></i>
-            </a>
-            <a class="btn btn-primary btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-              <i data-feather="activity" class="svg-icon"></i>
-            </a>
-            <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-              <i data-feather="activity" class="svg-icon"></i>
+              <i data-feather="facebook" class="svg-icon"></i>
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- *************************************************************** -->
       <!-- End of Profile Card -->
       <!-- *************************************************************** -->
