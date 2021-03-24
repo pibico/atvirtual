@@ -8,7 +8,8 @@
  "field_order": [
   "device_type",
   "description",
-  "picture"
+  "picture",
+  "gallery"
  ],
  "fields": [
   {
@@ -25,9 +26,15 @@
    "fieldname": "picture",
    "fieldtype": "Attach Image",
    "label": "Picture"
+  },
+  {
+   "fieldname": "gallery",
+   "fieldtype": "Link",
+   "label": "Galeria",
+   "options": "Website Slideshow"
   }
  ],
- "modified": "2021-03-11 14:39:53.732800",
+ "modified": "2021-03-24 10:30:45.018920",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device Type",

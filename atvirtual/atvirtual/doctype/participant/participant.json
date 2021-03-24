@@ -9,6 +9,7 @@
  "field_order": [
   "section_break_1",
   "enabled",
+  "is_generic",
   "section_break_3",
   "first_name",
   "middle_name",
@@ -58,11 +59,13 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:!doc.is_generic",
    "fieldname": "middle_name",
    "fieldtype": "Data",
    "label": "Middle Name"
   },
   {
+   "depends_on": "event:!doc.is_generic",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "in_global_search": 1,
@@ -115,6 +118,7 @@
    "width": "10"
   },
   {
+   "depends_on": "eval:!doc.is_generic",
    "fieldname": "section_break_7",
    "fieldtype": "Section Break",
    "label": "Personal Details"
@@ -140,6 +144,7 @@
    "label": "Nationality"
   },
   {
+   "depends_on": "eval:!doc.is_generic",
    "fieldname": "section_break_22",
    "fieldtype": "Section Break",
    "label": "Home Address"
@@ -187,11 +192,17 @@
    "in_preview": 1,
    "label": "Session Type",
    "options": "Session Type"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_generic",
+   "fieldtype": "Check",
+   "label": "Is Generic"
   }
  ],
  "image_field": "image",
- "modified": "2021-03-14 12:02:47.307592",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-24 11:39:16.853352",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Participant",
  "owner": "Administrator",

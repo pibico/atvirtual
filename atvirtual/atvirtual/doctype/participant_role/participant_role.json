@@ -61,6 +61,7 @@
   {
    "fieldname": "old_parent",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Old Parent",
    "options": "Participant Role"
   },
@@ -80,7 +81,7 @@
   }
  ],
  "is_tree": 1,
- "modified": "2021-03-12 00:50:55.970966",
+ "modified": "2021-03-24 11:29:07.721214",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Participant Role",
