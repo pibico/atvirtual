@@ -7,9 +7,9 @@
  "field_order": [
   "place_id",
   "training_place",
+  "media_library",
   "col_break_0",
   "description",
-  "media_library",
   "sec_break_1",
   "html_image"
  ],
@@ -56,7 +56,7 @@
    "options": "Website Slideshow"
   }
  ],
- "modified": "2021-03-12 12:43:25.816501",
+ "modified": "2021-03-24 22:31:30.470400",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Training Place",

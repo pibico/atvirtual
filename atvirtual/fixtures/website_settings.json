@@ -20,7 +20,7 @@
   "head_html": "<style>\n  @import url(\"https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css\");\n  @import url(\"https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap\");\n\n  body {\n    font-family: \"Rubik\" !important;  \n  }\n  html [data-path*=\"courses\"],\n  html [data-path*=\"training_course\"] {\n    /*background-image: url('/assets/atvirtual/assets/images/background/sea-bg.jpg');*/\n    padding-bottom: 30px;\n    width: 100vw;\n    margin: auto;\n    max-width: 100%;\n  }\n  #page-list .page-content-wrapper .page-breadcrumbs,\n  #page-registro .page-content-wrapper .page-breadcrumbs {\n    display: none; \n  }\n  [data-path*=\"courses\"] h1,\n  [data-path=\"training_course\"] h1,\n  #page-list h1,\n  #page-registro h2 {\n    color: SteelBlue !important;\n  }\n  \n  /* ERPNext web-footer */\n  .web-footer .footer-bottom-line .footer-powered > a{\n    visibility: hidden;\n  }\n  .web-footer .footer-bottom-line .footer-powered > a::after{\n    content: \"powered by Frappe\";\n    visibility: visible;\n    color: SteelBlue;\n  }\n  .web-footer {\n    padding: 0 !important;\n    min-height: 0px !important;\n    height: 0px;\n    margin-top: 5px;\n  }\n  .web-footer section{\n    padding: 15px;\n    margin: 0;\n    height: auto;\n    margin-top: -50px;\n  }\n  [data-path=\"\"] .web-footer {\n    margin-top: -50px;  \n  }\n  \n  /* data-doctype=\"Web Form\" */\n  [data-doctype=\"Web Form\"] .btn-light {\n    visibility: hidden;\n  }\n  [data-doctype=\"Web Form\"] .card-body {\n    padding: 3px;\n  }\n  [data-doctype=\"Web Form\"] .card {\n    margin: 1px !important;\n    font-family: Rubik !important;\n    border: none !important;\n    color: black !important;\n  }\n  [data-doctype=\"Web Form\"] .control-label {\n    font-size: 11pt !important;\n    margin-bottom: 1px !important;\n  }\n  [data-doctype=\"Web Form\"] .modal-dialog {\n    max-width: 60vw !important;\n    margin-top: 40px !important;\n    font-size: 12pt;\n  }\n  @media only screen and (max-width: 992px) and (-webkit-min-device-pixel-ratio:0) {\n    [data-doctype=\"Web Form\"] {\n      margin: auto !important;\n      width: 84vw !important;\n      margin-top: 45px !important;\n      font-size: 12pt;\n    }\n    [data-doctype=\"Web Form\"] .page-header h2 {\n      font-size: 12pt;\n    }\n    [data-doctype=\"Web Form\"] .page-header-actions-block button .ml-2 {\n     float: right !important;\n    }\n    [data-doctype=\"Web Form\"] .modal-dialog {\n      max-width: 100vw !important;\n      margin-top: 10px !important;\n      font-size: 11pt;\n    }\n    [data-doctype=\"Web Form\"] .form-page .section-body {\n      padding: 1px !important;\n    }\n    [data-doctype=\"Web Form\"] .form-control {\n      height: 100% !important;\n      padding: 1px !important;    \n      margin-bottom: 0 !important;    \n    }\n    [data-doctype=\"Web Form\"] .form-group label {\n      margin-bottom: 0 !important;\n    }\n  }\n  [data-doctype=\"Web Form\"] .modal-backdrop.fade.in{\n    opacity: 0 !important;\n    z-index: -10;\n  }\n \n</style>",
   "hide_footer_signup": 1,
   "home_page": "index",
-  "modified": "2021-03-14 11:15:16.988894",
+  "modified": "2021-03-24 22:46:08.313024",
   "name": "Website Settings",
   "navbar_search": 0,
   "parent": null,
@@ -29,7 +29,7 @@
   "robots_txt": null,
   "route_redirects": [],
   "subdomain": null,
-  "title_prefix": "",
+  "title_prefix": "conectaMAR",
   "top_bar_items": [],
   "website_theme": null,
   "website_theme_image_link": null

@@ -8,8 +8,9 @@
  "field_order": [
   "device_type",
   "description",
-  "picture",
-  "gallery"
+  "media_library",
+  "section_break_5",
+  "html_image"
  ],
  "fields": [
   {
@@ -23,19 +24,23 @@
    "label": "Description"
   },
   {
-   "fieldname": "picture",
-   "fieldtype": "Attach Image",
-   "label": "Picture"
-  },
-  {
-   "fieldname": "gallery",
+   "fieldname": "media_library",
    "fieldtype": "Link",
    "label": "Galeria",
    "options": "Website Slideshow"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_image",
+   "fieldtype": "HTML",
+   "label": "Image Gallery"
   }
  ],
- "modified": "2021-03-24 10:30:45.018920",
- "modified_by": "Administrator",
+ "modified": "2021-03-24 22:27:57.610294",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device Type",
  "owner": "Administrator",

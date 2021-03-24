@@ -65,7 +65,7 @@
    "label": "Middle Name"
   },
   {
-   "depends_on": "event:!doc.is_generic",
+   "depends_on": "eval:!doc.is_generic",
    "fieldname": "last_name",
    "fieldtype": "Data",
    "in_global_search": 1,
@@ -201,8 +201,8 @@
   }
  ],
  "image_field": "image",
- "modified": "2021-03-24 11:39:16.853352",
- "modified_by": "Administrator",
+ "modified": "2021-03-24 22:18:50.618380",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Participant",
  "owner": "Administrator",
