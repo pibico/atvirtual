@@ -8,7 +8,6 @@
  "engine": "InnoDB",
  "field_order": [
   "device_type",
-  "model",
   "control_panel",
   "is_scanner",
   "is_connected",
@@ -31,6 +30,7 @@
   "telegram_number",
   "by_mqtt",
   "section_break_",
+  "model",
   "alias",
   "device_name",
   "wifi_mac",
@@ -75,10 +75,9 @@
   },
   {
    "fieldname": "model",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Model",
-   "length": 30,
-   "options": "\nRPi ZW\nRPi 3A\niOS\nAndroid\nWearable"
+   "length": 30
   },
   {
    "fieldname": "device_name",
@@ -103,9 +102,6 @@
    "default": "0",
    "fieldname": "is_connected",
    "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Is Connected"
   },
   {
@@ -143,9 +139,6 @@
    "depends_on": "eval:!doc.is_scanner",
    "fieldname": "is_located",
    "fieldtype": "Check",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Is Located"
   },
   {
@@ -256,7 +249,7 @@
    "options": "Control Panel"
   }
  ],
- "modified": "2021-03-25 08:20:22.321762",
+ "modified": "2021-03-25 08:32:57.025446",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
