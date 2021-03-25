@@ -7,6 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "device_type",
   "model",
   "control_panel",
   "is_scanner",
@@ -32,7 +33,6 @@
   "section_break_",
   "alias",
   "device_name",
-  "device_type",
   "wifi_mac",
   "ble_mac",
   "serial",
@@ -78,8 +78,7 @@
    "fieldtype": "Select",
    "label": "Model",
    "length": 30,
-   "options": "\nRPi ZW\nRPi 3A\niOS\nAndroid\nWearable",
-   "reqd": 1
+   "options": "\nRPi ZW\nRPi 3A\niOS\nAndroid\nWearable"
   },
   {
    "fieldname": "device_name",
@@ -161,7 +160,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": ".model.-.####"
+   "options": ".device_type.-.####"
   },
   {
    "depends_on": "eval:doc.is_connected",
@@ -257,8 +256,8 @@
    "options": "Control Panel"
   }
  ],
- "modified": "2021-03-15 18:06:45.472939",
- "modified_by": "Administrator",
+ "modified": "2021-03-25 08:20:22.321762",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",
