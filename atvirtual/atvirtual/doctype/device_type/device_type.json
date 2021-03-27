@@ -7,8 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "device_type",
-  "description",
   "media_library",
+  "col_break_1",
+  "description",
   "section_break_5",
   "html_image"
  ],
@@ -37,10 +38,14 @@
    "fieldname": "html_image",
    "fieldtype": "HTML",
    "label": "Image Gallery"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
   }
  ],
- "modified": "2021-03-24 22:27:57.610294",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-26 12:14:21.827709",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device Type",
  "owner": "Administrator",

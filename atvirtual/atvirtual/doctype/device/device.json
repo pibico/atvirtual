@@ -8,37 +8,48 @@
  "engine": "InnoDB",
  "field_order": [
   "device_type",
-  "control_panel",
+  "media_library",
+  "disabled",
+  "alerts_active",
+  "has_commands",
   "is_scanner",
   "is_connected",
   "is_located",
-  "alerts_active",
-  "disabled",
-  "column_break_2",
-  "media_library",
+  "col_break_loc",
+  "location",
+  "sec_break_00",
+  "control_panel",
+  "command_item",
+  "sec_break_1",
   "ip",
-  "rssi",
-  "distance",
+  "col_break_3",
+  "last_seen",
+  "sec_break_2",
   "detected_by",
   "training_place",
-  "section_break_2",
+  "rssi",
+  "col_break_4",
+  "last_located",
+  "distance",
+  "latlong",
+  "sec_break_3",
   "by_sms",
   "sms_number",
   "by_text",
-  "column_break_5",
   "by_telegram",
   "telegram_number",
+  "col_break_5",
   "by_mqtt",
-  "section_break_",
+  "sec_break_0",
   "model",
   "alias",
   "device_name",
   "wifi_mac",
   "ble_mac",
   "serial",
-  "column_break_4",
+  "col_break_6",
   "description",
-  "section_break_1",
+  "sec_break_4",
   "html_image",
   "naming_series"
  ],
@@ -57,10 +68,6 @@
    "fieldname": "description",
    "fieldtype": "Long Text",
    "label": "Description"
-  },
-  {
-   "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -105,12 +112,6 @@
    "label": "Is Connected"
   },
   {
-   "collapsible": 1,
-   "fieldname": "section_break_",
-   "fieldtype": "Section Break",
-   "label": "Main Data"
-  },
-  {
    "fieldname": "wifi_mac",
    "fieldtype": "Data",
    "label": "WiFi MAC Address"
@@ -119,14 +120,6 @@
    "fieldname": "ble_mac",
    "fieldtype": "Data",
    "label": "BLE MAC Address"
-  },
-  {
-   "fieldname": "section_break_1",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
   },
   {
    "default": "0",
@@ -142,7 +135,6 @@
    "label": "Is Located"
   },
   {
-   "depends_on": "eval:doc.is_located",
    "fieldname": "training_place",
    "fieldtype": "Link",
    "label": "Place",
@@ -156,7 +148,6 @@
    "options": ".device_type.-.####"
   },
   {
-   "depends_on": "eval:doc.is_connected",
    "fieldname": "ip",
    "fieldtype": "Data",
    "label": "ip"
@@ -166,14 +157,6 @@
    "fieldname": "alerts_active",
    "fieldtype": "Check",
    "label": "Alerts Active"
-  },
-  {
-   "collapsible": 1,
-   "collapsible_depends_on": "eval:doc.alerts_active",
-   "depends_on": "eval:doc.alerts_active",
-   "fieldname": "section_break_2",
-   "fieldtype": "Section Break",
-   "label": "Message Reception"
   },
   {
    "default": "0",
@@ -186,10 +169,6 @@
    "fieldname": "by_telegram",
    "fieldtype": "Check",
    "label": "By Telegram"
-  },
-  {
-   "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
   },
   {
    "depends_on": "eval:doc.by_sms",
@@ -210,14 +189,12 @@
    "label": "Telegram Number"
   },
   {
-   "depends_on": "eval:doc.is_located",
    "fieldname": "detected_by",
    "fieldtype": "Link",
    "label": "Detected By",
    "options": "Device"
   },
   {
-   "depends_on": "eval:doc.is_located",
    "fieldname": "rssi",
    "fieldtype": "Float",
    "label": "Signal",
@@ -230,7 +207,6 @@
    "label": "By Mqtt"
   },
   {
-   "depends_on": "eval:doc.is_located",
    "fieldname": "distance",
    "fieldtype": "Float",
    "label": "Distance"
@@ -247,10 +223,100 @@
    "fieldtype": "Link",
    "label": "Control Panel",
    "options": "Control Panel"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_break_2",
+   "fieldtype": "Section Break",
+   "label": "Location Details"
+  },
+  {
+   "fieldname": "col_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.alerts_active",
+   "depends_on": "eval:doc.alerts_active",
+   "fieldname": "sec_break_3",
+   "fieldtype": "Section Break",
+   "label": "Message Reception"
+  },
+  {
+   "fieldname": "col_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break",
+   "label": "Connection Details"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break",
+   "label": "Main Data"
+  },
+  {
+   "fieldname": "sec_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "last_seen",
+   "fieldtype": "Datetime",
+   "label": "Last Seen"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_commands",
+   "fieldtype": "Check",
+   "label": "Has Commands"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:!doc.has_commands",
+   "fieldname": "sec_break_00",
+   "fieldtype": "Section Break",
+   "label": "Command Details"
+  },
+  {
+   "fieldname": "command_item",
+   "fieldtype": "Table",
+   "label": "Commands Items",
+   "options": "Command Item"
+  },
+  {
+   "fieldname": "last_located",
+   "fieldtype": "Datetime",
+   "label": "Last Located"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Geolocation",
+   "label": "Location"
+  },
+  {
+   "fieldname": "col_break_loc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Latitude and Longitude in format [lat,long]",
+   "fieldname": "latlong",
+   "fieldtype": "Data",
+   "label": "Latitude and Longitud"
   }
  ],
- "modified": "2021-03-25 08:32:57.025446",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-03-27 00:02:58.466118",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",
