@@ -36,10 +36,13 @@
   "by_sms",
   "sms_number",
   "by_text",
+  "col_break_5",
   "by_telegram",
   "telegram_number",
-  "col_break_5",
   "by_mqtt",
+  "col_break_7",
+  "by_email",
+  "device_email",
   "sec_break_0",
   "model",
   "alias",
@@ -283,7 +286,6 @@
   },
   {
    "collapsible": 1,
-   "collapsible_depends_on": "eval:!doc.has_commands",
    "fieldname": "sec_break_00",
    "fieldtype": "Section Break",
    "label": "Command Details"
@@ -300,6 +302,7 @@
    "label": "Last Located"
   },
   {
+   "default": "{\n \"type\":\"FeatureCollection\",\n \"features\":[\n   {\n    \"type\":\"Feature\",\n    \"properties\":{},\n    \"geometry\":{\n     \"type\":\"Point\",\n     \"coordinates\":[-5.761355,43.49021]\n     }\n   }\n  ]\n}",
    "fieldname": "location",
    "fieldtype": "Geolocation",
    "label": "Location"
@@ -313,10 +316,26 @@
    "fieldname": "latlong",
    "fieldtype": "Data",
    "label": "Latitude and Longitud"
+  },
+  {
+   "default": "0",
+   "fieldname": "by_email",
+   "fieldtype": "Check",
+   "label": "By Email"
+  },
+  {
+   "depends_on": "eval:doc.by_email",
+   "fieldname": "device_email",
+   "fieldtype": "Data",
+   "label": "Email Account"
+  },
+  {
+   "fieldname": "col_break_7",
+   "fieldtype": "Column Break"
   }
  ],
- "modified": "2021-03-27 00:02:58.466118",
- "modified_by": "Administrator",
+ "modified": "2021-03-28 19:41:35.650852",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",
