@@ -13,13 +13,15 @@
   "alerts_active",
   "has_commands",
   "is_scanner",
-  "is_connected",
-  "is_located",
   "col_break_loc",
   "location",
   "sec_break_00",
   "control_panel",
   "command_item",
+  "sec_break_5",
+  "is_connected",
+  "col_break_8",
+  "is_located",
   "sec_break_1",
   "ip",
   "col_break_3",
@@ -43,6 +45,7 @@
   "col_break_7",
   "by_email",
   "device_email",
+  "naming_series",
   "sec_break_0",
   "model",
   "alias",
@@ -53,8 +56,7 @@
   "col_break_6",
   "description",
   "sec_break_4",
-  "html_image",
-  "naming_series"
+  "html_image"
  ],
  "fields": [
   {
@@ -332,9 +334,18 @@
   {
    "fieldname": "col_break_7",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sec_break_5",
+   "fieldtype": "Section Break",
+   "label": "Situation"
+  },
+  {
+   "fieldname": "col_break_8",
+   "fieldtype": "Column Break"
   }
  ],
- "modified": "2021-03-28 19:41:35.650852",
+ "modified": "2021-03-29 22:56:04.397657",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
