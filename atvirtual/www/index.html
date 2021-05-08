@@ -15,7 +15,7 @@
     <link href="/assets/atvirtual/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="/assets/atvirtual/dist/css/style.min.css" rel="stylesheet">
+    <link href="/assets/atvirtual/dist/css/style.css" rel="stylesheet">
     <style>
       .carousel-control-prev, .carousel-control-next {
         width: 6%;
@@ -85,8 +85,11 @@
           
           <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+              <li class="nav-item">
+                <img class="d-block img-fluid w-100 pt-1" src="/assets/atvirtual/assets/images/big/ministerio.jpg">
+              </li>
               <li class="nav-item d-none d-md-block">
-                <a class="nav-link" href="javascript:void(0)">
+                <a class="nav-link" href="http://www.salvamentomaritimo.es/" target="_blank"><img class="d-block img-fluid w-75 pt-2" src="/assets/atvirtual/assets/images/big/salvamento.png">
                 </a>
               </li>
             </ul>
@@ -137,43 +140,49 @@
               </li> -->
               {% if frappe.session.user != 'Guest' %}
               <li class="list-divider"></li>
-              <li class="nav-small-cap"><span class="hide-menu">Formac<strong>iON</strong></span></li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="desk#modules/Atvirtual"" aria-expanded="false">
-                  <i data-feather="anchor" class="feather-icon"></i>
-                  <span class="hide-menu">Paneles Aplicaci&oacute;n</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link sidebar-link" href="desk#" aria-expanded="false">
-                  <i data-feather="monitor" class="feather-icon"></i>
-                  <span class="hide-menu">M&oacute;dulos</span>
-                </a>
-              </li>
-              <li class="list-divider"></li>
-              <li class="nav-small-cap"><span class="hide-menu">Vistas Web</span></li>
+              <li class="nav-small-cap"><span class="hide-menu">FORMACION</span></li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="training_course" aria-expanded="false">
                   <i data-feather="anchor" class="feather-icon"></i>
-                  <span class="hide-menu">Cursos</span>
+                  <span class="hide-menu">PR&Aacute;CTICAS</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="imessage_en?new=1" aria-expanded="false">
                   <i data-feather="message-square" class="feather-icon"></i>
-                  <span class="hide-menu">Mensajes</span>
+                  <span class="hide-menu">MENSAJES</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="control-panel" aria-expanded="false">
                   <i data-feather="link" class="feather-icon"></i>
-                  <span class="hide-menu">Comandos</span>
+                  <span class="hide-menu">CONTROLES</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="blog" aria-expanded="false">
                   <i data-feather="bookmark" class="feather-icon"></i>
-                  <span class="hide-menu">Art&iacute;culos</span>
+                  <span class="hide-menu">NOTICIAS</span>
+                </a>
+              </li>
+              <li class="list-divider"></li>
+              <li class="nav-small-cap"><span class="hide-menu">DISE&Ntilde;O</span></li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="/desk#List/Training Course" aria-expanded="false">
+                  <i data-feather="archive" class="feather-icon"></i>
+                  <span class="hide-menu">SESIONES</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link" href="desk#modules/Atvirtual"" aria-expanded="false">
+                  <i data-feather="airplay" class="feather-icon"></i>
+                  <span class="hide-menu">PANELES</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link sidebar-link" href="desk#" aria-expanded="false">
+                  <i data-feather="monitor" class="feather-icon"></i>
+                  <span class="hide-menu">M&Oacute;DULOS</span>
                 </a>
               </li>
               {% endif %}
@@ -194,24 +203,27 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
-          <div class="row m-0 bg-primary animate-in-down">
+          <div class="row m-0 contractor-profile animate-in-down">
             <div class="p-3 col-md-6 align-self-center text-white">
-              <p class="my-1">El apoyo MIoT a la Formaci&oacute;n</p>
+              <p class="my-1 title">El apoyo MIoT a la Formaci&oacute;n</p>
+              <br />
+              <p class="my-1">Salvamento Mar&iacute;timo lanza FormaciON, un ambicioso proyecto de innovaci&oacute;n con el que se busca incorporar el Internet de las Cosas para mejorar la comunicaci&oacute;n entre alumnos e Instructores en las pr&aacute;cticas de Formaci&oacute;n.</p>
+              <br />
+              <div class="interest-link">
               {% if frappe.session.user != 'Guest' %}
-                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-danger w-25">Salir</a>
+                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-light w-25">SALIDA</a>
               {% else %}
-                <a href="login?redirect-to=index" class="btn mb-1 p-1 btn-success w-25">Accede</a>
+                <a href="login?redirect-to=index" class="btn mb-1 p-1 btn-light w-25">ACCESO</a>
               {% endif %}  
+              </div>
             </div>
             <div class="p-0 col-md-6">
               <div class="carousel slide" data-ride="carousel" id="carousel1">
-                <!--
-                <ol class="carousel-indicators">
+                <!--<ol class="carousel-indicators">
                   <li data-target="#carousel1" data-slide-to="0" class="active"></li>
                   <li data-target="#carousel1" data-slide-to="1"></li>
                   <li data-target="#carousel1" data-slide-to="2"></li>
-                </ol>
-                -->
+                </ol>-->
                 <div class="carousel-inner" role="listbox">
                   <div class="carousel-item"> <img class="d-block img-fluid w-100" src="/assets/atvirtual/assets/images/background/sea-bg.jpg" alt="first slide">
                   </div>
@@ -237,8 +249,8 @@
               <div class="card">
                 <img src="/assets/atvirtual/assets/images/big/img1.jpg" class="card-img-top" alt="Needs">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="home_en">El Objetivo</a></h5>
-                  <p class="card-text">El fin de la Aplicaci&oacute;n es la gesti&oacute;n con IoT (MIoT) de las Sesiones de Formaci&oacute;n donde los participantes llevan dispositivos o las &aacute;reas disponen de equipamiento para mejorar el proceso de aprendizaje, transmitir informaci&oacute;n de forma clara y recolectar datos importantes.</p>
+                  <h5 class="card-title"><a href="home_en">EL OBJETIVO</a></h5>
+                  <p class="card-text">El fin de la Aplicaci&oacute;n es la gesti&oacute;n con Internet de las Cosas (Managemente with IoT - MIoT) de las comunicaciones o elementos de las Sesiones de  Formaci&oacute;n donde los participantes llevan dispositivos o las &aacute;reas disponen de equipamiento para mejorar el proceso de aprendizaje, transmitir informaci&oacute;n de forma clara y recolectar datos importantes.</p>
                 </div>
               </div>
             </div>
@@ -246,8 +258,8 @@
               <div class="card">
                 <img src="/assets/atvirtual/assets/images/big/img2.jpg" class="card-img-top" alt="App">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="">La App</a></h5>
-                  <p class="card-text">Basada en software y librer&iacute;as <strong>de c&oacute;digo abierto</strong>, completamente <strong>aut&oacute;noma y segura</strong>, facilmente mantenible y <strong>escalable</strong>, usando hardware <strong>est&aacute;ndar</strong>, capaz de evoluciones futuras o actualizaciones, usando las &uacute;ltimas tecnolog&iacute;as y <strong>estado del arte</strong> en IoT.</p>
+                  <h5 class="card-title"><a href="">LA APP</a></h5>
+                  <p class="card-text">Basada en software y librer&iacute;as <strong>de c&oacute;digo abierto</strong>, completamente <strong>aut&oacute;noma y segura</strong>, sobre una aplicaci&oacute;n web responsiva y adaptable a cualquier dispositivo. Optimizada para navegadores como Chrome, Safari, Edge o Firefox.</p>
                 </div>
               </div>
             </div>
@@ -255,7 +267,7 @@
               <div class="card">
                 <img src="/assets/atvirtual/assets/images/big/img3.jpg" class="card-img-top" alt="Results">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="">Los Resultados</a></h5>
+                  <h5 class="card-title"><a href="">LAS PR&Aacute;CTICAS</a></h5>
                   <p class="card-text">Los instructores enviar&aacute;n mensajes u &oacute;rdenes a los dispositivos, y quedar&aacute;n registrados en un proceso completamente integrado.</p>
                 </div>
               </div>
@@ -264,8 +276,8 @@
               <div class="card">
                 <img src="/assets/atvirtual/assets/images/big/img4.jpg" class="card-img-top" alt="Company">
                 <div class="card-body">
-                  <h5 class="card-title"><a href="">Los Desarrolladores</a></h5>
-                  <p class="card-text">PibiCo es una joven Start-Up con Ingenieros Expertos en Sistemas de Gesti&oacute;n y Control, y manejo con IoT(MIoT) y Valorizaci&oacute;n Digital.</p>
+                  <h5 class="card-title"><a href="">LOS CONTROLES</a></h5>
+                  <p class="card-text">Desde las pantallas de control se podr&aacute; interactuar con el equipamiento de formaci&oacute;n</p>
                 </div>
               </div>
             <div>
@@ -280,7 +292,18 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer text-center text-muted">&copy; PibiCo sobre un dise&ntilde;o de <a href="https://wrappixel.com">WrapPixel</a> e ilustraciones de <a href="https://freepik.com">FreePik</a>.
+        <footer class="footer text-muted">
+          <p>2021 &copy; Aplicaci&oacute;n FormaciON | Todos los derechos reservados.</p>
+          <div class="legals-footer">
+            <div class="inner">
+              <div class="btns">
+						    <a href="http://www.salvamentomaritimo.es/aviso-legal" target="_blank">Aviso Legal</a>
+							  <a href="http://www.salvamentomaritimo.es/politica-de-privacidad" target="_blank">Pol&iacute;tica de privacidad</a>
+							  <a href="http://www.salvamentomaritimo.es/politica-de-cookies" target="_blank">Pol&iacute;tica de cookies</a>
+						  </div>
+            </div>                                                                                 
+          </div> 
+						
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -293,6 +316,18 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    
+    <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
+    <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/3.1.0/cookie-consent.js"></script>
+    <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"es","cookies_policy_url":"http://www.salvamentomaritimo.es/politica-de-cookies","website_name":"http://training.pibico.es:8002"});
+});
+    </script>
+
+    <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">FreePrivacyPolicy.com</a></noscript>
+<!-- End Cookie Consent -->
+        
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="/assets/atvirtual/assets/libs/jquery/dist/jquery.min.js"></script>

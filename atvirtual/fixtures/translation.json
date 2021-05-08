@@ -46,56 +46,56 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-03-29 22:57:25.698698",
+  "modified": "2021-04-02 08:50:09.092503",
   "name": "3d8faaf667",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "AT-Virtual Equipment",
   "status": "Saved",
-  "target_name": "Equipamiento Formacion"
+  "target_name": "Equipamiento FormaciON"
  },
  {
   "contributed_translation_doctype_name": null,
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-03-29 22:57:25.741209",
+  "modified": "2021-04-02 08:50:00.591485",
   "name": "320b71f28a",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "AT-Virtual People",
   "status": "Saved",
-  "target_name": "Personal Formacion"
+  "target_name": "Personal FormaciON"
  },
  {
   "contributed_translation_doctype_name": null,
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-03-29 22:57:25.780935",
+  "modified": "2021-04-02 08:50:20.157706",
   "name": "ae3dd83b4c",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "AT-Virtual Channels",
   "status": "Saved",
-  "target_name": "Canales Comunicacion"
+  "target_name": "Canales FormaciON"
  },
  {
   "contributed_translation_doctype_name": null,
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-03-29 22:57:25.820578",
+  "modified": "2021-04-02 08:49:45.951901",
   "name": "8a8b86f0a2",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "AT-Virtual Project",
   "status": "Saved",
-  "target_name": "Sesiones Formacion"
+  "target_name": "Sesiones FormaciON"
  },
  {
   "contributed_translation_doctype_name": null,
@@ -116,14 +116,14 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-03-30 23:19:33.670481",
+  "modified": "2021-04-02 08:49:03.795547",
   "name": "f0cda99888",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "Atvirtual",
   "status": "Saved",
-  "target_name": "formaci\u00d3N"
+  "target_name": "FormaciON"
  },
  {
   "contributed_translation_doctype_name": null,

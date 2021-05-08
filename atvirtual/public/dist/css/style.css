@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap");
+@import url('http://fonts.cdnfonts.com/css/gotham-bold');
 @import url(icons/font-awesome/css/fontawesome-all.css);
 @import url(icons/simple-line-icons/css/simple-line-icons.css);
 @import url(icons/themify-icons/themify-icons.css);
@@ -57,7 +57,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Rubik", sans-serif;
+  --font-family-sans-serif: sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -67,7 +67,7 @@
 
 html {
   font-family: sans-serif;
-  line-height: 1.15;
+  line-height: 1.6;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
@@ -76,11 +76,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Rubik", sans-serif;
-  font-size: 1rem;
+  font-family: sans-serif;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.5;
-  color: #7c8798;
+  line-height: 1.6;
+  color: #385d78;
   text-align: left;
   background-color: #f9fbfd; }
 
@@ -156,11 +156,11 @@ sup {
   top: -.5em; }
 
 a {
-  color: #5f76e8;
+  color: #e85938;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #1f3fdb;
+    color: #003573;
     text-decoration: none; }
 
 a:not([href]):not([tabindex]) {
@@ -1058,7 +1058,7 @@ pre {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #7c8798; }
+  color: #385d78; }
   .table th,
   .table td {
     padding: 1rem;
@@ -1093,7 +1093,7 @@ pre {
   background-color: #f4f8fb; }
 
 .table-hover tbody tr:hover {
-  color: #7c8798;
+  color: #385d78;
   background-color: #e8eaec; }
 
 .table-primary,
@@ -1431,7 +1431,7 @@ select.form-control:focus::-ms-value {
   padding-bottom: 0.375rem;
   margin-bottom: 0;
   line-height: 1.5;
-  color: #7c8798;
+  color: #385d78;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0; }
@@ -1744,7 +1744,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #7c8798;
+  color: #385d78;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -1759,7 +1759,7 @@ textarea.form-control {
     .btn {
       transition: none; } }
   .btn:hover {
-    color: #7c8798;
+    color: #385d78;
     text-decoration: none; }
   .btn:focus, .btn.focus {
     outline: 0;
@@ -2343,7 +2343,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #7c8798;
+  color: #385d78;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -3147,6 +3147,7 @@ input[type="button"].btn-block {
     justify-content: space-between; }
 
 .navbar-brand {
+  background: #003573;
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -3993,7 +3994,7 @@ input[type="button"].btn-block {
     text-decoration: none;
     background-color: #e8eaec; }
   .list-group-item-action:active {
-    color: #7c8798;
+    color: #385d78;
     background-color: #e9ecef; }
 
 .list-group-item {
@@ -4643,7 +4644,7 @@ a.close.disabled {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: #7c8798; }
+  color: #385d78; }
 
 .carousel {
   position: relative; }
@@ -4925,12 +4926,12 @@ button.bg-cyan:focus {
   background-color: #019fbe !important; }
 
 .bg-orange {
-  background-color: #fb8c00 !important; }
+  background-color: #E85938 !important; }
 
 a.bg-orange:hover, a.bg-orange:focus,
 button.bg-orange:hover,
 button.bg-orange:focus {
-  background-color: #c87000 !important; }
+  background-color: #E85938 !important; }
 
 .bg-purple {
   background-color: #5f76e8 !important; }
@@ -7438,7 +7439,7 @@ a.text-purple:hover, a.text-purple:focus {
   color: #1f3fdb !important; }
 
 .text-body {
-  color: #7c8798 !important; }
+  color: #385d78 !important; }
 
 .text-muted {
   color: #9eabc0 !important; }
@@ -7548,7 +7549,7 @@ a.text-purple:hover, a.text-purple:focus {
   border-top-right-radius: 5px; }
 
 .page-wrapper > .container-fluid {
-  padding: 35px;
+  padding: 0px;
   min-height: calc(100vh - 210px); }
 
 /*******************
@@ -7906,7 +7907,9 @@ Main sidebar
   top: 0px;
   z-index: 10;
   padding-top: 80px;
-  background: transparent;
+  /*background: transparent;*/
+  background:  #E85938;
+  color: #fff;
   transition: 0.2s ease-in;
   box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
   -webkit-box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
@@ -8121,7 +8124,7 @@ User Profile
     #main-wrapper[data-layout="vertical"] .topbar .top-navbar .navbar-header[data-logobg="skin6"] .nav-toggler,
     #main-wrapper[data-layout="vertical"] .topbar .top-navbar .navbar-header[data-logobg="skin6"] .topbartoggler, #main-wrapper[data-layout="horizontal"] .topbar .top-navbar .navbar-header[data-logobg="skin6"] .nav-toggler,
     #main-wrapper[data-layout="horizontal"] .topbar .top-navbar .navbar-header[data-logobg="skin6"] .topbartoggler {
-      color: #7c8798; }
+      color: #385d78; }
   #main-wrapper[data-layout="vertical"] .topbar .navbar-collapse[data-navbarbg="skin6"],
   #main-wrapper[data-layout="vertical"] .topbar[data-navbarbg="skin6"], #main-wrapper[data-layout="horizontal"] .topbar .navbar-collapse[data-navbarbg="skin6"],
   #main-wrapper[data-layout="horizontal"] .topbar[data-navbarbg="skin6"] {
@@ -8228,7 +8231,7 @@ Table Cell
 body {
   margin: 0;
   overflow-x: hidden;
-  color: #7c8798;
+  color: #385d78;
   background: #f9fbfd; }
 
 html {
@@ -8236,7 +8239,7 @@ html {
   min-height: 100%; }
 
 a.link {
-  color: #7c8798; }
+  color: #385d78; }
   a.link:hover, a.link:focus {
     color: #5f76e8; }
 
@@ -8293,7 +8296,7 @@ ul.list-style-none {
   ul.list-style-none li {
     list-style: none; }
     ul.list-style-none li a {
-      color: #7c8798;
+      color: #385d78;
       padding: 8px 0px;
       display: block;
       text-decoration: none; }
@@ -9093,3 +9096,58 @@ strong {
   src: url("../css/fonts/Gilmer-Bold.eot?#iefix") format("embedded-opentype"), url("../css/fonts/Gilmer-Bold.otf") format("opentype"), url("../css/fonts/Gilmer-Bold.woff") format("woff"), url("../css/fonts/Gilmer-Bold.ttf") format("truetype"), url("../css/fonts/Gilmer-Bold.svg#Gilmer-Bold") format("svg");
   font-weight: normal;
   font-style: normal; }
+
+.contractor-profile {
+  width: 100%;
+  background: #95a2b2;
+  padding: 0px;
+}
+
+.contractor-profile .title {
+  background: #6b7c90;
+  color: #FFF;
+  padding: 10px 18px;
+  font-size: 24px;
+}
+
+.interest-link a {
+  color: #FFF;
+  background: #e85938;
+  font-family: 'Gotham Bold';
+  font-size: 14px;
+  text-decoration: none;
+  padding: 3px 15px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.scroll-sidebar {
+  background: #E85938;
+  color: #fff;
+}
+
+.hide-menu {
+  font-family: 'Gotham Bold';
+  color: #fff;
+}
+
+#navbarSupportedContent {
+  background: #676767;
+  color: #fff;
+}
+
+.legals-footer .inner .btns a {
+    color: #e85938;
+    text-decoration: none;
+    border: 3px solid #e85938;
+    border-radius: 8px;
+    margin: 0;
+    margin-right: 0px;
+    margin-right: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 18px;
+    text-align: center;
+    display: inline-block;
+}
