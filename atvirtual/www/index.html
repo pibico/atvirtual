@@ -95,7 +95,11 @@
             </ul>
             <ul class="navbar-nav float-right">
               <li class="nav-item dropdown">
-                {% if frappe.session.user != 'Guest' %}
+                {% if frappe.session.user == 'Guest' %}
+                <a class="nav-link" href="login?redirect-to=index">
+                  <img src="/assets/atvirtual/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
+                </a>
+                {% else %}
                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="/assets/atvirtual/assets/images/users/profile-pic-2.jpg" alt="user" class="rounded-circle" width="40">
                   <span class="ml-2 d-none d-lg-inline-block">
@@ -109,10 +113,6 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="?cmd=web_logout"><i data-feather="power" class="svg-icon mr-2 ml-1"></i>Logout</a>
                 </div>
-                {% else %}
-                <a class="nav-link" href="login?redirect-to=index">
-                  <img src="/assets/atvirtual/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
-                </a>
                 {% endif %}
               </li>
             </ul>
@@ -138,7 +138,7 @@
                   <span class="hide-menu">Inicio</span>
                 </a>
               </li> -->
-              {% if frappe.session.user != 'Guest' %}
+              
               <li class="list-divider"></li>
               <li class="nav-small-cap"><span class="hide-menu">FORMACION</span></li>
               <li class="sidebar-item">
@@ -185,7 +185,7 @@
                   <span class="hide-menu">M&Oacute;DULOS</span>
                 </a>
               </li>
-              {% endif %}
+              
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -210,10 +210,10 @@
               <p class="my-1">Salvamento Mar&iacute;timo lanza FormaciON, un ambicioso proyecto de innovaci&oacute;n con el que se busca incorporar el Internet de las Cosas para mejorar la comunicaci&oacute;n entre alumnos e Instructores en las pr&aacute;cticas de Formaci&oacute;n.</p>
               <br />
               <div class="interest-link">
-              {% if frappe.session.user != 'Guest' %}
-                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-light w-25">SALIDA</a>
-              {% else %}
+              {% if frappe.session.user == 'Guest' %}
                 <a href="login?redirect-to=index" class="btn mb-1 p-1 btn-light w-25">ACCESO</a>
+              {% else %}
+                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-light w-25">SALIDA</a>
               {% endif %}  
               </div>
             </div>

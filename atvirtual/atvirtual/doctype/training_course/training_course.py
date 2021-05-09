@@ -15,6 +15,14 @@ class TrainingCourse(WebsiteGenerator):
       order_by="creation desc",
       limit_page_length=20)
   
+    context._login_required = False
+    if self.login_required and frappe.session.user == "Guest":
+      context._login_required = True
+    
+    # check permissions
+    if frappe.session.user == "Guest":
+      frappe.throw(_("You need to be logged in to access this {0}.").format(self.doc_type), frappe.PermissionError)  
+
 def get_timeline_data(doctype, name):
 	'''Return timeline for messages'''
 	return dict(frappe.db.sql('''select unix_timestamp(creation), count(*) from `tabpibiMessage` where course=%s and creation > date_sub(curdate(), interval 1 year) and docstatus < 2 group by date(creation)''', name))
