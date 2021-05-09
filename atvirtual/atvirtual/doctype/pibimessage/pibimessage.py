@@ -18,9 +18,14 @@ from frappe.utils.password import get_decrypted_password
 class pibiMessage(Document):
   def autoname(self):
     """ Naming Messages from Current DateTime """
-    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + self.participant_role
-    
-  def before_save(self):
+    if self.participant_role:
+      pname = self.participant_role
+    else:
+      pname = 'none'
+      
+    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + "_" + pname
+          
+  def before_submit(self):
     ## Prepare recipients list
     sms_list = []
     telegram_list = []

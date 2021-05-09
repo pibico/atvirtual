@@ -31,7 +31,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "\nOpen\nOngoing\nCancelled\nCompleted"
+   "options": "\nIn development\nDraft\nPrepared\nOngoing\nFinished\nCancelled"
   },
   {
    "fieldname": "sec_break_0",
@@ -88,8 +88,8 @@
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-05-09 08:52:27.783639",
- "modified_by": "Administrator",
+ "modified": "2021-05-09 19:27:58.464935",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Training Course",
  "name_case": "Title Case",

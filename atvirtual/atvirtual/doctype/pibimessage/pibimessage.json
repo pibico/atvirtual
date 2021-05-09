@@ -5,17 +5,17 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sec_break_1",
-  "message_item",
   "sec_break_2",
   "course",
+  "message_type",
+  "device",
+  "alias",
+  "column_break_2",
   "session_type",
   "participant_role",
   "is_group",
-  "column_break_2",
-  "device",
-  "alias",
-  "message_type",
+  "sec_break_1",
+  "message_item",
   "sec_break_0",
   "std_message",
   "text2send",
@@ -27,7 +27,8 @@
   "email_template",
   "recipient_item",
   "col_break_4",
-  "email_body"
+  "email_body",
+  "amended_from"
  ],
  "fields": [
   {
@@ -50,11 +51,11 @@
    "label": "Message Text"
   },
   {
+   "depends_on": "eval:doc.message_type===\"Text\";",
    "fieldname": "participant_role",
    "fieldtype": "Link",
    "label": "Role Recipient",
-   "options": "Participant Role",
-   "reqd": 1
+   "options": "Participant Role"
   },
   {
    "fieldname": "course",
@@ -73,7 +74,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:!doc.is_group;",
+   "depends_on": "eval:!doc.is_group && doc.message_type===\"Text\";",
    "fieldname": "device",
    "fieldtype": "Link",
    "label": "Device",
@@ -131,6 +132,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.participant_role;",
    "fetch_from": "participant_role.is_group",
    "fieldname": "is_group",
    "fieldtype": "Check",
@@ -183,15 +185,27 @@
    "fieldtype": "Table",
    "label": "Recipients",
    "options": "Recipient Item"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "pibiMessage",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
- "modified": "2021-03-31 15:35:07.191665",
+ "is_submittable": 1,
+ "modified": "2021-05-09 22:03:33.417553",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -201,10 +215,14 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
+   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -212,6 +230,7 @@
    "report": 1,
    "role": "Instructor",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

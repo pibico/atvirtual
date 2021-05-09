@@ -1,6 +1,22 @@
 [
  {
   "default_value": null,
+  "doc_type": "Device",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "naming_series",
+  "modified": "2021-05-09 08:21:55.045811",
+  "name": "Device-naming_series-options",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "options",
+  "property_type": "Text",
+  "value": ".device_type.-.####"
+ },
+ {
+  "default_value": null,
   "doc_type": "Session Role Item",
   "docstatus": 0,
   "doctype": "Property Setter",
