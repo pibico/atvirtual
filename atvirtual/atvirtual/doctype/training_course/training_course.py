@@ -14,11 +14,7 @@ class TrainingCourse(WebsiteGenerator):
       filters=[["course", "=", self.name], ["docstatus", "<", 2]],
       order_by="creation desc",
       limit_page_length=20)
-  
-    context._login_required = False
-    if self.login_required and frappe.session.user == "Guest":
-      context._login_required = True
-    
+
     # check permissions
     if frappe.session.user == "Guest":
       frappe.throw(_("You need to be logged in to access this {0}.").format(self.doc_type), frappe.PermissionError)  
