@@ -134,13 +134,13 @@
    "in_global_search": 1,
    "in_list_view": 1,
    "in_preview": 1,
-   "label": "Alias",
+   "label": "Device Name",
    "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-03-11 13:19:09.614892",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-10 08:57:40.327586",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Session Role Item",
  "nsm_parent_field": "parent_training_role",
