@@ -466,14 +466,14 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-05-09 20:48:22.503698",
+  "modified": "2021-05-11 08:38:06.545331",
   "name": "84c764fae8",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "Standard Message",
   "status": "Saved",
-  "target_name": "Mensaje Predefinido"
+  "target_name": "Mensaje Programado"
  },
  {
   "contributed_translation_doctype_name": null,

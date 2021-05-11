@@ -14,7 +14,3 @@ class ControlPanel(WebsiteGenerator):
       filters=[["control_panel", "=", self.name], ["docstatus", "<", 2]],
       order_by="creation desc",
       limit_page_length=20)
-
-    # check permissions
-    if frappe.session.user == "Guest":
-      frappe.throw(_("You need to be logged in to access this {0}.").format(self.doc_type), frappe.PermissionError)
