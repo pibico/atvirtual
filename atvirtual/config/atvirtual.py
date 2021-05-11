@@ -108,7 +108,19 @@ def get_data():
           "name": "MQTT Settings",
           "description": _("MQTT Settings"),
           "onboard": 1,
-        }     
+        },
+        {
+          "type": "doctype",
+          "name": "Light RGB",
+          "description": _("Light Colour"),
+          "onboard": 1,
+        },
+        {
+          "type": "doctype",
+          "name": "Sound WAV",
+          "description": _("Audio Files"),
+          "onboard": 1,
+        }         
       ]
     }
   ]

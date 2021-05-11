@@ -1,35 +1,36 @@
 {
- "allow_rename": 1,
- "autoname": "format:{session_id}",
- "creation": "2020-11-24 11:23:55.476821",
+ "autoname": "field:sound_description",
+ "creation": "2021-05-11 10:52:23.716003",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "session_id",
+  "sound_wav",
   "col_break_0",
-  "description"
+  "sound_description"
  ],
  "fields": [
   {
-   "fieldname": "session_id",
-   "fieldtype": "Data",
-   "label": "Session ID"
+   "fieldname": "sound_wav",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Sound WAV"
   },
   {
-   "fieldname": "description",
+   "fieldname": "sound_description",
    "fieldtype": "Data",
-   "label": "Description"
+   "label": "Description",
+   "unique": 1
   },
   {
    "fieldname": "col_break_0",
    "fieldtype": "Column Break"
   }
  ],
- "modified": "2021-05-11 09:29:22.392223",
+ "modified": "2021-05-11 10:57:42.330560",
  "modified_by": "Administrator",
  "module": "Atvirtual",
- "name": "Session Type",
+ "name": "Sound WAV",
  "owner": "Administrator",
  "permissions": [
   {
@@ -41,18 +42,6 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Trainer",
    "share": 1,
    "write": 1
   }

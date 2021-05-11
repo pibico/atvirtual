@@ -47,12 +47,12 @@
   "docstatus": 0,
   "doctype": "Custom Script",
   "dt": "Standard Message",
-  "modified": "2021-03-15 10:22:03.074349",
+  "modified": "2021-05-11 10:23:30.756457",
   "name": "Standard Message-Client",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
-  "script": "frappe.ui.form.on('Standard Message', {\n\trefresh(frm) {\n\t  // your code here\n\t  json_string(frm);\n\t},\n\tstd_message(frm) {\n\t  json_string(frm);    \n\t},\n\ttype(frm) {\n\t  json_string(frm);    \n\t}\n});\nfunction json_string (frm) {\n  var json_message = '';\n  var order = '';\n  if (frm.doc.std_message !== '' && frm.doc.type !== '') {\n    if (frm.doc.order) {\n\t  order = frm.doc.order;\n\t}\n\tjson_message = '{\"type\":\"' + frm.doc.type.toLowerCase() +\n\t  '\",\"is_command\":' + frm.doc.is_command +\n\t  ',\"message\":\"' + frm.doc.std_message.replace(',','') +\n\t  '\",\"order\":\"'  + order + '\"}';\n\t  frm.doc.json_message = json_message;\n    //console.log(json_message);\n  }\n  frm.refresh_field('json_message');\n}"
+  "script": "frappe.ui.form.on('Standard Message', {\n\trefresh(frm) {\n\t  // your code here\n\t  json_string(frm);\n\t},\n\tstd_message(frm) {\n\t  json_string(frm);    \n\t},\n\ttype(frm) {\n\t  json_string(frm);    \n\t}\n});\nfunction json_string (frm) {\n  var json_message = '';\n  var order = '';\n  if (frm.doc.std_message !== '' && frm.doc.type !== '') {\n    if (frm.doc.order) {\n\t  order = frm.doc.order;\n\t}\n\tjson_message = '{\"type\":\"' + frm.doc.type.toLowerCase() +\n\t  ',\"message\":\"' + frm.doc.std_message.replace(',','') +\n\t  '\"}';\n\t  frm.doc.json_message = json_message;\n    //console.log(json_message);\n  }\n  frm.refresh_field('json_message');\n}"
  },
  {
   "docstatus": 0,

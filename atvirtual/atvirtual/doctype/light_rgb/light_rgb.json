@@ -1,35 +1,45 @@
 {
- "allow_rename": 1,
- "autoname": "format:{session_id}",
- "creation": "2020-11-24 11:23:55.476821",
+ "autoname": "field:light_description",
+ "creation": "2021-05-11 10:35:52.184901",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "session_id",
-  "col_break_0",
-  "description"
+  "light_description",
+  "red",
+  "green",
+  "blue"
  ],
  "fields": [
   {
-   "fieldname": "session_id",
+   "fieldname": "light_description",
    "fieldtype": "Data",
-   "label": "Session ID"
+   "label": "Description",
+   "unique": 1
   },
   {
-   "fieldname": "description",
-   "fieldtype": "Data",
-   "label": "Description"
+   "fieldname": "red",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "R"
   },
   {
-   "fieldname": "col_break_0",
-   "fieldtype": "Column Break"
+   "fieldname": "green",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "G"
+  },
+  {
+   "fieldname": "blue",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "B"
   }
  ],
- "modified": "2021-05-11 09:29:22.392223",
+ "modified": "2021-05-11 10:40:13.005472",
  "modified_by": "Administrator",
  "module": "Atvirtual",
- "name": "Session Type",
+ "name": "Light RGB",
  "owner": "Administrator",
  "permissions": [
   {

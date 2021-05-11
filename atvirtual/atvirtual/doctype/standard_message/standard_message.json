@@ -1,25 +1,189 @@
 {
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:std_message",
+ "autoname": "naming_series:",
  "creation": "2021-03-10 17:39:50.700082",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "msg_description",
+  "sec_break_0",
+  "location",
+  "role",
+  "col_break_0",
+  "participant",
+  "device",
+  "col_break_2",
+  "config",
+  "sec_break_1",
+  "light_rgb",
+  "sound_wav",
   "std_message",
+  "time_set",
   "is_command",
-  "order",
-  "type",
   "col_break_1",
-  "json_message"
+  "light_sec",
+  "sound_sec",
+  "text_sec",
+  "crono_from",
+  "order",
+  "col_break_3",
+  "brightness",
+  "volume",
+  "latency",
+  "timer_from",
+  "command_args",
+  "json_sec",
+  "json_message",
+  "config_json"
  ],
  "fields": [
   {
    "fieldname": "std_message",
    "fieldtype": "Data",
-   "label": "Standard Message",
+   "label": "Text",
    "unique": 1
+  },
+  {
+   "description": "JSON constructed from above message default parameters if nothing is selected: \n{\n  \"type\": \"device\",\n  \"light\": { \"rgb\": \"(0,0,0)\", \"lDur\": 0.0, \"bright\": 0.0},\n  \"sound\": { \"wav\": \"\", \"sDur\": 0.0, \"volume\": 0.0},\n  \"message\": {\"text\": \"\", \"tDur\": 0.0, \"latency\": 0.0},\n  \"time\": {\"timeSet\": \"\", \"crono\": \"00:00:00\", \"timer\": \"00:00:00\"},\n  \"command\":{\"is_command\": 0, \"order\": \"\", \"cArgs\": \"\"}\n  \"config\": \"\"\n}",
+   "fieldname": "json_message",
+   "fieldtype": "Small Text",
+   "label": "JSON Message"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break",
+   "label": "Category"
+  },
+  {
+   "fieldname": "col_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break",
+   "label": "Parameters"
+  },
+  {
+   "default": "0",
+   "fieldname": "location",
+   "fieldtype": "Check",
+   "label": "Location"
+  },
+  {
+   "default": "0",
+   "fieldname": "role",
+   "fieldtype": "Check",
+   "label": "Role"
+  },
+  {
+   "default": "0",
+   "fieldname": "participant",
+   "fieldtype": "Check",
+   "label": "Participant"
+  },
+  {
+   "default": "0",
+   "fieldname": "device",
+   "fieldtype": "Check",
+   "label": "Device"
+  },
+  {
+   "default": "0",
+   "fieldname": "config",
+   "fieldtype": "Check",
+   "label": "Configuration"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "message_id",
+   "options": "MSG-",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "light_rgb",
+   "fieldtype": "Link",
+   "label": "Light RGB",
+   "options": "Light RGB"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "brightness",
+   "fieldtype": "Float",
+   "label": "Brightness percent"
+  },
+  {
+   "fieldname": "json_sec",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "light_sec",
+   "fieldtype": "Float",
+   "label": "Light Duration"
+  },
+  {
+   "fieldname": "sound_sec",
+   "fieldtype": "Float",
+   "label": "Sound Duration"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume percent"
+  },
+  {
+   "fieldname": "sound_wav",
+   "fieldtype": "Link",
+   "label": "wav File",
+   "options": "Sound WAV"
+  },
+  {
+   "fieldname": "text_sec",
+   "fieldtype": "Float",
+   "label": "Text Duration"
+  },
+  {
+   "fieldname": "latency",
+   "fieldtype": "Float",
+   "label": "Latency"
+  },
+  {
+   "fieldname": "time_set",
+   "fieldtype": "Datetime",
+   "label": "Time Set"
+  },
+  {
+   "default": "00:00:00",
+   "fieldname": "crono_from",
+   "fieldtype": "Time",
+   "label": "Cronograph From"
+  },
+  {
+   "default": "00:00:00",
+   "fieldname": "timer_from",
+   "fieldtype": "Time",
+   "label": "Timer From"
+  },
+  {
+   "description": "To config devices, such as WiFi to connect: { \"wifi\": {\n\"ssid\": \"WFAP_FormaciON\", \"key\": \"(conect@4Pibi)\"}}",
+   "fieldname": "config_json",
+   "fieldtype": "Data",
+   "label": "Config JSON"
   },
   {
    "default": "0",
@@ -28,30 +192,26 @@
    "label": "Is Command"
   },
   {
-   "depends_on": "eval:doc.is_command;",
    "fieldname": "order",
-   "fieldtype": "Select",
-   "label": "Order",
-   "options": "\nrojo\namarillo\nverde\narcoiris\nrgb"
+   "fieldtype": "Data",
+   "label": "Command"
   },
   {
-   "fieldname": "json_message",
-   "fieldtype": "Small Text",
-   "label": "json_message"
+   "fieldname": "command_args",
+   "fieldtype": "Data",
+   "label": "Arguments"
   },
   {
-   "fieldname": "col_break_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "type",
-   "fieldtype": "Select",
-   "label": "Type",
-   "options": "\nSession\nRole\nDevice"
+   "fieldname": "msg_description",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Description"
   }
  ],
- "modified": "2021-03-15 21:52:18.771194",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-11 13:22:45.564723",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",
  "owner": "francisco.alaez@pibico.es",
