@@ -7,17 +7,17 @@
  "field_order": [
   "sec_break_2",
   "course",
-  "message_type",
-  "device",
-  "alias",
-  "column_break_2",
   "session_type",
   "participant_role",
   "is_group",
+  "column_break_2",
+  "message_type",
+  "std_message",
+  "device",
+  "alias",
   "sec_break_1",
   "message_item",
   "sec_break_0",
-  "std_message",
   "text2send",
   "col_break_3",
   "message_text",
@@ -36,7 +36,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Message Type",
-   "options": "\nText\nE-mail",
+   "options": "\nIoT\nE-mail",
    "reqd": 1
   },
   {
@@ -51,7 +51,7 @@
    "label": "Message Text"
   },
   {
-   "depends_on": "eval:doc.message_type===\"Text\";",
+   "depends_on": "eval:doc.message_type===\"IoT\";",
    "fieldname": "participant_role",
    "fieldtype": "Link",
    "label": "Role Recipient",
@@ -60,6 +60,7 @@
   {
    "fieldname": "course",
    "fieldtype": "Link",
+   "in_filter": 1,
    "in_list_view": 1,
    "label": "Course",
    "options": "Training Course",
@@ -74,7 +75,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:!doc.is_group && doc.message_type===\"Text\";",
+   "depends_on": "eval:!doc.is_group && doc.message_type===\"IoT\";",
    "fieldname": "device",
    "fieldtype": "Link",
    "label": "Device",
@@ -93,10 +94,13 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.message_type===\"IoT\";",
    "fieldname": "std_message",
    "fieldtype": "Link",
+   "in_filter": 1,
    "in_global_search": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Standard Message",
    "options": "Standard Message"
   },
@@ -120,7 +124,7 @@
   },
   {
    "collapsible": 1,
-   "collapsible_depends_on": "eval:doc.message_type!==\"Text\";",
+   "collapsible_depends_on": "eval:doc.message_type!==\"IoT\";",
    "depends_on": "eval:doc.message_type==\"Text\";",
    "fieldname": "sec_break_0",
    "fieldtype": "Section Break",
@@ -197,8 +201,8 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-09 22:03:33.417553",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-13 13:01:25.391895",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",

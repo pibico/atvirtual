@@ -16,6 +16,7 @@
   "participant",
   "device",
   "col_break_2",
+  "is_special",
   "config",
   "sec_break_1",
   "light_rgb",
@@ -27,7 +28,7 @@
   "light_sec",
   "sound_sec",
   "text_sec",
-  "crono_from",
+  "crono",
   "order",
   "col_break_3",
   "brightness",
@@ -108,9 +109,9 @@
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "label": "message_id",
-   "options": "MSG-",
+   "options": "MSG-.####",
    "read_only": 1,
-   "unique": 1
+   "set_only_once": 1
   },
   {
    "fieldname": "light_rgb",
@@ -123,6 +124,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "75",
    "fieldname": "brightness",
    "fieldtype": "Float",
    "label": "Brightness percent"
@@ -132,16 +134,19 @@
    "fieldtype": "Section Break"
   },
   {
+   "default": "30",
    "fieldname": "light_sec",
    "fieldtype": "Float",
    "label": "Light Duration"
   },
   {
+   "default": "30",
    "fieldname": "sound_sec",
    "fieldtype": "Float",
    "label": "Sound Duration"
   },
   {
+   "default": "75",
    "fieldname": "volume",
    "fieldtype": "Float",
    "label": "Volume percent"
@@ -153,6 +158,7 @@
    "options": "Sound WAV"
   },
   {
+   "default": "30",
    "fieldname": "text_sec",
    "fieldtype": "Float",
    "label": "Text Duration"
@@ -166,12 +172,6 @@
    "fieldname": "time_set",
    "fieldtype": "Datetime",
    "label": "Time Set"
-  },
-  {
-   "default": "00:00:00",
-   "fieldname": "crono_from",
-   "fieldtype": "Time",
-   "label": "Cronograph From"
   },
   {
    "default": "00:00:00",
@@ -204,13 +204,28 @@
   {
    "fieldname": "msg_description",
    "fieldtype": "Data",
+   "in_filter": 1,
    "in_global_search": 1,
    "in_list_view": 1,
+   "in_preview": 1,
    "in_standard_filter": 1,
-   "label": "Description"
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "crono",
+   "fieldtype": "Check",
+   "label": "Cronograph"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_special",
+   "fieldtype": "Check",
+   "label": "Is Special"
   }
  ],
- "modified": "2021-05-11 13:22:45.564723",
+ "modified": "2021-05-13 12:45:51.651176",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",
@@ -238,15 +253,6 @@
    "role": "Instructor",
    "share": 1,
    "write": 1
-  },
-  {
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Guest",
-   "share": 1
   }
  ],
  "quick_entry": 1,
