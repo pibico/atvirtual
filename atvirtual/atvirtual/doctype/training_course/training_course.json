@@ -10,13 +10,18 @@
   "html_route",
   "course_date",
   "title",
+  "coordinator",
+  "instructor",
   "col_break_0",
   "published",
   "training_type",
   "status",
+  "facilitator",
   "sec_break_0",
   "items",
   "participants",
+  "sch_messages",
+  "sec_break_1",
   "route"
  ],
  "fields": [
@@ -84,12 +89,37 @@
    "fieldtype": "Table",
    "label": "Participants",
    "options": "Session Role Item"
+  },
+  {
+   "fieldname": "coordinator",
+   "fieldtype": "Data",
+   "label": "Coordinator"
+  },
+  {
+   "fieldname": "facilitator",
+   "fieldtype": "Data",
+   "label": "Facilitator"
+  },
+  {
+   "fieldname": "instructor",
+   "fieldtype": "Data",
+   "label": "Link Instructor"
+  },
+  {
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sch_messages",
+   "fieldtype": "Table",
+   "label": "Scheduled Messages",
+   "options": "Destination Item"
   }
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-05-09 19:27:58.464935",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-14 19:24:38.284828",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Training Course",
  "name_case": "Title Case",
@@ -108,6 +138,8 @@
    "write": 1
   },
   {
+   "create": 1,
+   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,

@@ -16,10 +16,6 @@ import os, ssl, urllib, json
 from frappe.utils.password import get_decrypted_password
 
 class pibiMessage(Document):
-  def autoname(self):
-    """ Naming Messages from Current DateTime """
-    self.name = datetime.datetime.strftime(datetime.datetime.now(), "%y%m%d %H%M%S") + self.course
-  
   def validate(self):
     if self.message_type == "IoT" and not self.std_message:
       frappe.throw(_("Please fill the message content"))
@@ -27,8 +23,6 @@ class pibiMessage(Document):
   def before_save(self):
     if self.message_type == "IoT":
       std_message = frappe.get_doc("Standard Message", self.std_message)
-      msgdict = json.loads(std_message.json_message)
-      frappe.msgprint(_(msgdict))
           
   def before_submit(self):
     ## Prepare recipients list

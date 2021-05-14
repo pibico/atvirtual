@@ -1,13 +1,13 @@
 {
- "autoname": "format:{YY}{MM}{DD} {HH}{mm}{SS}{##}_{participant_role}",
+ "autoname": "field:description",
  "creation": "2020-11-24 10:51:45.414661",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sec_break_2",
   "course",
   "session_type",
+  "description",
   "col_break_msg",
   "message_type",
   "std_message",
@@ -47,7 +47,6 @@
    "fetch_from": "std_message.json_message",
    "fieldname": "message_text",
    "fieldtype": "Small Text",
-   "in_list_view": 1,
    "label": "Message Text"
   },
   {
@@ -97,10 +96,6 @@
    "fieldname": "sec_break_0",
    "fieldtype": "Section Break",
    "label": "Message Content"
-  },
-  {
-   "fieldname": "sec_break_2",
-   "fieldtype": "Section Break"
   },
   {
    "collapsible": 1,
@@ -189,11 +184,17 @@
    "fieldname": "sec_destination",
    "fieldtype": "Section Break",
    "label": "Destination"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "unique": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-14 17:30:01.298402",
- "modified_by": "Administrator",
+ "modified": "2021-05-14 19:00:39.970826",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "pibiMessage",
  "owner": "Administrator",
