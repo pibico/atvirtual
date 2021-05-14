@@ -45,7 +45,7 @@ app_license = "MIT"
 # Website user home page (by function)
 # get_website_user_home_page = "atvirtual.utils.get_home_page"
 
-brand_html = '<div><img width="27px" src="/assets/project_controls/assets/images/logo-icon.png"> Formac<strong>iON</strong></div>'
+brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-icon.png"> Formac<strong>iON</strong></div>'
 
 # Generators
 # ----------

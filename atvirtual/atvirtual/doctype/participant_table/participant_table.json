@@ -1,24 +1,24 @@
 {
- "creation": "2021-05-13 13:02:21.331396",
+ "creation": "2021-05-14 17:23:50.870638",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "participant_role"
+  "participant"
  ],
  "fields": [
   {
-   "fieldname": "participant_role",
+   "fieldname": "participant",
    "fieldtype": "Link",
-   "label": "Participant Role",
-   "options": "Participant Role"
+   "label": "Participant",
+   "options": "Participant"
   }
  ],
  "istable": 1,
- "modified": "2021-05-14 15:55:02.285637",
+ "modified": "2021-05-14 17:23:59.572392",
  "modified_by": "Administrator",
  "module": "Atvirtual",
- "name": "Recipient Table",
+ "name": "Participant Table",
  "owner": "Administrator",
  "permissions": [],
  "quick_entry": 1,

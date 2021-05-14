@@ -8,19 +8,19 @@
   "sec_break_2",
   "course",
   "session_type",
-  "participant_role",
-  "is_group",
-  "column_break_2",
+  "col_break_msg",
   "message_type",
   "std_message",
-  "device",
-  "alias",
+  "sec_destination",
+  "location_table",
+  "device_table",
+  "column_break_2",
+  "recipient_table",
+  "participant_table",
+  "sec_break_0",
+  "message_text",
   "sec_break_1",
   "message_item",
-  "sec_break_0",
-  "text2send",
-  "col_break_3",
-  "message_text",
   "sec_break_3",
   "from_email_account",
   "subject",
@@ -51,13 +51,6 @@
    "label": "Message Text"
   },
   {
-   "depends_on": "eval:doc.message_type===\"IoT\";",
-   "fieldname": "participant_role",
-   "fieldtype": "Link",
-   "label": "Role Recipient",
-   "options": "Participant Role"
-  },
-  {
    "fieldname": "course",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -75,25 +68,6 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:!doc.is_group && doc.message_type===\"IoT\";",
-   "fieldname": "device",
-   "fieldtype": "Link",
-   "label": "Device",
-   "options": "Device"
-  },
-  {
-   "fetch_from": "device.alias",
-   "fieldname": "alias",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Alias",
-   "read_only": 1
-  },
-  {
    "depends_on": "eval:doc.message_type===\"IoT\";",
    "fieldname": "std_message",
    "fieldtype": "Link",
@@ -101,7 +75,7 @@
    "in_global_search": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Standard Message",
+   "label": "Message Composition",
    "options": "Standard Message"
   },
   {
@@ -117,31 +91,12 @@
    "label": "Special Attachments"
   },
   {
-   "depends_on": "eval:!doc.std_message;",
-   "fieldname": "text2send",
-   "fieldtype": "Small Text",
-   "label": "Text to Send"
-  },
-  {
    "collapsible": 1,
-   "collapsible_depends_on": "eval:doc.message_type!==\"IoT\";",
-   "depends_on": "eval:doc.message_type==\"Text\";",
+   "collapsible_depends_on": "eval:!doc.message_text;",
+   "depends_on": "eval:doc.std_message;",
    "fieldname": "sec_break_0",
    "fieldtype": "Section Break",
-   "label": "Text Messages"
-  },
-  {
-   "fieldname": "col_break_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "depends_on": "eval:doc.participant_role;",
-   "fetch_from": "participant_role.is_group",
-   "fieldname": "is_group",
-   "fieldtype": "Check",
-   "label": "Is Group",
-   "read_only": 1
+   "label": "Message Content"
   },
   {
    "fieldname": "sec_break_2",
@@ -198,10 +153,46 @@
    "options": "pibiMessage",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "recipient_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Role Recipient",
+   "options": "Recipient Table"
+  },
+  {
+   "fieldname": "location_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Location Recipient",
+   "options": "Device Table"
+  },
+  {
+   "fieldname": "participant_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Participant Recipient",
+   "options": "Participant Table"
+  },
+  {
+   "fieldname": "device_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Device Recipient",
+   "options": "Device Table"
+  },
+  {
+   "fieldname": "col_break_msg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:!doc.std_message;",
+   "depends_on": "eval:doc.std_message;",
+   "fieldname": "sec_destination",
+   "fieldtype": "Section Break",
+   "label": "Destination"
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-13 13:01:25.391895",
+ "modified": "2021-05-14 17:30:01.298402",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",

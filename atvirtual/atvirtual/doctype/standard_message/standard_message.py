@@ -11,14 +11,17 @@ from frappe import msgprint, _
 
 class StandardMessage(Document):
   def validate(self):
+    """
     if not self.location and not self.role and not self.participant and not self.device:
       frappe.throw(_("You must select the message category"))
+    """  
     if not self.std_message and not self.config and not self.is_command:
       frappe.throw(_("You must fill a text or config or command message"))
     if self.config and not self.wifi_config:
       frappe.throw(_("You must fill a config message"))
     if self.is_command and not self.order:
       frappe.throw(_("You must fill a command"))
+    """
     if self.location:
       if self.role or self.participant or self.device:
         self.role = 0
@@ -41,6 +44,7 @@ class StandardMessage(Document):
       if not self.device:
         self.device = 1
         frappe.throw(_("Configuration Messages are only sent to devices"))
+    """
     if self.is_special:
       if not self.special_json:
         frappe.throw(_("You must indicate the special effect"))
@@ -48,6 +52,7 @@ class StandardMessage(Document):
   def before_save(self):
     ## Prepare json message
     json_message = {}
+    """
     ## Fill message type
     if self.location:
       json_message['type'] = "location"
@@ -57,6 +62,7 @@ class StandardMessage(Document):
       json_message['type'] = "participant"
     elif self.device:
       json_message['type'] = "device"
+    """
     ## Fill light section
     if self.light_rgb:
       light = {}
