@@ -15,9 +15,6 @@
   "col_break_0",
   "participant",
   "device",
-  "col_break_2",
-  "is_special",
-  "config",
   "sec_break_1",
   "light_rgb",
   "sound_wav",
@@ -38,7 +35,12 @@
   "command_args",
   "json_sec",
   "json_message",
-  "config_json"
+  "spec_sec",
+  "config",
+  "wifi_config",
+  "col_break_4",
+  "is_special",
+  "special_json"
  ],
  "fields": [
   {
@@ -48,10 +50,10 @@
    "unique": 1
   },
   {
-   "description": "JSON constructed from above message default parameters if nothing is selected: \n{\n  \"type\": \"device\",\n  \"light\": { \"rgb\": \"(0,0,0)\", \"lDur\": 0.0, \"bright\": 0.0},\n  \"sound\": { \"wav\": \"\", \"sDur\": 0.0, \"volume\": 0.0},\n  \"message\": {\"text\": \"\", \"tDur\": 0.0, \"latency\": 0.0},\n  \"time\": {\"timeSet\": \"\", \"crono\": \"00:00:00\", \"timer\": \"00:00:00\"},\n  \"command\":{\"is_command\": 0, \"order\": \"\", \"cArgs\": \"\"}\n  \"config\": \"\"\n}",
    "fieldname": "json_message",
    "fieldtype": "Small Text",
-   "label": "JSON Message"
+   "label": "JSON Message",
+   "read_only": 1
   },
   {
    "fieldname": "col_break_1",
@@ -64,10 +66,6 @@
   },
   {
    "fieldname": "col_break_0",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "col_break_2",
    "fieldtype": "Column Break"
   },
   {
@@ -134,16 +132,18 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "30",
+   "default": "15",
    "fieldname": "light_sec",
    "fieldtype": "Float",
-   "label": "Light Duration"
+   "label": "Light Duration",
+   "precision": "3"
   },
   {
-   "default": "30",
+   "default": "15",
    "fieldname": "sound_sec",
    "fieldtype": "Float",
-   "label": "Sound Duration"
+   "label": "Sound Duration",
+   "precision": "3"
   },
   {
    "default": "75",
@@ -158,15 +158,18 @@
    "options": "Sound WAV"
   },
   {
-   "default": "30",
+   "default": "15",
    "fieldname": "text_sec",
    "fieldtype": "Float",
-   "label": "Text Duration"
+   "label": "Text Duration",
+   "precision": "3"
   },
   {
+   "default": "0",
    "fieldname": "latency",
    "fieldtype": "Float",
-   "label": "Latency"
+   "label": "Latency",
+   "precision": "3"
   },
   {
    "fieldname": "time_set",
@@ -174,16 +177,10 @@
    "label": "Time Set"
   },
   {
-   "default": "00:00:00",
+   "default": "0:00:00",
    "fieldname": "timer_from",
    "fieldtype": "Time",
    "label": "Timer From"
-  },
-  {
-   "description": "To config devices, such as WiFi to connect: { \"wifi\": {\n\"ssid\": \"WFAP_FormaciON\", \"key\": \"(conect@4Pibi)\"}}",
-   "fieldname": "config_json",
-   "fieldtype": "Data",
-   "label": "Config JSON"
   },
   {
    "default": "0",
@@ -223,9 +220,31 @@
    "fieldname": "is_special",
    "fieldtype": "Check",
    "label": "Is Special"
+  },
+  {
+   "fieldname": "spec_sec",
+   "fieldtype": "Section Break",
+   "label": "Special Messages"
+  },
+  {
+   "fieldname": "col_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_special;",
+   "fieldname": "special_json",
+   "fieldtype": "Data",
+   "label": "Special JSON"
+  },
+  {
+   "depends_on": "eval:doc.config;",
+   "description": "To config WiFi enter as: ssid,key separated by comma without spaces",
+   "fieldname": "wifi_config",
+   "fieldtype": "Data",
+   "label": "WiFi_config"
   }
  ],
- "modified": "2021-05-13 12:45:51.651176",
+ "modified": "2021-05-14 13:33:54.540798",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",

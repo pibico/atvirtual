@@ -1,6 +1,38 @@
 [
  {
   "default_value": null,
+  "doc_type": "pibiMessage",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "message_type",
+  "modified": "2021-05-13 12:36:28.473275",
+  "name": "pibiMessage-message_type-options",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "options",
+  "property_type": "Text",
+  "value": "\nIoT\nE-mail"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Standard Message",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocType",
+  "field_name": null,
+  "modified": "2021-05-13 12:48:06.321601",
+  "name": "Standard Message-search_fields",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "search_fields",
+  "property_type": "Data",
+  "value": "msg_description"
+ },
+ {
+  "default_value": null,
   "doc_type": "Device",
   "docstatus": 0,
   "doctype": "Property Setter",

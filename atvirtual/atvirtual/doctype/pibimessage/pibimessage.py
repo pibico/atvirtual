@@ -62,8 +62,8 @@ class pibiMessage(Document):
       frappe.sendmail(**email_args)
       frappe.msgprint(_("Email sent to ") + str(recipients))
     
-    ## Send Text messages
-    if self.message_type == "Text":
+    ## Send IoT messages
+    if self.message_type == "IoT":
       ## Read main message
       json_message = json.loads(self.message_text)
       str_message = json_message["message"]
@@ -225,7 +225,7 @@ class pibiMessage(Document):
           pass 
     
       ## Send message by SMS
-      if len(sms_list) > 0  and self.message_type == "Text":
+      if len(sms_list) > 0  and self.message_type == "IoT":
         try:
           send_sms(sms_list, cstr(str_message))
           #frappe.msgprint(_("Message by sms to: " + str(sms_list)))
