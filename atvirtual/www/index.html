@@ -122,7 +122,7 @@
                   <span class="hide-menu">Inicio</span>
                 </a>
               </li> -->
-              
+              {% if frappe.session.user != 'Guest' %}
               <li class="list-divider"></li>
               <li class="nav-small-cap"><span class="hide-menu">FORMACION</span></li>
               <li class="sidebar-item">
@@ -169,7 +169,7 @@
                   <span class="hide-menu">M&Oacute;DULOS</span>
                 </a>
               </li>
-              
+              {% endif %}
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
