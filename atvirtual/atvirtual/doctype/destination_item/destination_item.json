@@ -1,0 +1,63 @@
+{
+ "creation": "2021-05-14 18:32:49.553119",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "paused",
+  "sch_message",
+  "start_when",
+  "sent",
+  "send_now"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "paused",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Paused"
+  },
+  {
+   "fieldname": "sch_message",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Scheduled Message",
+   "options": "pibiMessage"
+  },
+  {
+   "columns": 2,
+   "fieldname": "start_when",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start When"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "sent",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "send_now",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "Send Now"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-05-14 20:30:59.947111",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Destination Item",
+ "owner": "francisco.alaez@pibico.es",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
