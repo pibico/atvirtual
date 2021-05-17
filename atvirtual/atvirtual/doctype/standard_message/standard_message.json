@@ -245,7 +245,7 @@
    "label": "WiFi_config"
   }
  ],
- "modified": "2021-05-14 16:10:19.291070",
+ "modified": "2021-05-17 14:48:32.260981",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",
@@ -265,6 +265,7 @@
   },
   {
    "create": 1,
+   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
