@@ -12,11 +12,12 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Participant Role",
-   "options": "Participant Role"
+   "options": "Participant Role",
+   "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-05-14 19:53:44.253758",
+ "modified": "2021-05-22 22:03:13.812194",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Recipient Table",

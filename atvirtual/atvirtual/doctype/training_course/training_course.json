@@ -33,7 +33,6 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "options": "\nIn development\nDraft\nPrepared\nOngoing\nFinished\nCancelled"
@@ -74,7 +73,6 @@
    "fieldname": "course_date",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Date"
   },
@@ -118,7 +116,7 @@
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-05-14 19:24:38.284828",
+ "modified": "2021-05-18 13:02:47.102124",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Training Course",

@@ -114,4 +114,4 @@ class StandardMessage(Document):
     if self.is_special:
       json_message['effects'] = self.special_json
     ## save json
-    self.json_message = str(json_message)
+    self.json_message = json.dumps(json_message)

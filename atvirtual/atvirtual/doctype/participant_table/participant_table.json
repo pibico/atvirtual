@@ -12,11 +12,12 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Participant",
-   "options": "Participant"
+   "options": "Participant",
+   "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-05-14 19:56:05.280347",
+ "modified": "2021-05-22 22:03:05.741033",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Participant Table",

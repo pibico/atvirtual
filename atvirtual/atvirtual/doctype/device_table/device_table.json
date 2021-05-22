@@ -12,11 +12,12 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Device Table",
-   "options": "Device"
+   "options": "Device",
+   "reqd": 1
   }
  ],
  "istable": 1,
- "modified": "2021-05-14 20:00:18.584903",
+ "modified": "2021-05-22 22:40:58.226610",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device Table",

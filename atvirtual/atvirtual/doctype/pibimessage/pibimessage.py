@@ -19,11 +19,11 @@ class pibiMessage(Document):
   def validate(self):
     if self.message_type == "IoT" and not self.std_message:
       frappe.throw(_("Please fill the message content"))
-  
+    
   def before_save(self):
     if self.message_type == "IoT":
       std_message = frappe.get_doc("Standard Message", self.std_message)
-          
+    
   def before_submit(self):
     ## Prepare recipients list
     sms_list = []
@@ -64,8 +64,8 @@ class pibiMessage(Document):
     ## Send IoT messages
     if self.message_type == "IoT":
       ## Read main message
-      json_message = json.loads(self.message_text)
-      str_message = json_message["message"]
+      dict_message = json.loads(self.message_text)
+      str_message = dict_message["message"]["text"]
       ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
@@ -74,7 +74,18 @@ class pibiMessage(Document):
           else:   
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
         str_message = str_message + "\nCon archivos anexos:\n" + str_attach
-      
+      ## Prepare location recipients
+      if len(self.location_table) > 0:
+        for loc in self.location_table:
+          sms_list, mqtt_list, telegram_list = append_recipients(loc.device, sms_list, mqtt_list, telegram_list)
+      ## Prepare device recipients
+      if len(self.device_table) > 0:
+        for dev in self.device_table:
+          sms_list, mqtt_list, telegram_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list)
+      ## Prepare participant recipients    
+                 
+    
+      frappe.msgprint("MQTT " + str(mqtt_list) + " SMS " + str(sms_list) + " TG " + str(telegram_list))  
       ## Prepare devices to send message
       if json_message["type"] in ['session','role']:
         if self.course != '' and self.participant_role != "" and not self.is_group:
@@ -146,6 +157,8 @@ class pibiMessage(Document):
                     telegram_list.append(scn.telegram_number)
                     #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
                     
+      
+      
       elif json_message["type"] == "device" and self.device != '':
         doc = frappe.get_doc('Device', self.device)
         if not doc.disabled:
@@ -169,6 +182,9 @@ class pibiMessage(Document):
                   telegram_list.append(doc.telegram_number)
                   #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
     
+      
+      
+      
       ## Send message by MQTT
       if len(mqtt_list) > 0:
         path = frappe.utils.get_bench_path()
@@ -206,7 +222,7 @@ class pibiMessage(Document):
 
           payload = frappe.safe_decode(self.message_text).encode('utf-8')
           for dev in mqtt_list:
-            mqtt_topic = dev['name'] + "/mqtt"
+            mqtt_topic = str(dev) + "/mqtt"
             backend.publish(mqtt_topic, cstr(payload))
           backend.disconnect()
           #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
@@ -215,6 +231,8 @@ class pibiMessage(Document):
           #raise
           pass
     
+      
+      
       ## Send message by Telegram
       if len(telegram_list) > 0:
         try:
@@ -223,6 +241,8 @@ class pibiMessage(Document):
         except:
           pass 
     
+      
+      
       ## Send message by SMS
       if len(sms_list) > 0  and self.message_type == "IoT":
         try:
@@ -231,4 +251,28 @@ class pibiMessage(Document):
         except:
           pass
       
-      frappe.msgprint(_("Document Completed and Messages Sent"))    
+      frappe.msgprint(_("Document Completed and Messages Sent"))
+
+def append_recipients(device, sms_list, mqtt_list, telegram_list):
+  doc = frappe.get_doc('Device', device)
+  if not doc.disabled:
+    if doc.is_connected and doc.alerts_active:
+      if doc.by_sms:
+        if doc.sms_number != '':
+          if not doc.sms_number in sms_list:
+            sms_list.append(doc.sms_number)
+            #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
+      if doc.by_text:
+        if doc.device_name != '' and doc.by_mqtt and not doc.device_name in mqtt_list:
+          mqtt_list.append(doc.device_name)
+          #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
+        elif not doc.by_mqtt:
+          if doc.sms_number != '' and not doc.sms_number in sms_list:
+            sms_list.append(doc.sms_number)  
+            #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))  
+      if doc.by_telegram:
+        if doc.telegram_number != '':
+          if not doc.telegram_number in telegram_list:
+            telegram_list.append(doc.telegram_number)
+            #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
+  return sms_list, mqtt_list, telegram_list
