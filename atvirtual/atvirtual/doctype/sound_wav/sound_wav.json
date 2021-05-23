@@ -27,7 +27,7 @@
    "fieldtype": "Column Break"
   }
  ],
- "modified": "2021-05-17 14:51:56.905231",
+ "modified": "2021-05-23 13:44:21.927199",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Sound WAV",
@@ -53,7 +53,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Instructor",
+   "role": "Trainer",
    "share": 1,
    "write": 1
   }
