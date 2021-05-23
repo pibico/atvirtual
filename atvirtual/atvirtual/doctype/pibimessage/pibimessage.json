@@ -136,7 +136,7 @@
   {
    "fetch_from": "recipient_item.participant_email_id",
    "fieldname": "recipient_item",
-   "fieldtype": "Table",
+   "fieldtype": "Table MultiSelect",
    "label": "Recipients",
    "options": "Recipient Item"
   },
@@ -193,7 +193,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-22 22:34:56.289683",
+ "modified": "2021-05-23 18:01:55.303452",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
