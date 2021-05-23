@@ -59,13 +59,15 @@ class pibiMessage(Document):
         "reference_name": self.name
       }
       frappe.sendmail(**email_args)
-      frappe.msgprint(_("Email sent to ") + str(recipients))
     
     ## Send IoT messages
     if self.message_type == "IoT":
       ## Read main message
       dict_message = json.loads(self.message_text)
-      str_message = dict_message["message"]["text"]
+      if "message" in dict_message:
+        str_message = dict_message["message"]["text"]
+      else:
+        str_message = "Configuracion"  
       ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
@@ -156,8 +158,8 @@ class pibiMessage(Document):
           send_sms(sms_list, cstr(str_message))
         except:
           pass
-      ## Final Message
-      frappe.msgprint(_("Actions Completed and Messages Sent"))
+    ## Final Message
+    frappe.msgprint(_("Actions Completed and Messages Sent"))
 
 def append_recipients(device, sms_list, mqtt_list, telegram_list):
   doc = frappe.get_doc('Device', device)
