@@ -19,6 +19,8 @@ class pibiMessage(Document):
   def validate(self):
     if self.message_type == "IoT" and not self.std_message:
       frappe.throw(_("Please fill the message content"))
+    if self.message_type == "IoT" and len(self.location_table) == 0 and len(self.device_table) == 0 and len(self.recipient_table) == 0 and len(self.participant_table) == 0:
+      frappe.throw(_("Please choose any destination recipient"))
     
   def before_save(self):
     if self.message_type == "IoT":
