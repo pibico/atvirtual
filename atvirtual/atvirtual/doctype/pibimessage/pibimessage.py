@@ -74,6 +74,7 @@ class pibiMessage(Document):
           else:   
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
         str_message = str_message + "\nCon archivos anexos:\n" + str_attach
+        dict_message["message"]["text"] = str_message
       ## Prepare location recipients
       if len(self.location_table) > 0:
         for loc in self.location_table:
@@ -135,7 +136,7 @@ class pibiMessage(Document):
           else:  
             backend.connect(server, port)
 
-          payload = frappe.safe_decode(self.message_text).encode('utf-8')
+          payload = frappe.safe_decode(json.dumps(dict_message)).encode('utf-8')
           for dev in mqtt_list:
             mqtt_topic = str(dev) + "/mqtt"
             backend.publish(mqtt_topic, cstr(payload))
