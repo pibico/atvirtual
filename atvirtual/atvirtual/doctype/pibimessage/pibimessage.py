@@ -82,109 +82,25 @@ class pibiMessage(Document):
       if len(self.device_table) > 0:
         for dev in self.device_table:
           sms_list, mqtt_list, telegram_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list)
-      ## Prepare participant recipients    
-                 
-    
-      frappe.msgprint("MQTT " + str(mqtt_list) + " SMS " + str(sms_list) + " TG " + str(telegram_list))  
-      ## Prepare devices to send message
-      if json_message["type"] in ['session','role']:
-        if self.course != '' and self.participant_role != "" and not self.is_group:
-          """ Get from database devices ported by user in session """
-          devices = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant_role=%s and docstatus < 2""", (self.course, self.participant_role), True) 
-          for item in devices:
-            doc = frappe.get_doc('Device', item.device)
-            if not doc.disabled:
-              if doc.is_connected and not doc.is_scanner and doc.alerts_active:
-                if doc.by_sms:
-                  if doc.sms_number != '':
-                    sms_list.append(doc.sms_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-                if doc.by_text:
-                  if doc.device_name != '' and doc.by_mqtt:
-                    mqtt_list.append({"name": doc.device_name})
-                    #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
-                  elif not doc.by_mqtt:
-                    if doc.sms_number != '' and not doc.sms_number in sms_list:
-                      sms_list.append(doc.sms_number)  
-                      #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-                if doc.by_telegram:
-                  if doc.telegram_number != '':
-                    telegram_list.append(doc.telegram_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-        elif self.course != '' and self.participant_role != '' and self.is_group: 
+      ## Prepare role recipients    
+      if len(self.recipient_table) > 0:
+        for rol in self.recipient_table:
+          frappe.msgprint(rol.participant_role)
           """ Get from database devices ported in session """
-          ported = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
-          """ Get from database scanners assigned to session """
-          scanners = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
-          for dev in ported:           
-            doc = frappe.get_doc('Device', dev.device)
-            if not doc.disabled:
-              if doc.is_connected and not doc.is_scanner and doc.alerts_active:
-                if doc.by_sms:
-                  if doc.sms_number != '':
-                    sms_list.append(doc.sms_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-                if doc.by_text:
-                  if doc.device_name != '' and doc.by_mqtt:
-                    mqtt_list.append({"name": doc.device_name})
-                    #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
-                  elif not doc.by_mqtt:
-                    if doc.sms_number != '' and not doc.sms_number in sms_list:
-                      sms_list.append(doc.sms_number)  
-                      #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-                if doc.by_telegram:
-                  if doc.telegram_number != '':
-                    telegram_list.append(doc.telegram_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-          for scan in scanners:
-            scn = frappe.get_doc('Device', scan.device)
-            if not scn.disabled:
-              if scn.is_connected and scn.is_scanner and scn.alerts_active:
-                if scn.by_sms:
-                  if scn.sms_number != '':
-                    sms_list.append(scn.sms_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(scn.sms_number))
-                if scn.by_text:
-                  if scn.device_name != '' and scn.by_mqtt:
-                    mqtt_list.append({"name": scn.device_name})
-                    #frappe.msgprint(_("Message by mqtt to ") + str(scn.device_name))
-                  elif not scn.by_mqtt:
-                    if scn.sms_number != '' and not scn.sms_number in sms_list:
-                      sms_list.append(scn.sms_number)  
-                      #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-                if scn.by_telegram:
-                  if scn.telegram_number != '':
-                    telegram_list.append(scn.telegram_number)
-                    #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-                    
-      
-      
-      elif json_message["type"] == "device" and self.device != '':
-        doc = frappe.get_doc('Device', self.device)
-        if not doc.disabled:
-          if doc.is_connected and doc.alerts_active:
-            if doc.by_sms:
-              if doc.sms_number != '':
-                if not doc.sms_number in sms_list:
-                  sms_list.append(doc.sms_number)
-                  #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))
-            if doc.by_text:
-              if doc.device_name != '' and doc.by_mqtt:
-                mqtt_list.append({"name": doc.device_name})
-                #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
-              elif not doc.by_mqtt:
-                if doc.sms_number != '' and not doc.sms_number in sms_list:
-                  sms_list.append(doc.sms_number)  
-                  #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))  
-            if doc.by_telegram:
-              if doc.telegram_number != '':
-                if not doc.telegram_number in telegram_list:
-                  telegram_list.append(doc.telegram_number)
-                  #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-    
-      
-      
-      
+          roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant_role=%s and docstatus < 2""", (self.course, rol.participant_role), True)
+          if len(roldev) > 0:
+            for itm in roldev:
+              sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list)
+      ## Prepare participants           
+      if len(self.participant_table) > 0:
+        for per in self.participant_table:
+          frappe.msgprint(per.participant)
+          """ Get from database devices ported in session """
+          perdev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant=%s and docstatus < 2""", (self.course, per.participant), True)
+          if len(perdev) > 0:
+            for per in perdev: 
+              sms_list, mqtt_list, telegram_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list) 
+     
       ## Send message by MQTT
       if len(mqtt_list) > 0:
         path = frappe.utils.get_bench_path()
@@ -207,7 +123,6 @@ class pibiMessage(Document):
           backend = mqtt.Client(client_id=client_id, clean_session=True)
           backend.username_pw_set(user, password=secret)
           if do_ssl == True:
-            #ca = path + "/sites/" + frappe.get_site_path('private', 'files', client.ca)[1:]
             ca = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.ca)[1:])
             client_crt = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_crt)[1:])
             client_key = os.path.join(path, "sites", site_name, frappe.get_site_path('private', 'files', client.client_key)[1:])
@@ -225,33 +140,23 @@ class pibiMessage(Document):
             mqtt_topic = str(dev) + "/mqtt"
             backend.publish(mqtt_topic, cstr(payload))
           backend.disconnect()
-          #frappe.msgprint(_("Message by mqtt to: " + str(mqtt_list)))
         except:
           frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
-          #raise
           pass
-    
-      
-      
       ## Send message by Telegram
       if len(telegram_list) > 0:
         try:
           send_telegram(telegram_list, cstr(str_message))
-          #frappe.msgprint(_("Message by telegram to: " + str(telegram_list)))
         except:
           pass 
-    
-      
-      
       ## Send message by SMS
       if len(sms_list) > 0  and self.message_type == "IoT":
         try:
           send_sms(sms_list, cstr(str_message))
-          #frappe.msgprint(_("Message by sms to: " + str(sms_list)))
         except:
           pass
-      
-      frappe.msgprint(_("Document Completed and Messages Sent"))
+      ## Final Message
+      frappe.msgprint(_("Actions Completed and Messages Sent"))
 
 def append_recipients(device, sms_list, mqtt_list, telegram_list):
   doc = frappe.get_doc('Device', device)
