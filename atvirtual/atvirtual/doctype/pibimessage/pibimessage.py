@@ -33,11 +33,12 @@ class pibiMessage(Document):
     mqtt_list = []
     str_attach = ''
     recipients = []
+    str_message = ""
     
     ## Send E-mails
     if self.message_type == "E-mail":
       ## Read message body
-      message = self.email_body
+      str_message = self.email_body
       ## Read Recipients Table
       recipient_list = self.recipient_item
       if len(recipient_list) > 0:
@@ -50,12 +51,12 @@ class pibiMessage(Document):
             str_attach = str_attach + '<a href="' + row.attachment + '">Anexo ' +str(idx+1) + ': ' + row.description + '</a><br>'
           else:   
             str_attach = str_attach + '<a href="' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '">Anexo ' +str(idx+1) + ': ' + row.description + '</a><br>'
-        message = message + "<p>Con archivos anexos:</p><p>" + str_attach + "</p>"
+        str_message = str_message + "<p>Con archivos anexos:</p><p>" + str_attach + "</p>"
       ## Finally Send message by Email
       email_args = {
         "sender": self.from_email_account,
         "recipients": recipients,
-        "message": message,
+        "message": str_message,
         "subject": self.subject,
         "reference_doctype": self.doctype,
         "reference_name": self.name
@@ -64,7 +65,6 @@ class pibiMessage(Document):
     
     ## Send IoT messages
     if self.message_type == "IoT":
-      str_message = ""
       ## Read main message
       dict_message = json.loads(self.message_text)
       if "message" in dict_message:
