@@ -62,12 +62,11 @@ class pibiMessage(Document):
     
     ## Send IoT messages
     if self.message_type == "IoT":
+      str_message = ""
       ## Read main message
       dict_message = json.loads(self.message_text)
       if "message" in dict_message:
         str_message = dict_message["message"]["text"]
-      else:
-        str_message = "Configuracion"  
       ## Read and prepare message with attachments 
       if len(self.message_item) > 0:
         for idx, row in enumerate(self.message_item):
