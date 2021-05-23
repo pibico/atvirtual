@@ -159,7 +159,7 @@
    "fieldname": "location_table",
    "fieldtype": "Table MultiSelect",
    "label": "Location Recipient",
-   "options": "Device Table"
+   "options": "Location Table"
   },
   {
    "fieldname": "participant_table",
@@ -193,7 +193,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-23 18:01:55.303452",
+ "modified": "2021-05-23 22:11:28.134118",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",

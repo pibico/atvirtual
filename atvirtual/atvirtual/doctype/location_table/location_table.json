@@ -1,0 +1,39 @@
+{
+ "creation": "2021-05-23 22:09:22.361994",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "place",
+  "location_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "place",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location Table",
+   "options": "Training Place",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "place.place_id",
+   "fieldname": "location_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location ID",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-05-23 22:11:08.091315",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Location Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

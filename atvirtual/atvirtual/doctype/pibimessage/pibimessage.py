@@ -81,7 +81,11 @@ class pibiMessage(Document):
       ## Prepare location recipients
       if len(self.location_table) > 0:
         for loc in self.location_table:
-          sms_list, mqtt_list, telegram_list = append_recipients(loc.device, sms_list, mqtt_list, telegram_list)
+          """ Get from database devices assigned to locations in session """
+          locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s AND place=%s and docstatus < 2""", (self.course, loc.place), True)
+          if len(locdev) > 0:
+            for plc in locdev:
+              sms_list, mqtt_list, telegram_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list)
       ## Prepare device recipients
       if len(self.device_table) > 0:
         for dev in self.device_table:
