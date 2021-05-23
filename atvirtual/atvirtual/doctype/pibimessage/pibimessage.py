@@ -68,7 +68,7 @@ class pibiMessage(Document):
       if "message" in dict_message:
         str_message = dict_message["message"]["text"]
       ## Read and prepare message with attachments 
-      if len(self.message_item) > 0:
+      if len(self.message_item) > 0 and str_message != '':
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + row.attachment + '\n' 
