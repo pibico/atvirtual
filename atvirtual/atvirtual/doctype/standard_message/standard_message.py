@@ -85,6 +85,7 @@ class StandardMessage(Document):
       message['text'] = self.std_message
       message['tDur'] = self.text_sec
       message['latency'] = self.latency
+      message['contrast'] = self.contrast
       json_message['message'] = message
     ## Fill time section
     if self.time_set or self.crono or self.timer_from != "0:00:00":
