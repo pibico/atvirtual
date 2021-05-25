@@ -145,7 +145,7 @@ class pibiMessage(Document):
 
           payload = frappe.safe_decode(json.dumps(dict_message)).encode('utf-8')
           for dev in mqtt_list:
-            mqtt_topic = str(dev) + "/mqtt"
+            mqtt_topic = str(dev) + "/display/text"
             backend.publish(mqtt_topic, cstr(payload))
           backend.disconnect()
         except:
