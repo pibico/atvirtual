@@ -14,7 +14,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Action",
-   "options": "\nOnOff\nSound\nLight"
+   "options": "\nOnOff"
   },
   {
    "default": "0",
@@ -31,8 +31,8 @@
   }
  ],
  "istable": 1,
- "modified": "2021-05-24 16:12:59.405484",
- "modified_by": "Administrator",
+ "modified": "2021-05-26 15:05:38.047848",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Command Item",
  "owner": "Administrator",
