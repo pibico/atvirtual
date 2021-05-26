@@ -12,8 +12,9 @@
   "control_panel",
   "disabled",
   "alerts_active",
-  "has_commands",
+  "is_atvirtual",
   "is_scanner",
+  "has_commands",
   "col_break_loc",
   "location",
   "sec_break_00",
@@ -365,9 +366,15 @@
    "fieldname": "wifi_ssid",
    "fieldtype": "Data",
    "label": "WiFi AP"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_atvirtual",
+   "fieldtype": "Check",
+   "label": "Is AT Virtual"
   }
  ],
- "modified": "2021-05-26 15:07:34.925113",
+ "modified": "2021-05-26 15:44:46.445321",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",

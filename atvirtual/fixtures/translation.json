@@ -1986,5 +1986,19 @@
   "source_name": "Serial or IMEI",
   "status": "Saved",
   "target_name": "N\u00famero de Serie"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-05-26 15:45:49.061536",
+  "name": "f874075ffd",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Is AT Virtual",
+  "status": "Saved",
+  "target_name": "Especial FormaciON"
  }
 ]
