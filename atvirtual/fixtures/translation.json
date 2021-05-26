@@ -2000,5 +2000,47 @@
   "source_name": "Is AT Virtual",
   "status": "Saved",
   "target_name": "Especial FormaciON"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-05-26 19:10:38.696907",
+  "name": "51063c162b",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Uptime",
+  "status": "Saved",
+  "target_name": "Tiempo Encendido"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-05-26 21:04:49.734215",
+  "name": "76cc2b2e2c",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Warning Email",
+  "status": "Saved",
+  "target_name": "Correo de Avisos"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-05-26 21:07:30.276539",
+  "name": "9de5639ffc",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Email accounts for sending warnings",
+  "status": "Saved",
+  "target_name": "Cuentas de correo para envio de alarmas y avisos, separadas por comas sin espacios"
  }
 ]

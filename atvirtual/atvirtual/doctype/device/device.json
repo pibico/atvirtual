@@ -15,6 +15,7 @@
   "is_atvirtual",
   "is_scanner",
   "has_commands",
+  "warning_email",
   "col_break_loc",
   "location",
   "sec_break_00",
@@ -30,6 +31,7 @@
   "wifi_ssid",
   "col_break_3",
   "last_seen",
+  "uptime",
   "sec_break_2",
   "detected_by",
   "training_place",
@@ -372,9 +374,20 @@
    "fieldname": "is_atvirtual",
    "fieldtype": "Check",
    "label": "Is AT Virtual"
+  },
+  {
+   "fieldname": "uptime",
+   "fieldtype": "Time",
+   "label": "Uptime"
+  },
+  {
+   "description": "Email accounts for sending warnings",
+   "fieldname": "warning_email",
+   "fieldtype": "Data",
+   "label": "Warning Email"
   }
  ],
- "modified": "2021-05-26 15:44:46.445321",
+ "modified": "2021-05-26 21:04:25.308734",
  "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
