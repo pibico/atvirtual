@@ -246,13 +246,15 @@
    "label": "WiFi_config"
   },
   {
+   "default": "75",
    "fieldname": "contrast",
    "fieldtype": "Float",
-   "label": "Contrast"
+   "label": "Contrast",
+   "precision": "2"
   }
  ],
- "modified": "2021-05-25 18:25:38.388312",
- "modified_by": "Administrator",
+ "modified": "2021-05-26 11:59:34.368131",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Standard Message",
  "owner": "francisco.alaez@pibico.es",
