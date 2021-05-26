@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+import datetime
 
 @frappe.whitelist()
 def get_image(slide):
@@ -46,3 +47,28 @@ def get_places(allow_guest=True):
   device = ''
   data = frappe.db.sql("""SELECT t1.parent, t1.place, t1.device FROM `tabPlace Item` AS t1 INNER JOIN `tabTraining Course` AS t2 ON t1.parent = t2.name WHERE t2.status != 'Completed' AND t1.docstatus < 2 and t1.device != %s""", device, True)
   return data
+
+def check_connected_devices():
+  devices = frappe.get_list(
+    doctype = "Device",
+    fields = ['name'],
+    filters = [['docstatus', '<', 2], ['disabled', '=', 0], ['is_atvirtual', '=', 1]]
+  )
+  if devices:
+    for device in devices:
+      doc = frappe.get_doc("Device", device.name)
+      last_seen = doc.last_seen
+      now = datetime.datetime.now()
+      if last_seen:
+        time_minutes = (now - last_seen).total_seconds()/60
+      else:
+        time_minutes = 6
+        
+      if time_minutes >= 6:
+        if doc.is_connected:
+          doc.is_connected = False
+          doc.last_seen = None
+          doc.ip = None
+          doc.wifi_ssid = None
+          doc.save()
+      

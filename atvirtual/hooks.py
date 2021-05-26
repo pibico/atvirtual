@@ -92,6 +92,13 @@ brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-i
 # Scheduled Tasks
 # ---------------
 
+scheduler_events = {
+ 	"cron": {
+    "*/6 * * * *": [
+ 		  "atvirtual.atvirtual.custom.check_connected_devices"
+ 	  ]  
+  }
+}
 # scheduler_events = {
 # 	"all": [
 # 		"atvirtual.tasks.all"
@@ -129,4 +136,4 @@ brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-i
 # 	"Task": "atvirtual.task.get_dashboard_data"
 # }
 
-fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Custom Script', 'Property Setter', 'Workflow', 'Workflow State', 'Workflow Action', 'Translation', 'Website Settings']
+fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Custom Script', 'Property Setter', 'Translation']
