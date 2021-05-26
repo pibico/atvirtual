@@ -71,4 +71,3 @@ def check_connected_devices():
           doc.ip = None
           doc.wifi_ssid = None
           doc.save()
-      
