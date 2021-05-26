@@ -156,13 +156,13 @@ class pibiMessage(Document):
         try:
           send_telegram(telegram_list, cstr(str_message))
         except:
-          pass 
+          pass  
       ## Send message by SMS
       if len(sms_list) > 0  and self.message_type == "IoT":
         try:
           send_sms(sms_list, cstr(str_message))
         except:
-          pass
+          pass      
     ## Final Message
     frappe.msgprint(_("Actions Completed and Messages Sent"))
 
