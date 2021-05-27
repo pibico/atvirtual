@@ -13,9 +13,11 @@
   "message_type",
   "std_message",
   "sec_destination",
+  "all_places",
   "location_table",
   "device_table",
   "column_break_2",
+  "all_roles",
   "recipient_table",
   "participant_table",
   "sec_break_0",
@@ -191,10 +193,22 @@
    "fieldtype": "Data",
    "label": "Description",
    "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "all_places",
+   "fieldtype": "Check",
+   "label": "All Places"
+  },
+  {
+   "default": "0",
+   "fieldname": "all_roles",
+   "fieldtype": "Check",
+   "label": "All Roles"
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-26 08:43:22.654542",
+ "modified": "2021-05-27 09:46:50.604597",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",

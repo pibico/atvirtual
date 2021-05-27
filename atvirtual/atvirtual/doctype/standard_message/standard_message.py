@@ -79,21 +79,26 @@ class StandardMessage(Document):
       sound['sDur'] = self.sound_sec
       sound['volume'] = self.volume
       json_message['sound'] = sound
+    ## Fill latency
+    if self.latency:
+      json_message['latency'] = self.latency
     ## Fill text section
     if self.std_message:
       message = {}
       message['text'] = self.std_message
       message['tDur'] = self.text_sec
-      message['latency'] = self.latency
+      
       message['contrast'] = self.contrast
       json_message['message'] = message
     ## Fill time section
-    if self.time_set or self.crono or self.timer_from != "0:00:00":
+    if self.time_set or self.start_crono or self.timer_from != "0:00:00":
       strtime = {}
       if self.time_set:
         strtime['timeSet'] = datetime.datetime.strptime(self.time_set, "%Y-%m-%d %H:%M:%S")
-      if self.crono:
-        strtime['crono'] = self.crono
+      if self.start_crono:
+        strtime['crono'] = self.start_crono
+      if self.stop_crono:
+          strtime['stop_crono'] = self.stop_crono
       if self.timer_from != "0:00:00":
         strtime['timer'] = self.timer_from  
       json_message['time'] = strtime

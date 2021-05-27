@@ -20,7 +20,8 @@
   "sound_wav",
   "std_message",
   "latency",
-  "crono",
+  "start_crono",
+  "stop_crono",
   "is_command",
   "col_break_1",
   "light_sec",
@@ -180,6 +181,7 @@
   },
   {
    "default": "0:00:00",
+   "depends_on": "eval:!doc.start_crono;",
    "fieldname": "timer_from",
    "fieldtype": "Time",
    "label": "Timer From"
@@ -210,12 +212,6 @@
    "in_standard_filter": 1,
    "label": "Description",
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "crono",
-   "fieldtype": "Check",
-   "label": "Cronograph"
   },
   {
    "default": "0",
@@ -251,10 +247,23 @@
    "fieldtype": "Float",
    "label": "Contrast",
    "precision": "2"
+  },
+  {
+   "default": "0",
+   "fieldname": "start_crono",
+   "fieldtype": "Check",
+   "label": "Active Chrono"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.start_crono;",
+   "fieldname": "stop_crono",
+   "fieldtype": "Check",
+   "label": "Chronograph OFF"
   }
  ],
- "modified": "2021-05-26 11:59:34.368131",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-27 18:42:17.180272",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",
  "owner": "francisco.alaez@pibico.es",
