@@ -94,7 +94,7 @@ class StandardMessage(Document):
     if self.time_set or self.start_crono or self.timer_from != "0:00:00":
       strtime = {}
       if self.time_set:
-        strtime['timeSet'] = datetime.datetime.strptime(self.time_set, "%Y-%m-%d %H:%M:%S")
+        strtime['timeSet'] = str(datetime.datetime.strptime(self.time_set, "%Y-%m-%d %H:%M:%S"))
       if self.start_crono:
         strtime['crono'] = self.start_crono
       if self.stop_crono:
