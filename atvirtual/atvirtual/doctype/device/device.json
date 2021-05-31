@@ -34,11 +34,9 @@
   "uptime",
   "sec_break_2",
   "detected_by",
-  "training_place",
   "rssi",
   "col_break_4",
   "last_located",
-  "distance",
   "latlong",
   "sec_break_3",
   "by_sms",
@@ -146,12 +144,6 @@
    "label": "Is Located"
   },
   {
-   "fieldname": "training_place",
-   "fieldtype": "Link",
-   "label": "Place",
-   "options": "Training Place"
-  },
-  {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
@@ -216,11 +208,6 @@
    "fieldname": "by_mqtt",
    "fieldtype": "Check",
    "label": "By Mqtt"
-  },
-  {
-   "fieldname": "distance",
-   "fieldtype": "Float",
-   "label": "Distance"
   },
   {
    "fieldname": "alias",
@@ -327,6 +314,7 @@
    "description": "Latitude and Longitude in format [lat,long]",
    "fieldname": "latlong",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Latitude and Longitud"
   },
   {
@@ -387,8 +375,8 @@
    "label": "Warning Email"
   }
  ],
- "modified": "2021-05-26 21:04:25.308734",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-05-31 22:38:08.013661",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",

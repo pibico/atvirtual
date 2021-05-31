@@ -71,3 +71,27 @@ def check_connected_devices():
           doc.ip = None
           doc.wifi_ssid = None
           doc.save()
+
+def check_located_devices():
+  devices = frappe.get_list(
+    doctype = "Device",
+    fields = ['name'],
+    filters = [['docstatus', '<', 2], ['disabled', '=', 0], ['is_atvirtual', '=', 1]]
+  )
+  if devices:
+    for device in devices:
+      doc = frappe.get_doc("Device", device.name)
+      last_located = doc.last_located
+      now = datetime.datetime.now()
+      if last_located:
+        time_minutes = (now - last_located).total_seconds()/60
+      else:
+        time_minutes = 3
+        
+      if time_minutes >= 3:
+        if doc.is_located:
+          doc.is_located = False
+          doc.last_located = None
+          doc.rssi = None
+          doc.detected_by = None
+          doc.save()

@@ -96,7 +96,10 @@ scheduler_events = {
  	"cron": {
     "*/6 * * * *": [
  		  "atvirtual.atvirtual.custom.check_connected_devices"
- 	  ]  
+ 	  ],
+    "*/3 * * * *": [
+ 		  "atvirtual.atvirtual.custom.check_located_devices"
+ 	  ]     
   }
 }
 # scheduler_events = {
