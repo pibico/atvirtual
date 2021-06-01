@@ -354,14 +354,14 @@
   "docstatus": 0,
   "doctype": "Translation",
   "language": "es",
-  "modified": "2021-06-01 11:31:52.857153",
+  "modified": "2021-06-01 12:39:05.912947",
   "name": "0fd988f312",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
   "source_name": "Scanner",
   "status": "Saved",
-  "target_name": "Dispositivo"
+  "target_name": "Localizador"
  },
  {
   "contributed_translation_doctype_name": null,
@@ -2056,5 +2056,47 @@
   "source_name": "Email accounts for sending warnings",
   "status": "Saved",
   "target_name": "Cuentas de correo para envio de alarmas y avisos, separadas por comas sin espacios"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-06-01 12:28:48.507898",
+  "name": "38e774cbe9",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Action Messages",
+  "status": "Saved",
+  "target_name": "Mensajes Desencadenados"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-06-01 12:35:49.511140",
+  "name": "d93f1400dd",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Located",
+  "status": "Saved",
+  "target_name": "Dispositivo Localizado"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-06-01 12:44:49.143066",
+  "name": "40c56fbe75",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Ordered",
+  "status": "Saved",
+  "target_name": "Ordenado Por"
  }
 ]

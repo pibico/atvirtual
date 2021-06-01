@@ -21,6 +21,7 @@
   "items",
   "participants",
   "sch_messages",
+  "action_messages",
   "sec_break_1",
   "route"
  ],
@@ -112,11 +113,17 @@
    "fieldtype": "Table",
    "label": "Scheduled Messages",
    "options": "Destination Item"
+  },
+  {
+   "fieldname": "action_messages",
+   "fieldtype": "Table",
+   "label": "Action Messages",
+   "options": "Action Item"
   }
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-05-18 13:02:47.102124",
+ "modified": "2021-06-01 12:28:04.113920",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Training Course",

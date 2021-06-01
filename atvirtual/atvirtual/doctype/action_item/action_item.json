@@ -1,0 +1,76 @@
+{
+ "creation": "2021-06-01 12:25:26.452741",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "paused",
+  "sch_message",
+  "scanner",
+  "col_break_1",
+  "located",
+  "ordered",
+  "sent"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "paused",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Paused"
+  },
+  {
+   "fieldname": "sch_message",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Scheduled Message",
+   "options": "pibiMessage"
+  },
+  {
+   "fieldname": "scanner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Scanner",
+   "options": "Device"
+  },
+  {
+   "fieldname": "located",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Located",
+   "options": "Device"
+  },
+  {
+   "default": "0",
+   "fieldname": "sent",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ordered",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ordered",
+   "options": "Device"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-06-01 12:44:08.494316",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Action Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
