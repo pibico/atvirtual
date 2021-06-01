@@ -1,1 +1,13 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Role Profile",
+  "modified": "2021-05-31 15:03:17.146934",
+  "name": "Test 1",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "role_profile": "Test 1",
+  "roles": []
+ }
+]
