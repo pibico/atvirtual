@@ -94,4 +94,5 @@ def check_located_devices():
           doc.last_located = None
           doc.rssi = None
           doc.detected_by = None
+          doc.training_place = None
           doc.save()

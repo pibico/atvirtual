@@ -37,6 +37,7 @@
   "rssi",
   "col_break_4",
   "last_located",
+  "training_place",
   "latlong",
   "sec_break_3",
   "by_sms",
@@ -373,9 +374,15 @@
    "fieldname": "warning_email",
    "fieldtype": "Data",
    "label": "Warning Email"
+  },
+  {
+   "fieldname": "training_place",
+   "fieldtype": "Link",
+   "label": "Training Place",
+   "options": "Training Place"
   }
  ],
- "modified": "2021-05-31 22:38:08.013661",
+ "modified": "2021-06-01 08:18:39.786068",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
