@@ -21,6 +21,12 @@ def get_data():
         },
         {
           "type": "doctype",
+          "name": "Action Message",
+          "description": _("Action Message"),
+          "onboard": 1,
+        },
+        {
+          "type": "doctype",
           "name": "Standard Message",
           "description": _("Standard Message"),
           "onboard": 1,

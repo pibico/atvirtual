@@ -1,0 +1,194 @@
+{
+ "allow_rename": 1,
+ "autoname": "field:description",
+ "creation": "2021-06-02 10:39:05.928146",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "disabled",
+  "description",
+  "col_break_msg",
+  "message_type",
+  "std_message",
+  "sec_destination",
+  "location_table",
+  "column_break_2",
+  "device_table",
+  "sec_break_0",
+  "message_text",
+  "sec_break_1",
+  "message_item",
+  "sec_break_3",
+  "from_email_account",
+  "subject",
+  "email_template",
+  "recipient_item",
+  "col_break_4",
+  "email_body"
+ ],
+ "fields": [
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description",
+   "unique": 1
+  },
+  {
+   "fieldname": "col_break_msg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "message_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Message Type",
+   "options": "\nIoT\nE-mail",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.message_type===\"IoT\";",
+   "fieldname": "std_message",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Message Composition",
+   "options": "Standard Message"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:!doc.std_message;",
+   "depends_on": "eval:doc.std_message;",
+   "fieldname": "sec_destination",
+   "fieldtype": "Section Break",
+   "label": "Destination"
+  },
+  {
+   "fieldname": "location_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Location Recipient",
+   "options": "Location Table"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "device_table",
+   "fieldtype": "Table MultiSelect",
+   "label": "Device Recipient",
+   "options": "Device Table"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:!doc.message_text;",
+   "depends_on": "eval:doc.std_message;",
+   "fieldname": "sec_break_0",
+   "fieldtype": "Section Break",
+   "label": "Message Content"
+  },
+  {
+   "fetch_from": "std_message.json_message",
+   "fieldname": "message_text",
+   "fieldtype": "Small Text",
+   "label": "Message Text"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "sec_break_1",
+   "fieldtype": "Section Break",
+   "label": "Special Attachments"
+  },
+  {
+   "fieldname": "message_item",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Message Item"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:doc.message_type!==\"E-mail\";",
+   "depends_on": "eval:doc.message_type==\"E-mail\";",
+   "fieldname": "sec_break_3",
+   "fieldtype": "Section Break",
+   "label": "E-mail"
+  },
+  {
+   "fetch_from": "from_email_account.email_id",
+   "fieldname": "from_email_account",
+   "fieldtype": "Link",
+   "label": "From Account",
+   "options": "Email Account"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "email_template",
+   "fieldtype": "Link",
+   "label": "Email Template",
+   "options": "Email Template"
+  },
+  {
+   "fetch_from": "recipient_item.participant_email_id",
+   "fieldname": "recipient_item",
+   "fieldtype": "Table MultiSelect",
+   "label": "Recipients",
+   "options": "Recipient Item"
+  },
+  {
+   "fieldname": "col_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "email_template.response",
+   "fieldname": "email_body",
+   "fieldtype": "Text Editor",
+   "label": "Email Body"
+  },
+  {
+   "default": "1",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  }
+ ],
+ "modified": "2021-06-02 10:42:55.849896",
+ "modified_by": "Administrator",
+ "module": "Atvirtual",
+ "name": "Action Message",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Instructor",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
