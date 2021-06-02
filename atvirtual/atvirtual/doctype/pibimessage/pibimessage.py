@@ -19,13 +19,15 @@ class pibiMessage(Document):
   def validate(self):
     if self.message_type == "IoT" and not self.std_message:
       frappe.throw(_("Please fill the message content"))
-    if self.message_type == "IoT" and len(self.location_table) == 0 and len(self.device_table) == 0 and len(self.recipient_table) == 0 and len(self.participant_table) == 0:
-      frappe.throw(_("Please choose any destination recipient"))
-    
+    if self.message_type == "IoT":
+      if not self.all_places and not self.all_roles:  
+        if len(self.location_table) == 0 and len(self.device_table) == 0 and len(self.recipient_table) == 0 and len(self.participant_table) == 0:
+          frappe.throw(_("Please choose any destination recipient"))
+
   def before_save(self):
     if self.message_type == "IoT":
       std_message = frappe.get_doc("Standard Message", self.std_message)
-    
+
   def before_submit(self):
     ## Prepare recipients list
     sms_list = []
@@ -34,7 +36,7 @@ class pibiMessage(Document):
     str_attach = ''
     recipients = []
     str_message = ""
-    
+
     ## Send E-mails
     if self.message_type == "E-mail":
       ## Read message body
@@ -49,7 +51,7 @@ class pibiMessage(Document):
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
             str_attach = str_attach + '<a href="' + row.attachment + '">Anexo ' +str(idx+1) + ': ' + row.description + '</a><br>'
-          else:   
+          else:
             str_attach = str_attach + '<a href="' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '">Anexo ' +str(idx+1) + ': ' + row.description + '</a><br>'
         str_message = str_message + "<p>Con archivos anexos:</p><p>" + str_attach + "</p>"
       ## Finally Send message by Email
@@ -62,7 +64,7 @@ class pibiMessage(Document):
         "reference_name": self.name
       }
       frappe.sendmail(**email_args)
-    
+
     ## Send IoT messages
     if self.message_type == "IoT":
       ## Read main message
@@ -74,24 +76,37 @@ class pibiMessage(Document):
         for idx, row in enumerate(self.message_item):
           if "http" in row.attachment:
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + row.attachment + '\n' 
-          else:   
+          else:
             str_attach = str_attach + 'Anexo ' + str(idx+1) + ': ' + row.description + ' @ ' + frappe.utils.get_url() + urllib.parse.quote(row.attachment) + '\n'
         str_message = str_message + "\nCon archivos anexos:\n" + str_attach
         dict_message["message"]["text"] = str_message
       ## Prepare location recipients
-      if len(self.location_table) > 0:
+      if len(self.location_table) > 0 and not self.all_places:
         for loc in self.location_table:
           """ Get from database devices assigned to locations in session """
           locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s AND place=%s and docstatus < 2""", (self.course, loc.place), True)
           if len(locdev) > 0:
             for plc in locdev:
               sms_list, mqtt_list, telegram_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list)
-      ## Prepare device recipients
-      if len(self.device_table) > 0:
+      ## Prepare device recipients even in case all places selectect
+      if len(self.device_table) > 0 and not self.all_places:
         for dev in self.device_table:
           sms_list, mqtt_list, telegram_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list)
+      ## Prepare all devices
+      if self.all_places:
+        """ Get from database devices in session """
+        locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
+        if len(locdev) > 0:
+          for plc in locdev:
+            sms_list, mqtt_list, telegram_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list)
+        """ Get from database devices in session in roles table """
+        roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
+        if len(roldev) > 0:
+          for itm in roldev:
+            sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list)
+
       ## Prepare role recipients    
-      if len(self.recipient_table) > 0:
+      if len(self.recipient_table) > 0 and not self.all_roles:
         for rol in self.recipient_table:
           frappe.msgprint(rol.participant_role)
           """ Get from database devices ported in session """
@@ -100,15 +115,22 @@ class pibiMessage(Document):
             for itm in roldev:
               sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list)
       ## Prepare participants           
-      if len(self.participant_table) > 0:
+      if len(self.participant_table) > 0 and not self.all_roles:
         for per in self.participant_table:
           frappe.msgprint(per.participant)
           """ Get from database devices ported in session """
           perdev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant=%s and docstatus < 2""", (self.course, per.participant), True)
           if len(perdev) > 0:
             for per in perdev: 
-              sms_list, mqtt_list, telegram_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list) 
-     
+              sms_list, mqtt_list, telegram_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list)
+      ## Prepare all roles
+      if self.all_roles:
+        """ Get from database devices in session in roles table """
+        roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
+        if len(roldev) > 0:
+          for itm in roldev:
+            sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list) 
+
       ## Send message by MQTT
       if len(mqtt_list) > 0:
         path = frappe.utils.get_bench_path()

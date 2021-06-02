@@ -4,7 +4,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sch_message",
+  "action_message",
   "scanner",
   "col_break_1",
   "located",
@@ -19,13 +19,6 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Paused"
-  },
-  {
-   "fieldname": "sch_message",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Scheduled Message",
-   "options": "pibiMessage"
   },
   {
    "fieldname": "scanner",
@@ -51,10 +44,17 @@
    "in_list_view": 1,
    "label": "Ordered",
    "options": "Device"
+  },
+  {
+   "fieldname": "action_message",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Action Message",
+   "options": "Action Message"
   }
  ],
  "istable": 1,
- "modified": "2021-06-01 13:13:33.543643",
+ "modified": "2021-06-02 12:06:14.576226",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Action Item",
