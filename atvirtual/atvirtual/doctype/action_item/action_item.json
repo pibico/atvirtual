@@ -4,13 +4,12 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "paused",
   "sch_message",
   "scanner",
   "col_break_1",
   "located",
   "ordered",
-  "sent"
+  "paused"
  ],
  "fields": [
   {
@@ -43,14 +42,6 @@
    "options": "Device"
   },
   {
-   "default": "0",
-   "fieldname": "sent",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Sent",
-   "read_only": 1
-  },
-  {
    "fieldname": "col_break_1",
    "fieldtype": "Column Break"
   },
@@ -63,7 +54,7 @@
   }
  ],
  "istable": 1,
- "modified": "2021-06-01 12:44:08.494316",
+ "modified": "2021-06-01 13:13:33.543643",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Action Item",

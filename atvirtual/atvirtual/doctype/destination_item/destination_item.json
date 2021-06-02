@@ -4,11 +4,11 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "paused",
   "sch_message",
   "start_when",
-  "sent",
-  "send_now"
+  "col_break",
+  "send_now",
+  "paused"
  ],
  "fields": [
   {
@@ -34,23 +34,21 @@
    "label": "Start When"
   },
   {
-   "columns": 1,
-   "default": "0",
-   "fieldname": "sent",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Sent",
-   "read_only": 1
-  },
-  {
    "fieldname": "send_now",
    "fieldtype": "Button",
    "in_list_view": 1,
    "label": "Send Now"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "col_break",
+   "fieldtype": "Column Break",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-05-14 20:30:59.947111",
+ "modified": "2021-06-01 13:14:53.051459",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Destination Item",
