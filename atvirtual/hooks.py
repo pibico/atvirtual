@@ -99,7 +99,10 @@ scheduler_events = {
  	  ],
     "*/3 * * * *": [
  		  "atvirtual.atvirtual.custom.check_located_devices"
- 	  ]     
+ 	  ],
+    "*/1 * * * *": [
+ 		  "atvirtual.atvirtual.custom.submit_scheduled_messages"
+ 	  ]        
   }
 }
 # scheduler_events = {
