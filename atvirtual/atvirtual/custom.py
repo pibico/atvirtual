@@ -96,3 +96,10 @@ def check_located_devices():
           doc.detected_by = None
           doc.training_place = None
           doc.save()
+
+def submit_scheduled_messages():
+  """ Get from database and ongoing courses scheduled messages to submit  """
+  data = frappe.db.sql("""select t1.sch_message, t1.start_when from `tabDestination Item` t1 where t1.parent in (select t2.name from `tabTraining Course` t2 where t2.status = 'Ongoing' and t2.docstatus < 2) and t1.docstatus = 0 and t1.paused = 0 and not t1.start_when is NULL""", as_dict=True)
+  for item in data:
+    print(item['sch_message'], item['start_when'])
+  
