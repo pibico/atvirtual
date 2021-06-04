@@ -208,7 +208,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-05-27 09:46:50.604597",
+ "modified": "2021-06-04 16:58:06.486695",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
@@ -230,7 +230,6 @@
    "write": 1
   },
   {
-   "amend": 1,
    "cancel": 1,
    "create": 1,
    "delete": 1,
@@ -239,7 +238,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Instructor",
+   "role": "Trainer",
    "share": 1,
    "submit": 1,
    "write": 1

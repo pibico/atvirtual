@@ -367,6 +367,7 @@
   {
    "fieldname": "uptime",
    "fieldtype": "Time",
+   "hidden": 1,
    "label": "Uptime"
   },
   {
@@ -382,8 +383,8 @@
    "options": "Training Place"
   }
  ],
- "modified": "2021-06-01 12:27:05.017232",
- "modified_by": "Administrator",
+ "modified": "2021-06-04 12:45:35.089660",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",

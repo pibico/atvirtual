@@ -58,7 +58,7 @@
    "options": "Device Table"
   }
  ],
- "modified": "2021-06-02 11:25:46.303799",
+ "modified": "2021-06-04 16:57:45.568404",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Action Message",
@@ -84,7 +84,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Instructor",
+   "role": "Trainer",
    "share": 1,
    "write": 1
   }
