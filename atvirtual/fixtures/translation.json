@@ -2140,5 +2140,19 @@
   "source_name": "Action Message",
   "status": "Saved",
   "target_name": "Mensaje Desencadenado"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-05 10:01:26.097395",
+  "name": "77af430b02",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Sound WAV",
+  "status": "Saved",
+  "target_name": "Sonido WAV"
  }
 ]

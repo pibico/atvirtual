@@ -19,6 +19,7 @@
   "light_rgb",
   "sound_wav",
   "std_message",
+  "email",
   "latency",
   "start_crono",
   "stop_crono",
@@ -27,12 +28,14 @@
   "light_sec",
   "sound_sec",
   "text_sec",
+  "email_account",
   "time_set",
   "order",
   "col_break_3",
   "brightness",
   "volume",
   "contrast",
+  "subject",
   "timer_from",
   "command_args",
   "json_sec",
@@ -260,9 +263,28 @@
    "fieldname": "stop_crono",
    "fieldtype": "Check",
    "label": "Chronograph OFF"
+  },
+  {
+   "default": "1",
+   "fieldname": "email",
+   "fieldtype": "Check",
+   "label": "Email"
+  },
+  {
+   "fetch_from": "email_account.email_id",
+   "fieldname": "email_account",
+   "fieldtype": "Link",
+   "label": "From",
+   "options": "Email Account"
+  },
+  {
+   "default": "MIoT Email",
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
   }
  ],
- "modified": "2021-05-27 18:42:17.180272",
+ "modified": "2021-07-09 08:06:52.461420",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Standard Message",

@@ -21,6 +21,8 @@ class StandardMessage(Document):
       frappe.throw(_("You must fill a config message"))
     if self.is_command and not self.order:
       frappe.throw(_("You must fill a command"))
+    if self.email and not self.email_account:
+      frappe.throw(_("You must fill the Sending Email Address"))
     """
     if self.location:
       if self.role or self.participant or self.device:
@@ -87,7 +89,6 @@ class StandardMessage(Document):
       message = {}
       message['text'] = self.std_message
       message['tDur'] = self.text_sec
-      
       message['contrast'] = self.contrast
       json_message['message'] = message
     ## Fill time section
@@ -108,6 +109,13 @@ class StandardMessage(Document):
         json_message['wifi_config'] =  self.wifi_config
       else:
         json_message['wifi_config'] = ""
+    ## Fill email section
+    if self.email:
+      email = {}
+      email['email_account'] = self.email_account
+      email['subject'] = self.subject
+      email['body'] = self.std_message
+      json_message['email'] = email
     ## Fill command section
     if self.is_command:
       command = {}

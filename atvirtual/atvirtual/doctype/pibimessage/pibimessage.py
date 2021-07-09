@@ -33,6 +33,7 @@ class pibiMessage(Document):
     sms_list = []
     telegram_list = []
     mqtt_list = []
+    email_list = []
     str_attach = ''
     recipients = []
     str_message = ""
@@ -87,23 +88,23 @@ class pibiMessage(Document):
           locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s AND place=%s and docstatus < 2""", (self.course, loc.place), True)
           if len(locdev) > 0:
             for plc in locdev:
-              sms_list, mqtt_list, telegram_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list)
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare device recipients even in case all places selectect
       if len(self.device_table) > 0 and not self.all_places:
         for dev in self.device_table:
-          sms_list, mqtt_list, telegram_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list)
+          sms_list, mqtt_list, telegram_list, email_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare all devices
       if self.all_places:
         """ Get from database devices in session """
         locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(locdev) > 0:
           for plc in locdev:
-            sms_list, mqtt_list, telegram_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list)
+            sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
         """ Get from database devices in session in roles table """
         roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(roldev) > 0:
           for itm in roldev:
-            sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list)
+            sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
 
       ## Prepare role recipients    
       if len(self.recipient_table) > 0 and not self.all_roles:
@@ -113,7 +114,7 @@ class pibiMessage(Document):
           roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant_role=%s and docstatus < 2""", (self.course, rol.participant_role), True)
           if len(roldev) > 0:
             for itm in roldev:
-              sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list)
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare participants           
       if len(self.participant_table) > 0 and not self.all_roles:
         for per in self.participant_table:
@@ -122,14 +123,14 @@ class pibiMessage(Document):
           perdev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant=%s and docstatus < 2""", (self.course, per.participant), True)
           if len(perdev) > 0:
             for per in perdev: 
-              sms_list, mqtt_list, telegram_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list)
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare all roles
       if self.all_roles:
         """ Get from database devices in session in roles table """
         roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(roldev) > 0:
           for itm in roldev:
-            sms_list, mqtt_list, telegram_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list) 
+            sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list) 
 
       ## Send message by MQTT
       if len(mqtt_list) > 0:
@@ -173,6 +174,20 @@ class pibiMessage(Document):
         except:
           frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
           pass
+      ## Send message by Email
+      if len(email_list) > 0:
+        try:
+          email_args = {
+            "sender": dict_message['email']['email_account'],
+            "recipients": email_list,
+            "message": cstr(str_message),
+            "subject": dict_message['email']['subject'],
+            "reference_doctype": self.doctype,
+            "reference_name": self.name
+          }
+          frappe.sendmail(**email_args)
+        except:
+          pass  
       ## Send message by Telegram
       if len(telegram_list) > 0:
         try:
@@ -188,7 +203,7 @@ class pibiMessage(Document):
     ## Final Message
     frappe.msgprint(_("Actions Completed and Messages Sent"))
 
-def append_recipients(device, sms_list, mqtt_list, telegram_list):
+def append_recipients(device, sms_list, mqtt_list, telegram_list, email_list):
   doc = frappe.get_doc('Device', device)
   if not doc.disabled:
     if doc.is_connected and doc.alerts_active:
@@ -205,9 +220,11 @@ def append_recipients(device, sms_list, mqtt_list, telegram_list):
           if doc.sms_number != '' and not doc.sms_number in sms_list:
             sms_list.append(doc.sms_number)  
             #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))  
+        if doc.device_name != '' and doc.by_email and not doc.device_email in email_list:
+          email_list.append(doc.device_email)  
       if doc.by_telegram:
         if doc.telegram_number != '':
           if not doc.telegram_number in telegram_list:
             telegram_list.append(doc.telegram_number)
             #frappe.msgprint(_("Message by sms to ") + str(doc.telegram_number))
-  return sms_list, mqtt_list, telegram_list
+  return sms_list, mqtt_list, telegram_list, email_list

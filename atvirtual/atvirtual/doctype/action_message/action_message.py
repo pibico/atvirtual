@@ -18,6 +18,7 @@ class ActionMessage(Document):
     std_message = frappe.get_doc("Standard Message", self.std_message)
     ## Prepare recipients list
     mqtt_list = []
+    email_list = []
     str_message = ""
     
     ## Send IoT messages
@@ -29,8 +30,19 @@ class ActionMessage(Document):
       ## Prepare device recipients
       if len(self.device_table) > 0:
         for dev in self.device_table:
-          mqtt_list = append_actions(dev.device, mqtt_list)
-     
+          mqtt_list, email_list = append_actions(dev.device, mqtt_list, email_list)
+      
+      ## Send message by email
+      if len(email_list) > 0:
+        email_args = {
+          "sender": dict_message['email']['email_account'],
+          "recipients": email_list,
+          "message": str_message,
+          "subject": dict_message['email']['subject'],
+          "reference_doctype": self.doctype,
+          "reference_name": self.name
+        }
+        frappe.sendmail(**email_args)
       ## Send message by MQTT
       if len(mqtt_list) > 0:
         path = frappe.utils.get_bench_path()
@@ -73,15 +85,20 @@ class ActionMessage(Document):
         except:
           frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
           pass
-    
+        
     ## Final Message
-    frappe.msgprint(_("Actions Completed and Messages Sent"))
+    if not self.disabled:
+      frappe.msgprint(_("Actions Completed and Messages Sent"))
+    else:
+      frappe.msgprint(_("Message saved but disabled to Send"))
 
-def append_actions(device, mqtt_list):
+def append_actions(device, mqtt_list, email_list):
   doc = frappe.get_doc('Device', device)
   if not doc.disabled:
     if doc.is_connected and doc.alerts_active:
       if doc.device_name != '' and doc.by_mqtt and not doc.device_name in mqtt_list:
         mqtt_list.append(doc.device_name)
-        #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))  
-  return mqtt_list
+        #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
+      if doc.device_name != '' and doc.by_email and not doc.device_email in email_list:
+        email_list.append(doc.device_email)  
+  return mqtt_list, email_list
