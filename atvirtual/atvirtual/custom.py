@@ -48,6 +48,14 @@ def get_places(allow_guest=True):
   data = frappe.db.sql("""SELECT t1.parent, t1.place, t1.device FROM `tabPlace Item` AS t1 INNER JOIN `tabTraining Course` AS t2 ON t1.parent = t2.name WHERE t2.status != 'Completed' AND t1.docstatus < 2 and t1.device != %s""", device, True)
   return data
 
+@frappe.whitelist()
+def submit_pibimessage(doc):
+  data = frappe.get_doc("pibiMessage", doc)
+  if data.docstatus < 2:
+    msg = frappe.get_doc("pibiMessage", data.name).submit()
+    #print(msg) 
+  return msg
+  
 def check_connected_devices():
   devices = frappe.get_list(
     doctype = "Device",

@@ -9,6 +9,8 @@ import datetime, time
 
 from frappe.utils import cstr
 from frappe import msgprint, _
+from frappe.core.doctype.sms_settings.sms_settings import send_sms
+from atvirtual.atvirtual.doctype.telegram_settings.telegram_settings import send_telegram
 import paho.mqtt.client as mqtt
 import os, ssl, urllib, json
 from frappe.utils.password import get_decrypted_password
@@ -19,6 +21,8 @@ class ActionMessage(Document):
     ## Prepare recipients list
     mqtt_list = []
     email_list = []
+    sms_list = []
+    telegram_list = []
     str_message = ""
     
     ## Send IoT messages
@@ -30,7 +34,7 @@ class ActionMessage(Document):
       ## Prepare device recipients
       if len(self.device_table) > 0:
         for dev in self.device_table:
-          mqtt_list, email_list = append_actions(dev.device, mqtt_list, email_list)
+          mqtt_list, email_list, sms_list, telegram_list = append_actions(dev.device, mqtt_list, email_list, sms_list, telegram_list)
       
       ## Send message by email
       if len(email_list) > 0:
@@ -85,6 +89,19 @@ class ActionMessage(Document):
         except:
           frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
           pass
+    
+      ## Send message by Telegram
+      if len(telegram_list) > 0:
+        try:
+          send_telegram(telegram_list, cstr(str_message))
+        except:
+          pass  
+      ## Send message by SMS
+      if len(sms_list) > 0:
+        try:
+          send_sms(sms_list, cstr(str_message))
+        except:
+          pass   
         
     ## Final Message
     if not self.disabled:
@@ -92,13 +109,17 @@ class ActionMessage(Document):
     else:
       frappe.msgprint(_("Message saved but disabled to Send"))
 
-def append_actions(device, mqtt_list, email_list):
+def append_actions(device, mqtt_list, email_list, sms_list, telegram_list):
   doc = frappe.get_doc('Device', device)
   if not doc.disabled:
     if doc.is_connected and doc.alerts_active:
       if doc.device_name != '' and doc.by_mqtt and not doc.device_name in mqtt_list:
         mqtt_list.append(doc.device_name)
         #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
-      if doc.device_name != '' and doc.by_email and not doc.device_email in email_list:
-        email_list.append(doc.device_email)  
-  return mqtt_list, email_list
+      if doc.by_email and not doc.device_email in email_list:
+        email_list.append(doc.device_email)
+      if doc.by_sms and not doc.sms_number in sms_list:
+        sms_list.append(doc.sms_number)
+      if doc.by_telegram and not doc.telegram_number in telegram_list:
+        telegram_list.append(doc.telegram_number)      
+  return mqtt_list, email_list, sms_list, telegram_list

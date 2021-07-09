@@ -180,14 +180,14 @@ class pibiMessage(Document):
           email_args = {
             "sender": dict_message['email']['email_account'],
             "recipients": email_list,
-            "message": cstr(str_message),
+            "message": str_message,
             "subject": dict_message['email']['subject'],
             "reference_doctype": self.doctype,
             "reference_name": self.name
           }
           frappe.sendmail(**email_args)
         except:
-          pass  
+          frappe.throw(_("Error in sending mail"))  
       ## Send message by Telegram
       if len(telegram_list) > 0:
         try:
@@ -216,12 +216,8 @@ def append_recipients(device, sms_list, mqtt_list, telegram_list, email_list):
         if doc.device_name != '' and doc.by_mqtt and not doc.device_name in mqtt_list:
           mqtt_list.append(doc.device_name)
           #frappe.msgprint(_("Message by mqtt to ") + str(doc.device_name))
-        elif not doc.by_mqtt:
-          if doc.sms_number != '' and not doc.sms_number in sms_list:
-            sms_list.append(doc.sms_number)  
-            #frappe.msgprint(_("Message by sms to ") + str(doc.sms_number))  
-        if doc.device_name != '' and doc.by_email and not doc.device_email in email_list:
-          email_list.append(doc.device_email)  
+      if doc.by_email and doc.device_email != '' and not doc.device_email in email_list:
+        email_list.append(doc.device_email)
       if doc.by_telegram:
         if doc.telegram_number != '':
           if not doc.telegram_number in telegram_list:
