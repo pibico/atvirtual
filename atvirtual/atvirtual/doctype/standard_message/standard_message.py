@@ -77,6 +77,8 @@ class StandardMessage(Document):
     if self.sound_wav:
       sound = {}
       wav = frappe.get_doc("Sound WAV", self.sound_wav)
+      if self.overwrite_sound:
+        sound['overwrite_sound'] = True
       sound['wav'] = frappe.utils.get_url() + wav.sound_wav
       sound['sDur'] = self.sound_sec
       sound['volume'] = self.volume
