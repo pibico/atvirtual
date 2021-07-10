@@ -279,7 +279,7 @@
    "options": "Email Account"
   },
   {
-   "default": "MIoT Email",
+   "default": "Correo MIoT FormaciON",
    "fieldname": "subject",
    "fieldtype": "Data",
    "label": "Subject"
@@ -291,8 +291,8 @@
    "label": "Overwrite Sound"
   }
  ],
- "modified": "2021-07-10 07:35:45.059567",
- "modified_by": "Administrator",
+ "modified": "2021-07-10 08:30:41.109438",
+ "modified_by": "francisco.alaez@pibico.es",
  "module": "Atvirtual",
  "name": "Standard Message",
  "owner": "francisco.alaez@pibico.es",

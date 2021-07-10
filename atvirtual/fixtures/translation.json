@@ -2154,5 +2154,19 @@
   "source_name": "Sound WAV",
   "status": "Saved",
   "target_name": "Sonido WAV"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-10 08:28:52.865257",
+  "name": "85199a6108",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Overwrite Sound",
+  "status": "Saved",
+  "target_name": "Sobreescribir Sonido"
  }
 ]
