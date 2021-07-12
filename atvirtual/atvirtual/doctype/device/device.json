@@ -26,6 +26,8 @@
   "is_located",
   "col_break_batt",
   "is_lowbatt",
+  "col_break_turn",
+  "turned_on",
   "sec_break_1",
   "ip",
   "wifi_ssid",
@@ -50,6 +52,7 @@
   "col_break_7",
   "by_email",
   "device_email",
+  "python_kasa",
   "naming_series",
   "sec_break_0",
   "model",
@@ -60,8 +63,7 @@
   "serial",
   "col_break_6",
   "description",
-  "sec_break_4",
-  "html_image"
+  "sec_break_4"
  ],
  "fields": [
   {
@@ -110,10 +112,6 @@
    "fieldtype": "Link",
    "label": "Media Library",
    "options": "Website Slideshow"
-  },
-  {
-   "fieldname": "html_image",
-   "fieldtype": "HTML"
   },
   {
    "default": "0",
@@ -381,10 +379,27 @@
    "fieldtype": "Link",
    "label": "Training Place",
    "options": "Training Place"
+  },
+  {
+   "default": "0",
+   "fieldname": "python_kasa",
+   "fieldtype": "Check",
+   "label": "Python Kasa"
+  },
+  {
+   "fieldname": "col_break_turn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.python_kasa;",
+   "fieldname": "turned_on",
+   "fieldtype": "Check",
+   "label": "Turned On"
   }
  ],
- "modified": "2021-06-04 12:45:35.089660",
- "modified_by": "francisco.alaez@pibico.es",
+ "modified": "2021-07-12 18:41:26.617537",
+ "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
  "owner": "Administrator",

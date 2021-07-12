@@ -2168,5 +2168,19 @@
   "source_name": "Overwrite Sound",
   "status": "Saved",
   "target_name": "Sobreescribir Sonido"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-12 18:38:46.703618",
+  "name": "cd02cca9b0",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Turned On",
+  "status": "Saved",
+  "target_name": "Encendido"
  }
 ]
