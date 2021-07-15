@@ -15,8 +15,8 @@ class StandardMessage(Document):
     if not self.location and not self.role and not self.participant and not self.device:
       frappe.throw(_("You must select the message category"))
     """  
-    if not self.std_message and not self.config and not self.is_command:
-      frappe.throw(_("You must fill a text or config or command message"))
+    #if not self.std_message and not self.config and not self.is_command:
+    #  frappe.throw(_("You must fill a text or config or command message"))
     if self.config and not self.wifi_config:
       frappe.throw(_("You must fill a config message"))
     if self.is_command and not self.order:
