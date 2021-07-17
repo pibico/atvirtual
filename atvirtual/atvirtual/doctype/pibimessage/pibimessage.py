@@ -190,14 +190,14 @@ class pibiMessage(Document):
           frappe.throw(_("Error in sending mail"))  
           pass
       ## Send message by Telegram
-      if len(telegram_list) > 0:
+      if len(telegram_list) > 0 and self.message_type == "IoT" and str_message != "":
         try:
           send_telegram(telegram_list, cstr(str_message))
         except:
           frappe.throw(_("Error in sending Telegram"))
           pass  
       ## Send message by SMS
-      if len(sms_list) > 0  and self.message_type == "IoT":
+      if len(sms_list) > 0  and self.message_type == "IoT" and str_message != "":
         try:
           send_sms(sms_list, cstr(str_message))
         except:

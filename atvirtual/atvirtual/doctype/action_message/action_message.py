@@ -91,13 +91,13 @@ class ActionMessage(Document):
           pass
     
       ## Send message by Telegram
-      if len(telegram_list) > 0:
+      if len(telegram_list) > 0 and str_message != "":
         try:
           send_telegram(telegram_list, cstr(str_message))
         except:
           pass  
       ## Send message by SMS
-      if len(sms_list) > 0:
+      if len(sms_list) > 0 and str_message != "":
         try:
           send_sms(sms_list, cstr(str_message))
         except:
