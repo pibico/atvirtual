@@ -49,6 +49,42 @@ def get_places(allow_guest=True):
   return data
 
 @frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def query_location(doctype, txt, searchfield, start, page_len, filters):
+  return frappe.db.sql("""select name, place_id, training_place from `tabTraining Place`
+    where
+      docstatus < 2 and
+      name in (select place from `tabPlace Item` where parent = %s and docstatus < 2)
+  """, txt)
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def query_role(doctype, txt, searchfield, start, page_len, filters):
+  return frappe.db.sql("""select name, participant_role_name from `tabParticipant Role`
+    where
+      docstatus < 2 and
+      name in (select participant_role from `tabSession Role Item` where parent = %s and docstatus < 2)
+  """, txt)
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def query_participant(doctype, txt, searchfield, start, page_len, filters):
+  return frappe.db.sql("""select name, first_name, participant_email_id from `tabParticipant`
+    where
+      docstatus < 2 and
+      name in (select participant from `tabSession Role Item` where parent = %s and docstatus < 2)
+  """, txt)
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def query_device(doctype, txt, searchfield, start, page_len, filters):
+  return frappe.db.sql("""select name, alias, device_name from `tabDevice`
+    where
+      docstatus < 2 and
+      name in (select device from `tabSession Role Item` where parent = %s and docstatus < 2)
+  """, txt)
+
+@frappe.whitelist()
 def submit_pibimessage(doc):
   data = frappe.get_doc("pibiMessage", doc)
   if data.docstatus < 2:

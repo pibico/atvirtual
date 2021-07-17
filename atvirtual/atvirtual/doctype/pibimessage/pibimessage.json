@@ -50,7 +50,8 @@
    "fetch_from": "std_message.json_message",
    "fieldname": "message_text",
    "fieldtype": "Small Text",
-   "label": "Message Text"
+   "label": "Message Text",
+   "read_only": 1
   },
   {
    "fieldname": "course",
@@ -208,7 +209,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2021-06-04 16:58:06.486695",
+ "modified": "2021-07-17 14:23:29.592295",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "pibiMessage",
