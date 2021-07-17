@@ -78,10 +78,16 @@ def query_participant(doctype, txt, searchfield, start, page_len, filters):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def query_device(doctype, txt, searchfield, start, page_len, filters):
-  return frappe.db.sql("""select name, alias, device_name from `tabDevice`
+  return frappe.db.sql("""select name, alias from `tabDevice`
     where
       docstatus < 2 and
       name in (select device from `tabSession Role Item` where parent = %s and docstatus < 2)
+  """, txt)
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def query_recipient(doctype, txt, searchfield, start, page_len, filters):
+  return frappe.db.sql("""select t1.name, t1.first_name, t1.participant_email_id, t2.participant_role from `tabParticipant` t1 left join `tabSession Role Item` t2 on t1.name=t2.participant where t1.docstatus<2 and t2.docstatus<2 and t2.parent=%s
   """, txt)
 
 @frappe.whitelist()
