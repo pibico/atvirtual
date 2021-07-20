@@ -8,7 +8,8 @@
   "start_when",
   "col_break",
   "send_now",
-  "paused"
+  "paused",
+  "status"
  ],
  "fields": [
   {
@@ -45,10 +46,18 @@
    "fieldname": "col_break",
    "fieldtype": "Column Break",
    "read_only": 1
+  },
+  {
+   "fetch_from": "sch_message.docstatus",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-07-09 18:50:05.999801",
+ "modified": "2021-07-20 21:31:52.493118",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Destination Item",

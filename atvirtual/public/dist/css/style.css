@@ -3147,7 +3147,7 @@ input[type="button"].btn-block {
     justify-content: space-between; }
 
 .navbar-brand {
-  background: #003573;
+  background: #44546A;
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -9099,15 +9099,23 @@ strong {
 
 .contractor-profile {
   width: 100%;
-  background: #95a2b2;
+  background: #f9fbfd;
   padding: 0px;
+  color: #44546A;
 }
 
 .contractor-profile .title {
-  background: #6b7c90;
-  color: #FFF;
-  padding: 10px 18px;
-  font-size: 24px;
+  /*background: #6b7c90;
+  color: #FFF;*/
+  color: #44546A;
+  /*padding: 10px 18px;*/
+  font-size: 14pt;
+}
+
+.contractor-profile .formacion {
+  color: #E74F2B;
+  font-style: normal;
+  font-size: 14pt;
 }
 
 .interest-link a {
@@ -9122,17 +9130,17 @@ strong {
 }
 
 .scroll-sidebar {
-  background: #E85938;
-  color: #fff;
+  background: #95A2B2;
+  color: #fff;44546A
 }
 
 .hide-menu {
   font-family: 'Gotham Bold';
-  color: #fff;
+  color: #44546A;
 }
 
 #navbarSupportedContent {
-  background: #676767;
+  background: #44546A;
   color: #fff;
 }
 

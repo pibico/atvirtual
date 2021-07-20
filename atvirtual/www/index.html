@@ -90,14 +90,17 @@
           <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
               <li class="nav-item">
-                <img class="d-block img-fluid w-75 py-1 my-2" src="/assets/atvirtual/assets/images/big/ministerio.jpg">
+                <!-- <img class="d-block img-fluid w-75 py-1 my-2" src="/assets/atvirtual/assets/images/big/ministerio.jpg"> -->
               </li>
             </ul>
             <ul class="navbar-nav float-right">
               <li class="nav-item">
                 <a class="nav-link" href="http://www.salvamentomaritimo.es/" target="_blank">
-                  <img src="/assets/atvirtual/assets/images/big/salvamento.png" alt="centro" class="d-block img-fluid w-75">
+                  <img src="/assets/atvirtual/assets/images/big/salvamento.png" alt="centro" class="d-block img-fluid w-75 py-1 my-2">
                 </a>
+              </li>
+              <li class="nav-item">
+                <img class="d-block img-fluid w-75 py-1 my-2" src="/assets/atvirtual/assets/images/big/ministerio.jpg">
               </li>
             </ul>
           </div>
@@ -123,12 +126,12 @@
                 </a>
               </li> -->
               {% if frappe.session.user != 'Guest' %}
-              <li class="list-divider"></li>
-              <li class="nav-small-cap"><span class="hide-menu">FORMACION</span></li>
+              <!-- <li class="list-divider"></li>
+              <li class="nav-small-cap"><span class="hide-menu">FORMACION</span></li> -->
               <li class="sidebar-item">
                 <a class="sidebar-link" href="training_course" aria-expanded="false">
-                  <i data-feather="anchor" class="feather-icon"></i>
-                  <span class="hide-menu">PR&Aacute;CTICAS</span>
+                  <i data-feather="life-buoy" class="feather-icon text-white"></i>
+                  <span class="hide-menu">Pr&aacute;cticas</span>
                 </a>
               </li>
               <!-- <li class="sidebar-item">
@@ -136,37 +139,37 @@
                   <i data-feather="message-square" class="feather-icon"></i>
                   <span class="hide-menu">MENSAJES</span>
                 </a>
-              </li> -->
+              </li> 
               <li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="blog" aria-expanded="false">
                   <i data-feather="bookmark" class="feather-icon"></i>
                   <span class="hide-menu">NOTICIAS</span>
                 </a>
-              </li>
+              </li> -->
               <!--<li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="control-panel" aria-expanded="false">
                   <i data-feather="link" class="feather-icon"></i>
                   <span class="hide-menu">CONTROLES</span>
                 </a>
               </li>-->
-              <li class="list-divider"></li>
-              <li class="nav-small-cap"><span class="hide-menu">DISE&Ntilde;O</span></li>
+              <li class="list-divider text-whote"></li>
+              <li class="nav-small-cap"><span class="hide-menu text-white">DISE&Ntilde;O</span></li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="/desk#List/Training Course" aria-expanded="false">
-                  <i data-feather="archive" class="feather-icon"></i>
-                  <span class="hide-menu">SESIONES</span>
+                  <i data-feather="anchor" class="feather-icon text-white"></i>
+                  <span class="hide-menu">Sesiones</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="desk#modules/Atvirtual"" aria-expanded="false">
-                  <i data-feather="airplay" class="feather-icon"></i>
-                  <span class="hide-menu">PANELES</span>
+                  <i data-feather="code" class="feather-icon text-white"></i>
+                  <span class="hide-menu">Teor&iacute;a</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link sidebar-link" href="desk#" aria-expanded="false">
-                  <i data-feather="monitor" class="feather-icon"></i>
-                  <span class="hide-menu">M&Oacute;DULOS</span>
+                  <i data-feather="terminal" class="feather-icon text-white"></i>
+                  <span class="hide-menu">Plataforma</span>
                 </a>
               </li>
               {% endif %}
@@ -187,20 +190,9 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+          
           <div class="row m-0 contractor-profile animate-in-down">
-            <div class="p-3 col-md-6 align-self-center text-white">
-              <p class="my-1 title">El apoyo MIoT a la Formaci&oacute;n</p>
-              <br />
-              <p class="my-1">Salvamento Mar&iacute;timo lanza FormaciON, un ambicioso proyecto de innovaci&oacute;n con el que se busca incorporar el Internet de las Cosas para mejorar la comunicaci&oacute;n entre alumnos e Instructores en las pr&aacute;cticas de Formaci&oacute;n.</p>
-              <br />
-              <div class="interest-link">
-              {% if frappe.session.user == 'Guest' %}
-                <a href="login?redirect-to=index" class="btn mb-1 p-1 btn-light w-25">ACCESO</a>
-              {% else %}
-                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-light w-25">SALIDA</a>
-              {% endif %}  
-              </div>
-            </div>
+            
             <div class="p-0 col-md-6">
               <div class="carousel slide" data-ride="carousel" id="carousel1">
                 <!--<ol class="carousel-indicators">
@@ -226,9 +218,27 @@
                 </a>
               </div>
             </div>
+
+            <div class="p-3 col-md-6 align-self-center">
+              <p class="mb-3 title">El apoyo MIoT a la Formaci&oacute;n</p>
+              <p>Salvamento Mar&iacute;timo lanza <i class="formacion">FormaciON</i>, un ambicioso proyecto de innovaci&oacute;n con el que se busca incorporar el Internet de las Cosas para mejorar la comunicaci&oacute;n entre alumnos e Instructores durante las pr&aacute;cticas.</p>
+              <p class="mb-0 formacion">Objetivo</p>
+              <p class="my-0">El fin del proyecto es la gesti&oacute;n con Internet de las Cosas (Managemente with IoT - MIoT) de las comunicaciones o elementos de las Sesiones de Formaci&oacute;n donde los participantes llevan dispositivos o las &aacute;reas disponen de equipamiento para mejorar el proceso de aprendizaje, transmitir informaci&oacute;n de forma clara y recolectar datos importantes.
+</p>
+              <p class="mt-3 mb-0 formacion">Plataforma</p>
+              <p class="my-0">Basada en software y librer&iacute;as de c&oacute;digo abierto, completamente aut&oacute;noma y segura, sobre una aplicaci&oacute;n web responsiva y adaptable a cualquier dispositivo.<p>
+              <p class="mt-1">Optimizada para los navegadores Chrome, Safari, Edge y Firefox.</p>
+              <div class="mt-3 interest-link">
+              {% if frappe.session.user == 'Guest' %}
+                <a href="login?redirect-to=index" class="btn mb-1 p-1 btn-light w-25">ACCESO</a>
+              {% else %}
+                <a href="?cmd=web_logout" class="btn mb-1 p-1 btn-light w-25">SALIDA</a>
+              {% endif %}  
+              </div>
+            </div>
           </div>
                         
-          <div class="card-group">
+          <!-- <div class="card-group">
             <div class="col-lg-3 col-md-6 d-flex align-items-stretch m-0 p-0">
               <div class="card">
                 <img src="/assets/atvirtual/assets/images/big/img1.jpg" class="card-img-top" alt="Needs">
@@ -265,7 +275,7 @@
                 </div>
               </div>
             <div>
-          </div>
+          </div> -->
           <!-- *************************************************************** -->
           <!-- End First Cards -->
           <!-- *************************************************************** -->
@@ -284,6 +294,7 @@
 						    <a href="http://www.salvamentomaritimo.es/aviso-legal" target="_blank">Aviso Legal</a>
 							  <a href="http://www.salvamentomaritimo.es/politica-de-privacidad" target="_blank">Pol&iacute;tica de privacidad</a>
 							  <a href="http://www.salvamentomaritimo.es/politica-de-cookies" target="_blank">Pol&iacute;tica de cookies</a>
+                                                                                                                         <img src="/assets/atvirtual/assets/images/atvirtual.png" alt="interreg" style="float: right;"/>
 						  </div>
             </div>                                                                                 
           </div> 
