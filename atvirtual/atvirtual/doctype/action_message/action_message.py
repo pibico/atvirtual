@@ -37,7 +37,7 @@ class ActionMessage(Document):
           mqtt_list, email_list, sms_list, telegram_list = append_actions(dev.device, mqtt_list, email_list, sms_list, telegram_list)
       
       ## Send message by email
-      if len(email_list) > 0:
+      if len(email_list) > 0 and "email" in dict_message:
         email_args = {
           "sender": dict_message['email']['email_account'],
           "recipients": email_list,

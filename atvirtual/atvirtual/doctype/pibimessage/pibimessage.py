@@ -175,7 +175,7 @@ class pibiMessage(Document):
           frappe.msgprint(_("Error in MQTT Broker sending to ", str(mqtt_list)))
           pass
       ## Send message by Email
-      if len(email_list) > 0:
+      if len(email_list) > 0  and "email" in dict_message:
         try:
           email_args = {
             "sender": dict_message['email']['email_account'],
