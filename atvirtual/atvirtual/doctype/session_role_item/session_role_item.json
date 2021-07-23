@@ -13,6 +13,8 @@
   "col_break_1",
   "participant",
   "participant_name",
+  "participant_email",
+  "participant_mobile",
   "assigned_date",
   "participant_signature",
   "returned_date",
@@ -32,15 +34,14 @@
    "options": "Participant Role"
   },
   {
-   "allow_in_quick_entry": 1,
-   "columns": 2,
+   "columns": 1,
    "fieldname": "device",
    "fieldtype": "Link",
-   "in_global_search": 1,
    "in_list_view": 1,
-   "in_preview": 1,
    "label": "Device",
-   "options": "Device"
+   "options": "Device",
+   "print_width": "120px",
+   "width": "120px"
   },
   {
    "fieldname": "col_break_1",
@@ -105,12 +106,9 @@
    "read_only": 1
   },
   {
-   "allow_in_quick_entry": 1,
    "columns": 2,
    "fieldname": "participant",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_preview": 1,
    "label": "Participant",
    "options": "Participant"
   },
@@ -119,27 +117,36 @@
    "fetch_from": "participant.title",
    "fieldname": "participant_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
    "label": "Participant Name",
    "read_only": 1
   },
   {
-   "allow_in_quick_entry": 1,
    "fetch_from": "device.alias",
    "fieldname": "alias",
    "fieldtype": "Data",
    "in_filter": 1,
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "in_preview": 1,
    "label": "Device Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "participant.participant_mobile_number",
+   "fieldname": "participant_mobile",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Participant Mobile",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "participant.participant_email_id",
+   "fieldname": "participant_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Participant Email",
    "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-05-10 08:57:40.327586",
+ "modified": "2021-07-23 20:21:13.657000",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Session Role Item",
