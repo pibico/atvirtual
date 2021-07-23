@@ -23,7 +23,7 @@
     width: 100vw;
   }*/
   .card {
-    min-height: 440px;
+    min-height: 420px;
   }
   li .link {
     cursor: pointer;
@@ -100,7 +100,7 @@
           <div class="card-body">
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
-                {% for row in participants[:5] %}
+                {% for row in participants %}
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
@@ -135,7 +135,7 @@
                     </span>
                   </div>
                   <div class="col-12 text-left font-12">
-                  {% if row.participant_name != None%}
+                  {% if row.participant_name %}
                     <small>
                     <i class="fa fa-envelope text-muted"></i>
                     {% if row.participant_email %}
@@ -165,145 +165,15 @@
                 {% endfor %}
               </div>
               
-              <div class="tab-pane fade show active" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
-                {% for row in participants[5:10] %}
-                <!-- <i class="font-10">{{ row }}</i> -->
-                <div class="row align-items-center font-12">  
-                  <div class="col-7 text-left">
-                    {% if row.participant %}
-                    <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
-                      <span class="text-muted">{{ row.participant_role }}</span>
-                    </a>
-                    {% else %}
-                    <span class="text-muted">{{ row.participant_role }}</span>
-                    {% endif %}
-                  </div>
-                  <div class="col-5 text-left font-12">
-                    <b style="m-0 p-0">
-                    {% if row.is_connected %}
-                      <span class="fa-stack fa-1x">
-                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                        <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
-                      </span>
-                    {% else %}
-                      <span class="fa-stack fa-1x">
-                        <i class="fa fa-wifi fa-stack-1x text-muted"></i>
-                        <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
-                      </span>
-                    {% endif %}  
-                    </b>
-                    <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
-                    {% if row.device %}
-                      <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
-                    {% else %}
-                      No Asignado
-                    {% endif %}
-                    </span>
-                  </div>
-                  <div class="col-12 text-left font-12">
-                  {% if row.participant_name != None%}
-                    <small>
-                    <i class="fa fa-envelope text-muted"></i>
-                    {% if row.participant_email %}
-                      <cite>  {{ row.participant_email }}&nbsp;</cite>
-                    {% else %}
-                      <cite>  NO email&nbsp;</cite>
-                    {% endif %}
-                    <i class="fa fa-mobile text-muted"></i>
-                    {% if row.participant_mobile %}    
-                      <cite>{{ row.participant_mobile }}</cite>
-                    {% else %}
-                      <cite>NO tel&eacute;fono</cite>  
-                    {% endif %}
-                    </small>
-                  {% elif row.participant_name == None %}
-                    <cite title="Pending">Pendiente</cite>
-                  {% endif %}
-                  <hr class="m-0 mt-1 mb-1"> 
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-              
-              <div class="tab-pane fade show active" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
-                {% for row in participants[10:15] %}
-                <!-- <i class="font-10">{{ row }}</i> -->
-                <div class="row align-items-center font-12">  
-                  <div class="col-7 text-left">
-                    {% if row.participant %}
-                    <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
-                      <span class="text-muted">{{ row.participant_role }}</span>
-                    </a>
-                    {% else %}
-                    <span class="text-muted">{{ row.participant_role }}</span>
-                    {% endif %}
-                  </div>
-                  <div class="col-5 text-left font-12">
-                    <b style="m-0 p-0">
-                    {% if row.is_connected %}
-                      <span class="fa-stack fa-1x">
-                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                        <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
-                      </span>
-                    {% else %}
-                      <span class="fa-stack fa-1x">
-                        <i class="fa fa-wifi fa-stack-1x text-muted"></i>
-                        <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
-                      </span>
-                    {% endif %}  
-                    </b>
-                    <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
-                    {% if row.device %}
-                      <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
-                    {% else %}
-                      No Asignado
-                    {% endif %}
-                    </span>
-                  </div>
-                  <div class="col-12 text-left font-12">
-                  {% if row.participant_name != None%}
-                    <small>
-                    <i class="fa fa-envelope text-muted"></i>
-                    {% if row.participant_email %}
-                      <cite>  {{ row.participant_email }}&nbsp;</cite>
-                    {% else %}
-                      <cite>  NO email&nbsp;</cite>
-                    {% endif %}
-                    <i class="fa fa-mobile text-muted"></i>
-                    {% if row.participant_mobile %}    
-                      <cite>{{ row.participant_mobile }}</cite>
-                    {% else %}
-                      <cite>NO tel&eacute;fono</cite>  
-                    {% endif %}
-                    </small>
-                  {% elif row.participant_name == None %}
-                    <cite title="Pending">Pendiente</cite>
-                  {% endif %}
-                  <hr class="m-0 mt-1 mb-1"> 
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-              
             </div>
           </div>
           <!-- End Body -->
           <!-- Footer -->
           <div class="card-footer m-0 p-0">
-            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <ul class="nav nav-pills">
               <li class="nav-item">
-                <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
               </li>
-              {% if participants | length > 5 %}
-              <li class="nav-item">
-                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
-              </li>
-              {% endif %}
-              {% if participants | length > 10 %}
-              <li class="nav-item">
-                <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
-              </li>
-              {% endif %}
             </ul>
           </div>
           <!-- End Footer -->
