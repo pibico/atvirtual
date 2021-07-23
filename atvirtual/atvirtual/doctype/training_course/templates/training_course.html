@@ -104,9 +104,13 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
+                    {% if row.participant != 'None' %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>
+                    {% else %}
+                    <span class="text-muted">{{ row.participant_role }}</span>
+                    {% endif %}
                   </div>
                   <div class="col-5 text-left font-12">
                     <b style="m-0 p-0">
@@ -160,9 +164,13 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
+                    {% if row.participant != 'None' %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>
+                    {% else %}
+                    <span class="text-muted">{{ row.participant_role }}</span>
+                    {% endif %}
                   </div>
                   <div class="col-5 text-left font-12">
                     <b style="m-0 p-0">
@@ -216,9 +224,13 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
+                    {% if row.participant != 'None' %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>
+                    {% else %}
+                    <span class="text-muted">{{ row.participant_role }}</span>
+                    {% endif %}
                   </div>
                   <div class="col-5 text-left font-12">
                     <b style="m-0 p-0">
