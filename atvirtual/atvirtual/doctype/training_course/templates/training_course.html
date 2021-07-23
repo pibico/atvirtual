@@ -104,7 +104,7 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
-                    {% if row.participant != 'None' %}
+                    {% if row.participant %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>
@@ -149,6 +149,12 @@
                     {% else %}
                       <cite>NO tel&eacute;fono</cite>  
                     {% endif %}
+                    <br />
+                    {% if row.initial_location %}    
+                      <cite>Ubicaci&oacute;n inicio: {{ row.initial_location }}</cite>
+                    {% else %}
+                      <cite>Sin Ubicaci&oacute;n inicio</cite>  
+                    {% endif %}  
                     </small>
                   {% elif row.participant_name == None %}
                     <cite title="Pending">Pendiente</cite>
@@ -164,7 +170,7 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
-                    {% if row.participant != 'None' %}
+                    {% if row.participant %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>
@@ -224,7 +230,7 @@
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
                   <div class="col-7 text-left">
-                    {% if row.participant != 'None' %}
+                    {% if row.participant %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
                       <span class="text-muted">{{ row.participant_role }}</span>
                     </a>

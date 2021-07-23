@@ -18,6 +18,7 @@
   "assigned_date",
   "participant_signature",
   "returned_date",
+  "initial_location",
   "training_place",
   "rssi",
   "detected_by"
@@ -84,11 +85,11 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.is_located",
+   "depends_on": "eval:doc.is_located;",
    "fetch_from": "device.training_place",
    "fieldname": "training_place",
    "fieldtype": "Data",
-   "label": "Training Place",
+   "label": "Located in",
    "read_only": 1
   },
   {
@@ -143,10 +144,17 @@
    "in_list_view": 1,
    "label": "Participant Email",
    "read_only": 1
+  },
+  {
+   "fieldname": "initial_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Initial Location",
+   "options": "Training Place"
   }
  ],
  "istable": 1,
- "modified": "2021-07-23 20:21:13.657000",
+ "modified": "2021-07-23 21:02:20.730015",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Session Role Item",
