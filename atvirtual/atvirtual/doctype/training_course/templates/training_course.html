@@ -286,13 +286,16 @@
                     {% endif %}
                   </div>
                   <div class="col-5 text-right font-12">
-                    {% if row.status | int == 0 %}
+                    {% if row.status | int == 1 %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-circle fa-stack-2x text-success"></i>
+                        <i class="fa fa-check fa-stack-1x" style="color: white;"></i>
+                      </span>
+                    {% else %}
                       <span class="fa-stack fa-1x">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                       </span>
-                    {% else %}
-                      <i data-feather="check-square" class="svg-icon text-success"></i>
                     {% endif %}
                     {% if row.paused | int == 0 %}
                       <span class="fa-stack fa-1x">
