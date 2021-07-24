@@ -103,16 +103,16 @@
                 {% for row in participants %}
                 <!-- <i class="font-10">{{ row }}</i> -->
                 <div class="row align-items-center font-12">  
-                  <div class="col-7 text-left">
+                  <div class="col-9 text-left">
                     {% if row.participant %}
                     <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;">
-                      <span class="text-muted">{{ row.participant_role }}</span>
+                      <span class="text-danger">{{ row.participant_role }}</span>
                     </a>
                     {% else %}
-                    <span class="text-muted">{{ row.participant_role }}</span>
+                    <span class="text-danger">{{ row.participant_role }}</span>
                     {% endif %}
                   </div>
-                  <div class="col-5 text-left font-12">
+                  <div class="col-3 text-left font-12">
                     <b style="m-0 p-0">
                     {% if row.is_connected %}
                       <span class="fa-stack fa-1x">
@@ -130,7 +130,7 @@
                     {% if row.device %}
                       <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
                     {% else %}
-                      No Asignado
+                      ND
                     {% endif %}
                     </span>
                   </div>
@@ -139,13 +139,13 @@
                   <small>
                     <i class="fa fa-envelope text-muted"></i>
                     {% if row.participant_email %}
-                      <cite>  {{ row.participant_email }}&nbsp;</cite>
+                      <cite class="text-primary">  {{ row.participant_email }}&nbsp;</cite>
                     {% else %}
                       <cite>  NO email&nbsp;</cite>
                     {% endif %}
                     <i class="fa fa-mobile text-muted"></i>
                     {% if row.participant_mobile %}    
-                      <cite>{{ row.participant_mobile }}</cite>
+                      <cite class="text-primary">{{ row.participant_mobile }}</cite>
                     {% else %}
                       <cite>NO tel&eacute;fono</cite>  
                     {% endif %}
@@ -154,7 +154,7 @@
                   <br />
                   <small>
                   {% if row.initial_location %}    
-                    <cite>Ubicaci&oacute;n inicio: {{ row.initial_location }}</cite>
+                    <i class="fa fa-map-marker"></i><cite class="text-primary"> Ubicaci&oacute;n inicio: {{ row.initial_location }}</cite>
                   {% else %}
                     <cite>Sin Ubicaci&oacute;n inicio</cite>  
                   {% endif %}  
@@ -257,39 +257,100 @@
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
                 {% for row in sch_messages %}
-                {% set u1 = frappe.get_doc("pibiMessage", row.sch_message) %}
-                <!-- <i class="font-10">{{ row }}</i> -->
-                <div class="row align-items-center font-12">  
-                  <div class="col-9 text-left">
-                    {% if u1.message_type == "IoT" %}
+                {% set msg = frappe.get_doc("pibiMessage", row.sch_message) %}
+                <!-- <i class="font-10">Jinja {{ msg.recipient_item | length }}
+                {% for itm in msg.recipient_item %}
+                  {{ itm.participant_email_id }}
+                {% endfor %} 
+                </i> -->
+                
+                <div class="row align-items-center font-14">  
+                  <div class="col-7 text-left">
+                    {% if msg.message_type == "IoT" %}
                       <i class="fa fa-globe" style="color: SteelBlue;"></i>
                     {% else %}
                       <i class="fa fa-envelope" style="color: SteelBlue;"></i>
                     {% endif %}
-                    <a href="/desk#Form/pibiMessage/{{ row.sch_message }}" target="_blank" style="padding-left: 3px;">
-                      <span class="text-muted">{{ row.sch_message }}</span>
-                    </a>
-                  </div>
-                  <div class="col-3 text-right font-12">
-                    {% if row.status == 1 %}
-                      <i data-feather="check-square" class="svg-icon"></i>
+                    {% if row.status | int == 1 %}
+                      <span class="text-success">{{ row.sch_message }}</span>
+                      {% if msg.message_type == "IoT" %}
+                        <i class="fa fa-text"></i>{{ msg.msg_description }}
+                      {% endif %}  
                     {% else %}
-                      <i data-feather="navigation" class="svg-icon"></i>
+                      <a href="/desk#Form/pibiMessage/{{ row.sch_message }}" style="padding-left: 3px;">
+                      <span class="text-danger">{{ row.sch_message }}</span>
+                      {% if msg.message_type == "IoT" %}
+                        <i class="fa fa-text"></i>{{ msg.msg_description }}
+                      {% endif %}
+                    </a>
+                    {% endif %}
+                  </div>
+                  <div class="col-5 text-right font-12">
+                    {% if row.status | int == 0 %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                        <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
+                      </span>
+                    {% else %}
+                      <i data-feather="check-square" class="svg-icon text-success"></i>
+                    {% endif %}
+                    {% if row.paused | int == 0 %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                        <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
+                      </span>
+                    {% else %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                        <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
+                      </span>
                     {% endif %}
                   </div>
                   <div class="col-12 text-left font-12">
                     <small>
-                      <cite>
-                        {{ u1.message_type }}
-                        {{ row.start_when }}
-                      </cite>
+                      {% if row.start_when %}
+                        <cite><i class="fa fa-clock-o"></i> {{ row.start_when }}</cite>
+                      {% else %}
+                        <cite>No Programado</cite>
+                      {% endif %}
                       <br>
                       <cite>
-                      {% if u1.all_places %}
-                      | Todas las Ubicaciones 
-                      {% endif %}
-                      {% if u1.all_roles %}
-                      | Todos los Roles
+                      {% if msg.message_type == "IoT" %}
+                        {% if msg.all_places %}
+                          <i class="fa fa-map-marker"></i> Todas las Ubicaciones 
+                        {% endif %}
+                        {% if msg.all_roles %}
+                          <i class="fa fa-users"></i>Todos los Roles
+                        {% endif %}
+                        {% if msg.location_table | length > 0 %}
+                        <br><i class="fa fa-map-marker"></i>
+                          {% for itm in msg.location_table %}
+                            {{ itm.place }},
+                          {% endfor %}
+                        {% endif %}  
+                        {% if msg.device_table | length > 0 %}
+                        <br><i class="fa fa-mobile"></i>
+                          {% for itm in msg.device_table %}
+                            {{ itm.device }},
+                          {% endfor %}
+                        {% endif %}
+                        {% if msg.recipient_table | length > 0 %}
+                        <br><i class="fa fa-users"></i>
+                          {% for itm in msg.recipient_table %}
+                            {{ itm.participant_role }},
+                          {% endfor %}
+                        {% endif %}
+                        {% if msg.participant_table | length > 0 %}
+                        <br><i class="fa fa-inbox"></i>
+                          {% for itm in msg.participant_table %}
+                            {{ itm.participant_email_id }},
+                          {% endfor %}
+                        {% endif %}
+                      {% else %}
+                        <i class="fa fa-inbox"></i>
+                        {% for itm in msg.recipient_item %}
+                          {{ itm.participant_email_id }},
+                        {% endfor %}  
                       {% endif %}
                       </cite>
                     </small>
