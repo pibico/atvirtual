@@ -9,7 +9,8 @@
   "col_break",
   "send_now",
   "paused",
-  "status"
+  "status",
+  "sent"
  ],
  "fields": [
   {
@@ -54,10 +55,18 @@
    "in_list_view": 1,
    "label": "Status",
    "read_only": 1
+  },
+  {
+   "fetch_from": "sch_message.docstatus",
+   "fieldname": "sent",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Sent",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2021-07-24 09:52:53.928609",
+ "modified": "2021-07-25 13:56:36.701746",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Destination Item",
