@@ -189,40 +189,51 @@
           <!-- End Header -->
           <!-- Body -->
           <div class="card-body">
-	          <ul class="list-style-none mb-0">
-              <li>
-                <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Conectado</span>
-                <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
-              </li>
-	          </ul>  
-	          <ul class="list-inline mt-5 mb-2">
-	            {% for item in items %}
-              <li class="list-inline-item text-muted">
-	              <h6 class="card-text"><small><strong>{{ item.place }}</strong></small></h6>
-	              <span class="font-weight-normal align-middle">
-  	              {% if item.device %}  
-                    <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
-                  {% else %}
-                    No Asignado
-                  {% endif %}
-		            </span>
-		            <span class="float-right">
-		              {% if item.is_connected %}
-                    <span class="fa-stack fa-1x">
-                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                      <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+	          <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+                {% for item in items %}
+                <div class="row align-items-center font-12">  
+                  <div class="col-9 text-left">
+                    <i class="fa fa-map-marker" style="color: SteelBlue;"></i>
+                    {% if item.place %}  
+                      <a href="/desk#Form/Training Place/{{ item.place }}" class="text-danger" style="font-size: 9pt;"> {{ item.place }}</a>
+                    {% else %}
+                      No Asignado
+                    {% endif %}
+                  </div>
+                  <div class="col-3 text-left font-12">
+                    <b style="m-0 p-0">
+                    {% if item.is_connected %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                        <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                      </span>
+                    {% else %}
+                      <span class="fa-stack fa-1x">
+                        <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                        <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                      </span>
+                    {% endif %}  
+                    </b>
+                    <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                    {% if item.device %}
+                      <a href="/desk#Form/Device/{{ item.device }}" target="_blank"> {{ item.device }}</a>
+                    {% else %}
+                      ND
+                    {% endif %}
                     </span>
-                  {% else %}
-                    <span class="fa-stack fa-1x">
-                      <i class="fa fa-wifi fa-stack-1x text-muted"></i>
-                      <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
-                    </span>
-                  {% endif %}
-		            </span>
-	            </li>
-	            {% endfor %}
-            </ul>
+                  </div>
+                  <div class="col-12 text-left font-12">
+                  <small>
+                    <i class="fa fa-users text-bold"> Participantes Inicio: </i> 
+                    <cite>Participante 01,</cite>
+                  </small>
+                  <hr class="m-0 mt-1 mb-1"> 
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
           </div>
 	        <!-- End Body -->
           <!-- Footer -->
