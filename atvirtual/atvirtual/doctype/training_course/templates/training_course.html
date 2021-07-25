@@ -150,7 +150,7 @@
                   <br />
                   <small>
                   {% if row.initial_location %}    
-                    <i class="fa fa-map-marker text-bold"> Ubicaci&oacute;n inicio:</i><cite class="text-primary">{{ row.initial_location }}</cite>
+                    <i class="fa fa-map-marker"></i>&nbsp;Ubicaci&oacute;n inicio:<cite class="text-primary">{{ row.initial_location }}</cite>
                   {% else %}
                     <cite>Sin Ubicaci&oacute;n inicio</cite>  
                   {% endif %}  
@@ -225,8 +225,15 @@
                   </div>
                   <div class="col-12 text-left font-12">
                   <small>
-                    <i class="fa fa-users text-bold"> Participantes Inicio: </i> 
-                    <cite>Participante 01,</cite>
+                    <i class="fa fa-users text-bold"></i>&nbsp;Participantes Inicio: 
+                    {% for row in participants %}
+                    {% if item.place == row.initial_location %}
+                      {% set role = row.participant_role %}
+                      <cite class="text-primary">
+                         {{ role }},
+                      </cite>
+                    {% endif %}
+                  {% endfor %}
                   </small>
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
@@ -432,9 +439,8 @@
                   </div>
                   <div class="col-12 text-left font-12">
                     <small>
-                        <cite>
-                          <i class="fa fa-mobile text-bold">
-                          Destinatarios:</i> 
+                        <i class="fa fa-mobile text-bold"></i>&nbsp;Destinatarios: 
+                        <cite class="text-primary">
                           {% if msg.device_table | length > 0 %}
                             {% for itm in msg.device_table %}
                               {{ itm.device }},
@@ -442,17 +448,15 @@
                           {% endif %}
                         </cite>
                         <br>
-                        <cite>
                           {% if row.scanner %}
-                            <i class="fa fa-search text-bold"> Localizador:</i> {{ row.scanner }}&nbsp; 
+                            <i class="fa fa-search text-bold"></i>&nbsp;Localizador:<cite class="text-primary"> {{ row.scanner }}</cite>&nbsp; 
                           {% endif %}
                           {% if row.located %}
-                            <i class="fa fa-map-marker"> Localizado:</i> {{ row.located }}&nbsp; 
+                            <i class="fa fa-map-marker"></i>&nbsp; Localizado:<cite class="text-primary">{{ row.located }}</cite>&nbsp; 
                           {% endif %}
                           {% if row.ordered %}
-                            <i class="fa fa-terminal text-bold"> Ordena:</i> {{ row.ordered }}&nbsp; 
-                          {% endif %}
-                        </cite>  
+                            <i class="fa fa-terminal text-bold"></i>&nbsp; Ordena:<cite class="text-primary"> {{ row.ordered }}</cite> 
+                          {% endif %}  
                     </small>
                     <hr class="m-0 mt-1 mb-1"> 
                   </div>
