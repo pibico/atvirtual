@@ -168,7 +168,12 @@
           <div class="card-footer m-0 p-0">
             <ul class="nav nav-pills">
               <li class="nav-item">
-                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i>
+                 Conectados
+                <span class="badge badge-success badge-counter badge-pill">
+                {{ participants | sum(attribute='is_connected') }}
+                </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -247,7 +252,12 @@
           <div class="card-footer m-0 p-0">
             <ul class="nav nav-pills">
               <li class="nav-item">
-                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i>
+                 Conectados
+                <span class="badge badge-success badge-counter badge-pill">
+                {{ items | sum(attribute='is_connected') }}
+                </span>
+                </a>
               </li>
             </ul>
           </div>

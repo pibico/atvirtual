@@ -51,8 +51,7 @@
   {
    "fieldname": "route",
    "fieldtype": "Data",
-   "label": "Route",
-   "read_only": 1
+   "label": "Route"
   },
   {
    "default": "0",
@@ -123,7 +122,7 @@
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-06-02 08:08:52.079998",
+ "modified": "2021-07-25 20:24:40.626723",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Training Course",
