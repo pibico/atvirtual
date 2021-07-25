@@ -1,0 +1,445 @@
+{% extends "templates/web.html" %}
+
+{% block meta_block %}
+  <meta http-equiv="refresh" content="60" />		
+{% endblock %}
+
+{% block header %}
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/atvirtual/assets/images/favicon.png">
+  <link href="/assets/atvirtual/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+  <link href="/assets/atvirtual/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+  <link href="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+  <link href="/assets/atvirtual/dist/css/style.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block style %}
+<style>
+  [data-path*="courses"] .my-5 {
+    margin-top: 0px !important;
+  }
+  /*.page-content-wrapper > .container{
+    padding: 0px;
+    max-width:100%;
+    width: 100vw;
+  }*/
+  .card {
+    min-height: 440px;
+  }
+  li .link {
+    cursor: pointer;
+  }
+  
+</style>
+
+{% endblock %}
+
+{% block page_content %}
+  <!-- ============================================================== -->
+  <!-- Container fluid  -->
+  <!-- ============================================================== -->
+  <div class="container-fluid mt-3">
+    <h2><a href="/courses">Atr&aacute;s</a></h2>
+    <h4><b><a href='/desk#Form/Training%20Course/{{name}}'>{{ title }}</a></b></h4>
+    <p class="text-muted"><i data-feather="calendar" class="svg-icon"></i> {{ training_type }} el <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b></p>
+    <!-- *************************************************************** -->
+    <!-- Start Sales Charts Section -->
+    <!-- *************************************************************** -->
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+		      <div class="card-header">
+		        <span class="card-title"><i data-feather="message-circle" class="svg-icon"></i> <strong>Mensajes </strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ pibimessages | list | length }}</span>
+            </span>
+ 		      </div>
+		      <div>
+            <iframe class="mb-1" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-5.767811536788941%2C43.4847498538431%2C-5.754475593566895%2C43.491934416797754&amp;layer=mapnik&amp;marker=43.490159761329714%2C-5.7611918449401855" style="border: none;" width="100%" height="120px"></iframe>
+          </div>
+		      <div class="px-4 pb-4 pt-3-5">
+            <span>
+			        <h5 class="card-subtitle font-weight-light"><strong>Proyecto AT Virtual</strong></h5>
+			        <a class="float-right"><i class="fa fa-anchor fa-3x"></i></a>
+			      </span>  
+            <h6 class="font-small font-weight-light mt-n1">Seguridad Mar&iacute;tima e Innovaci&oacute;n</h6>
+            <a class="btn btn-info" href="https://www.at-virtual.eu/" target="_blank">Saber m&aacute;s</a>
+          </div>
+		      <div class="card-body">
+		        <ul class="list-style-none mb-0">
+              <li class="link">
+                <i class="fas fa-circle text-primary font-10 mr-2"></i>
+                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=Text','_blank')"><i data-feather="message-square" class="svg-icon"></i> Mensajes Texto</span>
+                <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'Text') | list| length }}</span>
+              </li>
+			        <li class="mt-3">
+                <i class="fas fa-circle text-warning font-10 mr-2"></i>
+                <span class="text-muted link" onclick="window.open('/desk#List/pibiMessage/List?message_type=E-mail','_blank')"><i data-feather="mail" class="svg-icon"></i> E-mails</span>
+                <span class="text-dark float-right font-weight-medium">{{ pibimessages | selectattr('message_type', 'equalto', 'E-mail') | list| length }}</span>
+              </li>
+            </ul>
+		      </div>
+          <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+              </li>
+            </ul>
+          </div>      
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+          <!-- Header -->
+          <div class="card-header">
+            <span class="card-title"><i data-feather="smartphone" class="svg-icon"></i> <strong>Equipos</strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ participants | length }}</span>
+            </span>
+          </div>
+          <!-- End Header -->
+          <!-- Body -->
+          <div class="card-body">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+              {% for row in participants[:5] %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role }}</span>
+                <!-- <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small> -->  
+              </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    No Asignaod
+                  {% endif %}
+                  
+                </span>
+              </div>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None%}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/desk#Form/Pibimessage?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pendiente</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Devuelto</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
+              </div>
+            </div>
+            {% endfor %}
+              </div>
+              
+              <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+              {% for row in participants[5:10] %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role }}</span>
+                <!-- <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small> -->  
+              </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    No Asignado
+                  {% endif %}
+                  
+                </span>
+              </div>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pendiente</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Devuelto</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
+              </div>
+            </div>
+            {% endfor %}
+              </div>
+              
+              <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+              {% for row in participants[10:15] %}
+            <!-- <i class="font-10">{{ row }}</i> -->
+            <div class="row align-items-center font-14">  
+              <div class="col-7 text-left">
+                <span class="text-muted">{{ row.participant_role }}</span>
+                <!-- <small>
+                  {% if row.training_place != None %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    by <b>{{ row.detected_by }}</b>
+                    {% endif %}  
+                  {% else %}
+                    {% if row.returned_date %}
+                    Returned
+                    {% else %}
+                    Not Located
+                    {% endif %}  
+                  {% endif %}
+                </small> -->  
+              </div>
+              <div class="col-5 text-left font-12">
+                <b style="m-0 p-0">
+                {% if row.returned_date %}
+                  -
+                {% else %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                    <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                  </span>
+                  {% else %}
+                  <span class="fa-stack fa-1x">
+                    <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                    <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                  </span>
+                  {% endif %}  
+                {% endif %} 
+                </b>
+                <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
+                  {% if row.device %}
+                    <a href="/desk#Form/Device/{{ row.device }}" target="_blank"> {{ row.device }}</a>
+                  {% else %}
+                    No Asignado
+                  {% endif %}
+                  
+                </span>
+              </div>
+              <div class="col-12 text-left font-12">
+                {% if row.participant_name != None %}
+                  {% if row.is_connected %}
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=Text" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-comments fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  <span class="fa-stack fa-1x">
+                    <a href="/imessage_en?new=1&course={{name}}&participant_role={{row.participant_role}}&device={{row.device}}&message_type=E-mail" target="_blank">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                    </a>
+                  </span>
+                  {% endif %}   
+                  <a href="/desk#Form/Participant/{{ row.participant }}" target="_blank" style="padding-left: 3px;"><cite title="{{ row.participant_name }}">   {{ row.participant_name }}</cite></a><br>
+             
+                {% elif row.participant_name == None %}
+                  <cite title="Pending">Pendiente</cite>
+                {% elif row.returned_date %}
+                  <cite title="Pending">Devuelto</cite>
+                {% endif %}
+                <hr class="m-0 mt-1 mb-1"> 
+              </div>
+            </div>
+            {% endfor %}
+              </div>
+            </div>
+          </div>
+          <!-- End Body -->
+          <!-- Footer -->
+          <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-1-tab" data-toggle="pill" href="#pills-1" role="tab" aria-controls="pills-1" aria-selected="true">1</a>
+              </li>
+              {% if participants | length > 5 %}
+              <li class="nav-item">
+                <a class="nav-link" id="pills-2-tab" data-toggle="pill" href="#pills-2" role="tab" aria-controls="pills-2" aria-selected="false">2</a>
+              </li>
+              {% endif %}
+              {% if participants | length > 10 %}
+              <li class="nav-item">
+                <a class="nav-link" id="pills-3-tab" data-toggle="pill" href="#pills-3" role="tab" aria-controls="pills-3" aria-selected="false">3</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+          <!-- End Footer -->
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6">
+        <div class="card">
+		      <div class="card-header">
+		        <span class="card-title"><i data-feather="navigation" class="svg-icon"></i> <strong>Localizadores </strong>
+              <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
+            </span>
+ 		      </div>
+          <div class="card-body">
+		        <ul class="list-style-none mb-0">
+              <li>
+                <i class="fas fa-circle text-primary font-10 mr-2"></i>
+                <span class="text-muted"><i data-feather="wifi" class="svg-icon"></i> Conectado</span>
+                <span class="text-dark float-right font-weight-medium">{{ items | sum(attribute='is_connected') }}</span>
+              </li>
+			      </ul>  
+		        <ul class="list-inline mt-5 mb-2">
+			      {% for item in items %}
+              <li class="list-inline-item text-muted">
+			          <h6 class="card-text">
+                  <small><strong>{{ item.place }}</strong></small>
+                </h6>
+				        <span class="font-weight-normal align-middle">
+				        {% if item.device %}  
+                  <a href="/desk#Form/Device/{{ item.device }}" target="_blank" style="font-size: 9pt;"> {{ item.device }}</a>
+                {% else %}
+                  Not Assigned
+                {% endif %}
+				        </span>
+				        <span class="float-right">
+				          {% if item.is_connected %}
+                    <span class="fa-stack fa-1x">
+                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                      <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
+                    </span>
+                  {% else %}
+                    <span class="fa-stack fa-1x">
+                      <i class="fa fa-wifi fa-stack-1x text-muted"></i>
+                      <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
+                    </span>
+                  {% endif %}
+				        </span>
+			        </li>
+			      {% endfor %}
+            </ul>
+          </div>
+		      <div class="card-footer m-0 p-0">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link"><i data-feather="activity" class="svg-icon"></i></a>
+              </li>
+            </ul>
+          </div>      
+        </div>
+      </div>
+
+    </div>
+    <!-- *************************************************************** -->
+    <!-- End Sales Charts Section -->
+    <!-- *************************************************************** -->
+    
+    
+  </div>
+  <!-- ============================================================== -->
+  <!-- End Container fluid  -->
+  <!-- ============================================================== -->
+{% endblock %}
+
+{% block script %}
+  <script src="/assets/atvirtual/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/assets/atvirtual/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/assets/atvirtual/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+  <script src="/assets/atvirtual/dist/js/app-style-switcher.js"></script>
+  <script src="/assets/atvirtual/dist/js/feather.min.js"></script>
+  <script src="/assets/atvirtual/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+  <script src="/assets/atvirtual/dist/js/sidebarmenu.js"></script>
+  <!--Custom JavaScript -->
+  <script src="/assets/atvirtual/dist/js/custom.min.js"></script>
+  <script src="/assets/atvirtual/assets/extra-libs/c3/d3.min.js"></script>
+  <script src="/assets/atvirtual/assets/extra-libs/c3/c3.min.js"></script>
+  <script src="/assets/atvirtual/assets/libs/chartist/dist/chartist.min.js"></script>
+  <script src="/assets/atvirtual/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+  <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+  <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="/assets/atvirtual/dist/js/pages/dashboards/dashboard1.min.js"></script>
+{% endblock %}

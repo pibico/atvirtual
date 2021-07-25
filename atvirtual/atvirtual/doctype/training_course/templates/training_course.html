@@ -25,7 +25,7 @@
   .card {
     min-height: 420px;
   }
-  li .link {
+  .link {
     cursor: pointer;
   }
   
@@ -116,7 +116,7 @@
                         <i class="fa fa-wifi fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x>
                         <i class="fa fa-wifi fa-stack-1x text-muted"></i>
                         <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
                       </span>
@@ -318,18 +318,18 @@
                         <i class="fa fa-check fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x link" onclick="msgSubmit()">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% endif %}
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x link" onclick="setPause()">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x link" onclick="unPause()">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -431,17 +431,17 @@
                     </a>
                   </div>
                   <div class="col-5 text-right font-12">
-                    <span class="fa-stack fa-1x">
+                    <span class="fa-stack fa-1x link" onclick="actionSend()"">
                       <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                       <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                     </span>
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x link" onclick="setPause()">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x">
+                      <span class="fa-stack fa-1x link" onclick="unPause()">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -516,4 +516,18 @@
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
   <script src="/assets/atvirtual/dist/js/pages/dashboards/dashboard1.min.js"></script>
+  <script>
+  function setPause() {
+    alert("Pondremos el mensaje en Pausa");
+  };
+  function unPause() {
+    alert("Quitaremos la pausa del mensaje");
+  };
+  function actionSend() {
+    alert("Enviamos mensaje directo");
+  };
+  function msgSubmit() {
+    alert("Validamos mensaje programado");
+  };
+  </script>
 {% endblock %}
