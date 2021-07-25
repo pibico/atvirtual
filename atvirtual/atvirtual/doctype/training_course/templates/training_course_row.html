@@ -16,25 +16,33 @@
 {% endblock %}
 
 {% block page_content %}
-  {% if status != 'Completed' and status != 'Cancelled' %}
-    <div class="card w-90 p-2 m-1" id="courses">
-      <h5><a class="course-list card-title" href={{ route }}>{{ title }}</a></h5>
-      <p class="card-text">
-        <span class="text-muted">
-          {% if status == "Open" %}
-            <i class="fa fa-circle text-info font-10 mr-1"></i>
-          {% elif status == "Ongoing" %}
-            <i class="fa fa-circle text-warning font-10 mr-1"></i>
-          {% elif status == "Cancelled" %}
-            <i class="fa fa-circle text-danger font-10 mr-1"></i>
-          {% endif %}
-          Estado: <b>{{ status }}</b><br>
-          <i class="fa fa-users text-muted font-10 mr-1"></i>
-          &Aacute;rea: <b>{{ training_type }}</b><br>
-          <i class="fa fa-calendar text-warning font-10 mr-1"></i>
-          Fecha: <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b>
-        </span>
-      </p>
-    </div>
-  {% endif %}
+  <div class="card w-90 p-2 m-1" id="courses">
+    {% if status == "Ongoing" %}
+    <h5><a class="course-list card-title" href={{ route }} style="color:#E74F2B;">{{ title }}</a></h5>
+    <p class="card-text">
+      <span class="text-muted">
+        {% if status == "In development" %}
+          <i class="fa fa-circle font-10 mr-1" style="color:#E74F2B;"></i>
+        {% elif status == "Ongoing" %}
+          <i class="fa fa-circle text-success font-10 mr-1"></i>
+        {% elif status == "Cancelled" %}
+          <i class="fa fa-circle text-danger font-10 mr-1"></i>
+        {% elif status == "Draft" %}
+          <i class="fa fa-circle text-black font-10 mr-1"></i>
+        {% elif status == "Prepared" %}
+          <i class="fa fa-circle font-10 mr-1" style="color:#44546A;"></i>
+        {% else %}
+          <i class="fa fa-circle text-muted font-10 mr-1"></i>
+        {% endif %}
+        Estado: <b>{{ _(status) }}</b><br>
+        <i class="fa fa-users text-muted font-10 mr-1"></i>
+        &Aacute;rea: <b>{{ training_type }}</b><br>
+        <i class="fa fa-calendar font-10 mr-1" style="color:#E74F2B;"></i>
+        Fecha: <b>{{ frappe.utils.get_datetime(course_date).strftime("%d/%m/%Y %H:%M") }}</b>
+      </span>
+    </p>
+    {% else %}
+      <h5><a class="course-list card-title" style="color:#E74F2B;">No hay sesiones en ejecuci&oacute;n</a></h5>
+    {% endif %}
+  </div>
 {% endblock %}
