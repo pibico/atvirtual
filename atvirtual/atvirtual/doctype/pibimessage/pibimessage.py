@@ -27,7 +27,7 @@ class pibiMessage(Document):
   def before_save(self):
     if self.message_type == "IoT":
       std_message = frappe.get_doc("Standard Message", self.std_message)
-
+  
   def before_submit(self):
     ## Prepare recipients list
     sms_list = []
@@ -88,23 +88,27 @@ class pibiMessage(Document):
           locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s AND place=%s and docstatus < 2""", (self.course, loc.place), True)
           if len(locdev) > 0:
             for plc in locdev:
-              sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
+              if plc.device is not None:
+                sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare device recipients even in case all places selectect
       if len(self.device_table) > 0 and not self.all_places:
         for dev in self.device_table:
-          sms_list, mqtt_list, telegram_list, email_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list, email_list)
+          if dev.device is not None:
+            sms_list, mqtt_list, telegram_list, email_list = append_recipients(dev.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare all devices
       if self.all_places:
         """ Get from database devices in session """
         locdev = frappe.db.sql("""SELECT device FROM `tabPlace Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(locdev) > 0:
           for plc in locdev:
-            sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
+            if plc.device is not None:
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(plc.device, sms_list, mqtt_list, telegram_list, email_list)
         """ Get from database devices in session in roles table """
         roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(roldev) > 0:
           for itm in roldev:
-            sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
+            if itm.device is not None:
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
 
       ## Prepare role recipients    
       if len(self.recipient_table) > 0 and not self.all_roles:
@@ -114,7 +118,8 @@ class pibiMessage(Document):
           roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant_role=%s and docstatus < 2""", (self.course, rol.participant_role), True)
           if len(roldev) > 0:
             for itm in roldev:
-              sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
+              if itm.device is not None:
+                sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare participants           
       if len(self.participant_table) > 0 and not self.all_roles:
         for per in self.participant_table:
@@ -122,15 +127,17 @@ class pibiMessage(Document):
           """ Get from database devices ported in session """
           perdev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s AND participant=%s and docstatus < 2""", (self.course, per.participant), True)
           if len(perdev) > 0:
-            for per in perdev: 
-              sms_list, mqtt_list, telegram_list, email_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list, email_list)
+            for per in perdev:
+              if per.device is not None: 
+                sms_list, mqtt_list, telegram_list, email_list = append_recipients(per.device, sms_list, mqtt_list, telegram_list, email_list)
       ## Prepare all roles
       if self.all_roles:
         """ Get from database devices in session in roles table """
         roldev = frappe.db.sql("""SELECT device FROM `tabSession Role Item` WHERE parent=%s and docstatus < 2""", (self.course), True)
         if len(roldev) > 0:
           for itm in roldev:
-            sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list) 
+            if itm.device is not None:
+              sms_list, mqtt_list, telegram_list, email_list = append_recipients(itm.device, sms_list, mqtt_list, telegram_list, email_list) 
 
       ## Send message by MQTT
       if len(mqtt_list) > 0:

@@ -11,6 +11,7 @@
   "col_break_msg",
   "device_table",
   "std_message",
+  "msg_description",
   "sec_break_msg",
   "message_text"
  ],
@@ -56,9 +57,16 @@
    "fieldtype": "Table MultiSelect",
    "label": "Device Recipient",
    "options": "Device Table"
+  },
+  {
+   "fetch_from": "std_message.msg_description",
+   "fieldname": "msg_description",
+   "fieldtype": "Data",
+   "label": "Message Description",
+   "read_only": 1
   }
  ],
- "modified": "2021-06-04 16:57:45.568404",
+ "modified": "2021-07-25 08:37:48.562844",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Action Message",
