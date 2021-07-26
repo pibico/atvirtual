@@ -2238,5 +2238,47 @@
   "source_name": "Session Participants",
   "status": "Saved",
   "target_name": "Participantes en la Sesi\u00f3n"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 20:57:02.695994",
+  "name": "4f5524089f",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Participant Email",
+  "status": "Saved",
+  "target_name": "Correo Participante"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 20:57:21.993910",
+  "name": "c18370d351",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Participant Mobile",
+  "status": "Saved",
+  "target_name": "Movil Participante"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 20:57:45.908623",
+  "name": "ad55742584",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Initial Location",
+  "status": "Saved",
+  "target_name": "Ubicaci\u00f3n Inicial"
  }
 ]
