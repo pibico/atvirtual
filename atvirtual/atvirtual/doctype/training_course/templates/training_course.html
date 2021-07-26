@@ -318,18 +318,18 @@
                         <i class="fa fa-check fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x link" onclick="msgSubmit()">
+                      <span class="fa-stack fa-1x link" onclick="msgSubmit('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% endif %}
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-1x link" onclick="setPause()">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x link" onclick="unPause()">
+                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -431,17 +431,17 @@
                     </a>
                   </div>
                   <div class="col-5 text-right font-12">
-                    <span class="fa-stack fa-1x link" onclick="actionSend()"">
+                    <span class="fa-stack fa-1x link" onclick="actionSend('{{row.action_message}}')">
                       <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                       <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                     </span>
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-1x link" onclick="setPause()">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.action_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x link" onclick="unPause()">
+                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.action_message}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -517,17 +517,17 @@
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
   <script src="/assets/atvirtual/dist/js/pages/dashboards/dashboard1.min.js"></script>
   <script>
-  function setPause() {
-    alert("Pondremos el mensaje en Pausa");
+  function setPause(msg) {
+    alert("Pondremos el mensaje "+msg+" en Pausa");
   };
-  function unPause() {
-    alert("Quitaremos la pausa del mensaje");
+  function unPause(msg) {
+    alert("Quitaremos la pausa del mensaje "+msg);
   };
-  function actionSend() {
-    alert("Enviamos mensaje directo");
+  function actionSend(msg) {
+    alert("Enviaremos el Mensaje Directo "+msg);
   };
-  function msgSubmit() {
-    alert("Validamos mensaje programado");
+  function msgSubmit(msg) {
+    alert("Validaremos el mensaje programado "+msg);
   };
   </script>
 {% endblock %}
