@@ -68,7 +68,7 @@
             <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
             <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
           </span>
-           Enviar ahora (solicita confirmaci&oacute;n)
+           Enviar ahora
           <span class="fa-stack fa-1x">
             <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
             <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
@@ -317,17 +317,19 @@
                         <i class="fa fa-circle fa-stack-2x text-success"></i>
                         <i class="fa fa-check fa-stack-1x" style="color: white;"></i>
                       </span>
-                    {% else %}
+                    {% elif row.status | int == 0 %}
                       <span class="fa-stack fa-1x link" onclick="msgSubmit('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% endif %}
                     {% if row.paused | int == 0 %}
+                      {% if row.status | int == 0 %}
                       <span class="fa-stack fa-1x link" onclick="setPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
+                      {% endif %}
                     {% else %}
                       <span class="fa-stack fa-1x link" onclick="unPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
@@ -524,10 +526,25 @@
     alert("Quitaremos la pausa del mensaje "+msg);
   };
   function actionSend(msg) {
-    alert("Enviaremos el Mensaje Directo "+msg);
+    //alert("Enviaremos el Mensaje Directo "+msg);
+    frappe.call({
+      method: 'atvirtual.atvirtual.custom.save_actionmessage',
+      args: {
+	      doc: msg
+	    }
+    });
   };
   function msgSubmit(msg) {
-    alert("Validaremos el mensaje programado "+msg);
+    //alert("Validaremos el mensaje programado "+msg);
+    frappe.call({
+      method: 'atvirtual.atvirtual.custom.submit_pibimessage',
+      args: {
+	      doc: msg
+	    },
+      callback: function(r) {
+        location.reload();
+      }
+    });
   };
   </script>
 {% endblock %}

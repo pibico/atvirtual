@@ -4,7 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
-import datetime
+import datetime, json
 
 @frappe.whitelist()
 def get_image(slide):
@@ -93,10 +93,19 @@ def query_recipient(doctype, txt, searchfield, start, page_len, filters):
 @frappe.whitelist()
 def submit_pibimessage(doc):
   data = frappe.get_doc("pibiMessage", doc)
-  if data.docstatus < 2:
+  msg = ''
+  if data.docstatus == 0:
     msg = frappe.get_doc("pibiMessage", data.name).submit()
-    #print(msg) 
+    course = frappe.get_doc("Training Course", data.course).save()
+    
   return msg
+
+@frappe.whitelist()
+def save_actionmessage(doc):
+  data = frappe.get_doc("Action Message", doc)
+  if data.docstatus < 2:
+    data.disabled = 0
+    data.save()
   
 def check_connected_devices():
   devices = frappe.get_list(

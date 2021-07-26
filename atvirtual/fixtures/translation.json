@@ -2182,5 +2182,33 @@
   "source_name": "Turned On",
   "status": "Saved",
   "target_name": "Encendido"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 13:20:53.719653",
+  "name": "9964e0fad9",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Actions Completed and Messages Sent",
+  "status": "Saved",
+  "target_name": "Acciones completadas y Mensajes Enviados"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 13:19:55.547624",
+  "name": "8cce02ffaa",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Message saved but disabled to Send",
+  "status": "Saved",
+  "target_name": "Mensaje Guardado pero en estado Desactivado"
  }
 ]
