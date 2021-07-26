@@ -17,6 +17,7 @@
   "training_type",
   "status",
   "facilitator",
+  "session_participants",
   "sec_break_0",
   "items",
   "participants",
@@ -118,11 +119,16 @@
    "fieldtype": "Table",
    "label": "Action Messages",
    "options": "Action Item"
+  },
+  {
+   "fieldname": "session_participants",
+   "fieldtype": "Int",
+   "label": "Session Participants"
   }
  ],
  "has_web_view": 1,
  "is_published_field": "published",
- "modified": "2021-07-25 20:24:40.626723",
+ "modified": "2021-07-26 20:50:08.329275",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Training Course",

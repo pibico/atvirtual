@@ -2224,5 +2224,19 @@
   "source_name": "Pause Action Settled on Message",
   "status": "Saved",
   "target_name": "Acci\u00f3n sobre Pausa establecida"
+ },
+ {
+  "contributed_translation_doctype_name": null,
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es",
+  "modified": "2021-07-26 20:50:31.869773",
+  "name": "00ed0b97f9",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "source_name": "Session Participants",
+  "status": "Saved",
+  "target_name": "Participantes en la Sesi\u00f3n"
  }
 ]
