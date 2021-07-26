@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+from frappe import msgprint, _
 import datetime, json
 
 @frappe.whitelist()
@@ -107,6 +108,37 @@ def save_actionmessage(doc):
     data.disabled = 0
     data.save()
   
+@frappe.whitelist()
+def pause_msg(course, ctable, idn):
+  #try:
+    print(course, ctable, idn)
+    data = frappe.get_doc("Training Course", course)
+  
+    if ctable == 'schedule':
+      for item in data.sch_messages:
+        if str(item.idx) == idn:
+          print(item.idx, item.sch_message, item.paused)
+          if item.paused:
+            item.paused = 0
+          else:
+            item.paused = 1
+          break  
+           
+    elif ctable == 'action':
+      for item in data.action_messages:
+        if str(item.idx) == idn:
+          print(item.idx, item.action_message, item.paused)
+          if item.paused:
+            item.paused = 0
+          else:
+            item.paused = 1
+          break  
+  
+    data.save()
+    frappe.msgprint(_("Pause Action Settled on Message"))
+  #except:
+    #pass  
+    
 def check_connected_devices():
   devices = frappe.get_list(
     doctype = "Device",

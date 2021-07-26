@@ -78,7 +78,7 @@
             <i class="fa fa-circle fa-stack-2x text-warning"></i>
             <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
           </span>
-           Pausado
+           DesPausar
         </span>
       </div>
       
@@ -325,16 +325,18 @@
                     {% endif %}
                     {% if row.paused | int == 0 %}
                       {% if row.status | int == 0 %}
-                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.sch_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{name}}','schedule','{{row.idx}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                       {% endif %}
                     {% else %}
-                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.sch_message}}')">
-                        <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                        <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
-                      </span>
+                      {% if row.status | int == 0 %}
+                        <span class="fa-stack fa-1x link" onclick="setPause('{{name}}','schedule','{{row.idx}}')">
+                          <i class="fa fa-circle fa-stack-2x text-warning"></i>
+                          <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
+                        </span>
+                      {% endif %}  
                     {% endif %}
                   </div>
                   <div class="col-12 text-left font-12">
@@ -438,12 +440,12 @@
                       <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                     </span>
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.action_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{name}}','action','{{row.idx}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.action_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{name}}','action','{{row.idx}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -519,11 +521,19 @@
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
   <script src="/assets/atvirtual/dist/js/pages/dashboards/dashboard1.min.js"></script>
   <script>
-  function setPause(msg) {
-    alert("Pondremos el mensaje "+msg+" en Pausa");
-  };
-  function unPause(msg) {
-    alert("Quitaremos la pausa del mensaje "+msg);
+  function setPause(course, command, n) {
+    //alert("Quitaremos la pausa del mensaje "+msg);
+    frappe.call({
+      method: 'atvirtual.atvirtual.custom.pause_msg',
+      args: {
+        course: course,
+        ctable: command,
+        idn: n
+      },
+      callback: function(r) {
+        location.reload();
+      }
+    });  
   };
   function actionSend(msg) {
     //alert("Enviaremos el Mensaje Directo "+msg);
