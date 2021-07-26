@@ -313,25 +313,25 @@
                   </div>
                   <div class="col-5 text-right font-12">
                     {% if row.status | int == 1 %}
-                      <span class="fa-stack fa-2x">
+                      <span class="fa-stack fa-1x">
                         <i class="fa fa-circle fa-stack-2x text-success"></i>
                         <i class="fa fa-check fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% elif row.status | int == 0 %}
-                      <span class="fa-stack fa-2x link" onclick="msgSubmit('{{row.sch_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="msgSubmit('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% endif %}
                     {% if row.paused | int == 0 %}
                       {% if row.status | int == 0 %}
-                      <span class="fa-stack fa-2x link" onclick="setPause('{{row.sch_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                       {% endif %}
                     {% else %}
-                      <span class="fa-stack fa-2x link" onclick="unPause('{{row.sch_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.sch_message}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
@@ -433,17 +433,17 @@
                     </a>
                   </div>
                   <div class="col-5 text-right font-12">
-                    <span class="fa-stack fa-2x link" onclick="actionSend('{{row.action_message}}')">
+                    <span class="fa-stack fa-1x link" onclick="actionSend('{{row.action_message}}')">
                       <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                       <i class="fa fa-paper-plane fa-stack-1x" style="color: white;"></i>
                     </span>
                     {% if row.paused | int == 0 %}
-                      <span class="fa-stack fa-2x link" onclick="setPause('{{row.action_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="setPause('{{row.action_message}}')">
                         <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
                     {% else %}
-                      <span class="fa-stack fa-2x link" onclick="unPause('{{row.action_message}}')">
+                      <span class="fa-stack fa-1x link" onclick="unPause('{{row.action_message}}')">
                         <i class="fa fa-circle fa-stack-2x text-warning"></i>
                         <i class="fa fa-pause fa-stack-1x" style="color: white;"></i>
                       </span>
