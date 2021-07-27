@@ -195,4 +195,5 @@ def submit_scheduled_messages():
     for item in data:
       #print(item['sch_message'], item['start_when'], item['age'])
       doc = frappe.get_doc("pibiMessage", item['sch_message']).submit()
+      course = frappe.get_doc("Training Course", doc.course).save()
       #print(doc)        
