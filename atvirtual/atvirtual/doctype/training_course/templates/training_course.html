@@ -88,6 +88,7 @@
           <div class="card-header">
             <span class="card-title"><i data-feather="users" class="svg-icon"></i> <strong>Roles</strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ participants | map(attribute='participant_role') | unique | list | length }}</span>
+              <a href="/desk#Form/Training Course/{{name}}" style="padding-left: 3px; float:right"><i data-feather="plus-square" class="svg-icon text-danger"></i></a>
             </span>
           </div>
           <!-- End Header -->
@@ -189,6 +190,7 @@
 	          <span class="card-title">
               <i data-feather="map-pin" class="svg-icon"></i> <strong>Ubicaciones </strong>
               <span class="badge badge-danger badge-counter badge-pill">{{ items | length }}</span>
+              <a href="/desk#Form/Training Course/{{name}}" style="padding-left: 3px; float:right"><i data-feather="plus-square" class="svg-icon text-danger"></i></a>
             </span>
  	        </div>
           <!-- End Header -->
