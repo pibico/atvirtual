@@ -157,7 +157,10 @@
                   </small>
                   <br />
                   {% if row.is_located %}
-                    <i class="fa fa-search" style="color: SteelBlue;"></i><cite> {{ row.training_place }}</cite>
+                  <small>
+                    <i class="fa fa-search text-muted"></i>&nbsp;Localizado en:
+                    <cite class="text-primary">{{ row.training_place }}</cite>
+                  </small>  
                   {% endif %}  
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
