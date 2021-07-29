@@ -102,7 +102,10 @@ scheduler_events = {
  	  ],
     "*/1 * * * *": [
  		  "atvirtual.atvirtual.custom.submit_scheduled_messages"
- 	  ]        
+ 	  ],
+    "*/1 * * * *": [
+      "atvirtual.atvirtual.custom.update_ongoing_course"
+    ]         
   }
 }
 # scheduler_events = {

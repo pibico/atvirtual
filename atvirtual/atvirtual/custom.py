@@ -188,6 +188,16 @@ def check_located_devices():
           doc.training_place = None
           doc.save()
 
+def update_ongoing_course():
+  courses = frappe.get_list(
+    doctype = "Training Course",
+    fields = ['name'],
+    filters = [['docstatus', '<', 2], ['status', '=', "Ongoing"]]
+  )
+  if courses:
+    for course in courses:
+      session = frappe.get_doc("Training Course", course).save()
+
 def submit_scheduled_messages():
   """ Get from database on ongoing courses scheduled messages to submit  """
   data = frappe.db.sql("""select t1.sch_message, t1.start_when, timestampdiff(second, now(), t1.start_when) as age, now() from `tabDestination Item` t1 where t1.parent in (select t2.name from `tabTraining Course` t2 where t2.status = 'Ongoing' and t2.docstatus < 2) and t1.docstatus = 0 and t1.paused = 0 and not t1.start_when is NULL and timestampdiff(second, now(), t1.start_when) < 59 and timestampdiff(second, now(), t1.start_when) > -59 """, as_dict=True)
