@@ -52,7 +52,6 @@
         <i data-feather="corner-up-left" class="svg-icon" style="color:#E74F2B;"></i>
       </span>
     </h4>
-    
     <!-- *************************************************************** -->
     <!-- Start Sales Charts Section -->
     <!-- *************************************************************** -->
@@ -130,6 +129,14 @@
                       ND
                     {% endif %}
                     </span>
+                    {% if row.is_located %}
+                      <span class="fa-stack fa-1x>
+                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                        <i class="fa fa-search fa-stack-1x" style="color: white;"></i>
+                      </span>
+                      {{ row.training_place }}
+                    {% endif %}
+                    
                   </div>
                   <div class="col-12 text-left font-12">
                   {% if row.participant_name %}
@@ -498,9 +505,8 @@
     <!-- *************************************************************** -->
     <!-- End Sales Charts Section -->
     <!-- *************************************************************** -->
-    
-    
   </div>
+
   <!-- ============================================================== -->
   <!-- End Container fluid  -->
   <!-- ============================================================== -->
@@ -524,6 +530,7 @@
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
   <script src="/assets/atvirtual/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
   <script src="/assets/atvirtual/dist/js/pages/dashboards/dashboard1.min.js"></script>
+
   <script>
   function setPause(course, command, n) {
     //alert("Quitaremos la pausa del mensaje "+msg);
@@ -560,5 +567,6 @@
       }
     });
   };
+
   </script>
 {% endblock %}
