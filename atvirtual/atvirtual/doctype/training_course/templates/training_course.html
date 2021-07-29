@@ -129,14 +129,6 @@
                       ND
                     {% endif %}
                     </span>
-                    {% if row.is_located %}
-                      <span class="fa-stack fa-1x>
-                        <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                        <i class="fa fa-search fa-stack-1x" style="color: white;"></i>
-                      </span>
-                      {{ row.training_place }}
-                    {% endif %}
-                    
                   </div>
                   <div class="col-12 text-left font-12">
                   {% if row.participant_name %}
@@ -163,6 +155,14 @@
                     <cite>Sin Ubicaci&oacute;n inicio</cite>  
                   {% endif %}  
                   </small>
+                  <br />
+                  {% if row.is_located %}
+                    <span class="fa-stack fa-1x">
+                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
+                      <i class="fa fa-search fa-stack-1x" style="color: white;"></i>
+                    </span>
+                    {{ row.training_place }}
+                  {% endif %}  
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
                 </div>
