@@ -157,11 +157,7 @@
                   </small>
                   <br />
                   {% if row.is_located %}
-                    <span class="fa-stack fa-1x">
-                      <i class="fa fa-circle fa-stack-2x" style="color: SteelBlue;"></i>
-                      <i class="fa fa-search fa-stack-1x" style="color: white;"></i>
-                    </span>
-                    {{ row.training_place }}
+                    <i class="fa fa-search" style="color: SteelBlue;"></i><cite> {{ row.training_place }}</cite>
                   {% endif %}  
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
