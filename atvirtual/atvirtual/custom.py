@@ -153,7 +153,7 @@ def check_connected_devices():
       if last_seen:
         time_minutes = (now - last_seen).total_seconds()/60
       else:
-        time_minutes = 2
+        time_minutes = 3
         
       if time_minutes >= 2:
         if doc.is_connected:
@@ -177,7 +177,7 @@ def check_located_devices():
       if last_located:
         time_minutes = (now - last_located).total_seconds()/60
       else:
-        time_minutes = 2
+        time_minutes = 3
         
       if time_minutes >= 2:
         if doc.is_located:
