@@ -94,10 +94,10 @@ brand_html = '<div><img width="27px" src="/assets/atvirtual/assets/images/logo-i
 
 scheduler_events = {
  	"cron": {
-    "*/3 * * * *": [
+    "*/2 * * * *": [
  		  "atvirtual.atvirtual.custom.check_connected_devices"
  	  ],
-    "*/3 * * * *": [
+    "*/2 * * * *": [
  		  "atvirtual.atvirtual.custom.check_located_devices"
  	  ],
     "*/1 * * * *": [
