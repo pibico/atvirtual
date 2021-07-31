@@ -177,9 +177,9 @@ def check_located_devices():
       if last_located:
         time_minutes = (now - last_located).total_seconds()/60
       else:
-        time_minutes = 1.5
+        time_minutes = 3
         
-      if time_minutes >= 1.5:
+      if time_minutes >= 3:
         if doc.is_located:
           doc.is_located = False
           doc.last_located = None
