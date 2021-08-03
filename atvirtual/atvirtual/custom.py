@@ -206,4 +206,8 @@ def submit_scheduled_messages():
       #print(item['sch_message'], item['start_when'], item['age'])
       #doc = frappe.get_doc("pibiMessage", item['sch_message']).submit()
       submit_pibimessage(item['sch_message'])
-      #print(doc)        
+      #print(doc)       
+      
+def sync_now():
+    from frappe.utils.background_jobs import enqueue
+    enqueue('atvirtual.atvirtual.custom.submit_scheduled_messages', timeout=2000, queue="long")
