@@ -100,8 +100,8 @@ scheduler_events = {
     "*/2 * * * *": [
  		  "atvirtual.atvirtual.custom.check_connected_devices"
  	  ],
-    "1-59 * * * *": [
- 		  "atvirtual.atvirtual.custom.sync_now"
+    "*/1 * * * *": [
+ 		  "atvirtual.atvirtual.custom.submit_scheduled_messages"
  	  ],
     "*/1 * * * *": [
       "atvirtual.atvirtual.custom.update_ongoing_course"
