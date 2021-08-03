@@ -200,12 +200,12 @@ def update_ongoing_course():
 
 def submit_scheduled_messages():
   """ Get from database on ongoing courses scheduled messages to submit  """
-  data = frappe.db.sql("""select t1.sch_message, t1.start_when, timestampdiff(second, now(), t1.start_when) as age, now() from `tabDestination Item` t1 where t1.parent in (select t2.name from `tabTraining Course` t2 where t2.status = 'Ongoing' and t2.docstatus < 2) and t1.docstatus = 0 and t1.paused = 0 and not t1.start_when is NULL and timestampdiff(second, now(), t1.start_when) < 61 and timestampdiff(second, now(), t1.start_when) > -61""", as_dict=True)
+  data = frappe.db.sql("""select t1.sch_message, t1.start_when, timestampdiff(second, now(), t1.start_when) as age, now() from `tabDestination Item` t1 where t1.parent in (select t2.name from `tabTraining Course` t2 where t2.status = 'Ongoing' and t2.docstatus < 2) and t1.docstatus = 0 and t1.paused = 0 and not t1.start_when is NULL and timestampdiff(second, now(), t1.start_when) < 120 and timestampdiff(second, now(), t1.start_when) > -120""", as_dict=True)
   if data:
     for item in data:
       #print(item['sch_message'], item['start_when'], item['age'])
-      doc = frappe.get_doc("pibiMessage", item['sch_message']).submit()
-      #submit_pibimessage(item['sch_message'])
+      #doc = frappe.get_doc("pibiMessage", item['sch_message']).submit()
+      submit_pibimessage(item['sch_message'])
       #print(doc)       
       
 def sync_now():
