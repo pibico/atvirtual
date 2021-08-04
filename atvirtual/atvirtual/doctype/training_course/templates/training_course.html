@@ -256,15 +256,6 @@
                       ND
                     {% endif %}
                     </span>
-                    <br>
-                    <small>
-                    {% if item.device %}
-                      {% set dev = frappe.get_doc("Device", item.device) %}
-                      {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
-                        <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
-                      {% endif %}
-                    {% endif %}
-                    </small>
                   </div>
                   <div class="col-12 text-left font-12">
                   <small>
@@ -278,7 +269,15 @@
                     {% endif %}
                   {% endfor %}
                   </small>
-                  
+                  <br>
+                  <small>
+                  {% if item.device %}
+                    {% set dev = frappe.get_doc("Device", item.device) %}
+                    {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
+                      <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
+                    {% endif %}
+                  {% endif %}
+                  </small>
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
                 </div>
