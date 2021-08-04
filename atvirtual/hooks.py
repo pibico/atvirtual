@@ -97,7 +97,7 @@ scheduler_events = {
     "*/1 * * * *": [
  		  "atvirtual.atvirtual.custom.check_located_devices"
  	  ],
-    "*/1 * * * *": [
+    "*/2 * * * *": [
  		  "atvirtual.atvirtual.custom.check_connected_devices"
  	  ],
     "*/3 * * * *": [
