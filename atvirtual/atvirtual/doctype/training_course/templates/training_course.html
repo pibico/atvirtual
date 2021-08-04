@@ -234,6 +234,15 @@
                     {% else %}
                       No Asignado
                     {% endif %}
+                    <br>
+                    <small>
+                    {% if item.device %}
+                      {% set dev = frappe.get_doc("Device", item.device) %}
+                      {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
+                        <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
+                      {% endif %}
+                    {% endif %}
+                    </small>
                   </div>
                   <div class="col-3 text-left font-12">
                     <b style="m-0 p-0">
@@ -266,13 +275,6 @@
                       <cite class="text-primary">
                          {{ role }},
                       </cite>
-                    {% endif %}
-                    <br>
-                    {% if row.device %}
-                      {% set dev = frappe.get_doc("Device", row.device) %}
-                      {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
-                        <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
-                      {% endif %}
                     {% endif %}
                   {% endfor %}
                   </small>
