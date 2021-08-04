@@ -130,13 +130,15 @@
                     {% endif %}
                     </span>
                     <br>
-                    {% set dev = frappe.get_doc("Device", row.device) %}
-                    {% if dev.python_kasa %}
-                      {% if dev.turned_on %}
-                        <i class="fa fa-power-off fa-stack-1x text-danger"></i>
-                      {% else %}
-                        <i class="fa fa-power-off fa-stack-1x text-success"></i>
-                      {% endif %}  
+                    {% if row.device %}
+                      {% set dev = frappe.get_doc("Device", row.device) %}
+                      {% if dev.python_kasa %}
+                        {% if dev.turned_on %}
+                          <i class="fa fa-power-off fa-stack-1x text-danger"></i>
+                        {% else %}
+                          <i class="fa fa-power-off fa-stack-1x text-success"></i>
+                        {% endif %}  
+                      {% endif %}
                     {% endif %}
                   </div>
                   <div class="col-12 text-left font-12">
