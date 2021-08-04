@@ -267,8 +267,16 @@
                          {{ role }},
                       </cite>
                     {% endif %}
+                    <br>
+                    {% if row.device %}
+                      {% set dev = frappe.get_doc("Device", row.device) %}
+                      {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
+                        <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
+                      {% endif %}
+                    {% endif %}
                   {% endfor %}
                   </small>
+                  
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
                 </div>
