@@ -120,7 +120,8 @@
                         <i class="fa fa-wifi fa-stack-1x text-muted"></i>
                         <i class="fa fa-ban fa-stack-2x" style="color: Tomato;"></i>
                       </span>
-                    {% endif %}  
+                    {% endif %}
+                      
                     </b>
                     <span class="mb-0 text-dark font-weight-medium" style="font-size:6pt;">
                     {% if row.device %}
@@ -139,6 +140,7 @@
                           <i class="fa fa-power-off fa-stack-1x text-success"></i>
                         {% endif %}  
                       {% endif %}
+                      
                     {% endif %}
                   </div>
                   <div class="col-12 text-left font-12">
@@ -173,6 +175,14 @@
                     <cite class="text-primary">{{ row.training_place }}</cite>
                   </small>  
                   {% endif %}  
+                  {% if row.device %}
+                    <small>
+                    {% if dev.is_connected and not dev.python_kasa and dev.is_atvirtual %}
+                      <i class="fa fa-wifi text-success"></i><cite class="text-primary"> {{ dev.wifi_ssid }}</cite>
+                    {% endif %}
+                    </small>
+                  {% endif %}
+                  
                   <hr class="m-0 mt-1 mb-1"> 
                   </div>
                 </div>
