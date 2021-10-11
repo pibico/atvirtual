@@ -10,6 +10,7 @@
   "section_break_1",
   "enabled",
   "is_generic",
+  "session_type",
   "section_break_3",
   "first_name",
   "middle_name",
@@ -189,10 +190,17 @@
    "fieldname": "is_generic",
    "fieldtype": "Check",
    "label": "Is Generic"
+  },
+  {
+   "fieldname": "session_type",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Session Type",
+   "options": "Session Type"
   }
  ],
  "image_field": "image",
- "modified": "2021-07-17 20:37:22.359832",
+ "modified": "2021-10-11 18:12:07.599865",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Participant",

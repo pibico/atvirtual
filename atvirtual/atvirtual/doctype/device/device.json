@@ -36,6 +36,7 @@
   "uptime",
   "sec_break_2",
   "detected_by",
+  "distance",
   "rssi",
   "col_break_4",
   "last_located",
@@ -396,9 +397,15 @@
    "fieldname": "turned_on",
    "fieldtype": "Check",
    "label": "Turned On"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Distance"
   }
  ],
- "modified": "2021-07-12 18:41:26.617537",
+ "modified": "2021-10-11 18:11:15.788180",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
