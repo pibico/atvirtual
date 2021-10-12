@@ -405,7 +405,7 @@
    "label": "Distance"
   }
  ],
- "modified": "2021-10-11 18:11:15.788180",
+ "modified": "2021-10-12 18:59:39.686268",
  "modified_by": "Administrator",
  "module": "Atvirtual",
  "name": "Device",
@@ -436,6 +436,5 @@
  ],
  "quick_entry": 1,
  "sort_field": "modified",
- "sort_order": "DESC",
- "track_changes": 1
+ "sort_order": "DESC"
 }
