@@ -7,44 +7,6 @@
   "doctype": "Report",
   "is_standard": "No",
   "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2021-05-31 15:01:32.065429",
-  "module": "Desk",
-  "name": "_Test Report 1",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Event",
-  "reference_report": null,
-  "report_name": "_Test Report 1",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "_Test Report 1",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "All"
-   },
-   {
-    "parent": "_Test Report 1",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "is_standard": "No",
-  "javascript": null,
   "json": "[{\"fieldname\": \"email\", \"fieldtype\": \"Data\", \"label\": \"Email\", \"insert_after_index\": 0, \"link_field\": \"name\", \"doctype\": \"User\", \"options\": \"Email\", \"width\": 100, \"id\": \"email\", \"name\": \"Email\"}]",
   "letter_head": null,
   "modified": "2021-05-31 15:04:03.352694",
@@ -63,38 +25,6 @@
   "roles": [
    {
     "parent": "Permitted Documents For User Custom",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "System Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2021-05-31 15:04:03.938293",
-  "module": "Core",
-  "name": "Test Non Standard Script Report",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "User",
-  "reference_report": null,
-  "report_name": "Test Non Standard Script Report",
-  "report_script": "\ntotals = {}\nfor user in frappe.get_all('User', fields = ['name', 'user_type', 'creation']):\n\tif not user.user_type in totals:\n\t\ttotals[user.user_type] = 0\n\ttotals[user.user_type] = totals[user.user_type] + 1\n\ndata = [\n\t[\n\t\t{'fieldname': 'type', 'label': 'Type'},\n\t\t{'fieldname': 'value', 'label': 'Value'}\n\t],\n\t[\n\t\t{\"type\":key, \"value\": value} for key, value in totals.items()\n\t]\n]\n",
-  "report_type": "Script Report",
-  "roles": [
-   {
-    "parent": "Test Non Standard Script Report",
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
@@ -130,38 +60,6 @@
     "parentfield": "roles",
     "parenttype": "Report",
     "role": "System Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
-  "disable_prepared_report": 0,
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "is_standard": "No",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2021-05-31 15:04:04.238127",
-  "module": "Core",
-  "name": "Test Report",
-  "parent": null,
-  "parentfield": null,
-  "parenttype": null,
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "User",
-  "reference_report": null,
-  "report_name": "Test Report",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Test Report",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Test Has Role"
    }
   ]
  },
