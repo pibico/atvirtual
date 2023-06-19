@@ -98,7 +98,7 @@ scheduler_events = {
  		  "atvirtual.atvirtual.custom.check_located_devices", "atvirtual.atvirtual.custom.update_ongoing_course", "atvirtual.atvirtual.custom.check_connected_devices"
  	  ],
     "*/2 * * * *": [
- 		  "atvirtual.atvirtual.custom.submit_scheduled_messages"
+ 		  "atvirtual.atvirtual.custom.submit_scheduled_messages" 
  	  ]
   }
 }
@@ -139,4 +139,4 @@ scheduler_events = {
 # 	"Task": "atvirtual.task.get_dashboard_data"
 # }
 
-fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Custom Script', 'Property Setter', 'Translation', 'Website Settings']
+fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Client Script', 'Property Setter', 'Translation', 'Website Settings']

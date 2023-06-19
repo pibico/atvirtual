@@ -13,6 +13,7 @@
   "parenttype": null,
   "property": "default",
   "property_type": "Text",
+  "row_name": null,
   "value": "{doc_type} - {introduction_text}"
  },
  {
@@ -29,6 +30,7 @@
   "parenttype": null,
   "property": "permlevel",
   "property_type": "Int",
+  "row_name": null,
   "value": "1"
  },
  {
@@ -45,6 +47,7 @@
   "parenttype": null,
   "property": "permlevel",
   "property_type": "Data",
+  "row_name": null,
   "value": "1"
  },
  {
@@ -61,6 +64,7 @@
   "parenttype": null,
   "property": "fieldtype",
   "property_type": "Data",
+  "row_name": null,
   "value": "Text"
  },
  {
@@ -77,6 +81,7 @@
   "parenttype": null,
   "property": "fieldtype",
   "property_type": "Text",
+  "row_name": null,
   "value": "Data"
  },
  {
@@ -93,6 +98,7 @@
   "parenttype": null,
   "property": "default",
   "property_type": "Int",
+  "row_name": null,
   "value": "1"
  },
  {
@@ -109,6 +115,7 @@
   "parenttype": null,
   "property": "options",
   "property_type": "Text",
+  "row_name": null,
   "value": "\nIoT\nE-mail"
  },
  {
@@ -125,6 +132,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "msg_description"
  },
  {
@@ -141,6 +149,7 @@
   "parenttype": null,
   "property": "options",
   "property_type": "Text",
+  "row_name": null,
   "value": ".device_type.-.####"
  },
  {
@@ -157,6 +166,7 @@
   "parenttype": null,
   "property": "default",
   "property_type": "Text",
+  "row_name": null,
   "value": ""
  },
  {
@@ -173,6 +183,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "device,alias"
  },
  {
@@ -189,6 +200,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": ""
  },
  {
@@ -205,6 +217,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": ""
  },
  {
@@ -221,6 +234,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "alias"
  },
  {
@@ -237,6 +251,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "title,session_type,participant_email_id"
  },
  {
@@ -253,6 +268,7 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "email_account_name,email_id"
  },
  {
@@ -269,6 +285,41 @@
   "parenttype": null,
   "property": "search_fields",
   "property_type": "Data",
+  "row_name": null,
   "value": "training_place,place_id"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Participant",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "naming_series",
+  "modified": "2023-05-27 21:43:17.326596",
+  "name": "Participant-naming_series-options",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "options",
+  "property_type": "Text",
+  "row_name": null,
+  "value": "TRN-.YYYY.-"
+ },
+ {
+  "default_value": null,
+  "doc_type": "Standard Message",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "naming_series",
+  "modified": "2023-05-27 21:43:17.829923",
+  "name": "Standard Message-naming_series-options",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "property": "options",
+  "property_type": "Text",
+  "row_name": null,
+  "value": "MSG-.####"
  }
 ]
