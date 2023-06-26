@@ -139,4 +139,4 @@ scheduler_events = {
 # 	"Task": "atvirtual.task.get_dashboard_data"
 # }
 
-fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Client Script', 'Property Setter', 'Translation', 'Website Settings']
+fixtures = ['Report', 'Role Profile', 'Role', 'Custom Field', 'Client Script', 'Property Setter', 'Website Settings']
